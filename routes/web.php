@@ -12,9 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/{any?}', 'HomeController@index');
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::get('/events', 'EventController@index')->name('events');
+
+//Route::get('/{vue_capture?}', function () {
+//    return view('home');
+//})->where('vue_capture', '^(?!storage).*$');

@@ -1,13 +1,10 @@
 <template>
-    <div>
-
-    </div>
-
+<h1>Welcome to the venues page</h1>
 </template>
 
 <script>
     export default {
-        name: "HomeComponent.vue"
+        name: "VenuesHome.vue"
     }
 </script>
 

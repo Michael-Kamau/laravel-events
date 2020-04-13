@@ -13,6 +13,7 @@ $factory->define(Event::class, function (Faker $faker) {
         'user_id' => function () {
             return factory('App\User')->create()->id;
         },
+        'name'=>$faker->name(),
         'event_category_id'=>function(){
 
         return factory('App\Events\EventCategory');

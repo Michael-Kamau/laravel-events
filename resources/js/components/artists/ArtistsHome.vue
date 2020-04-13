@@ -1,13 +1,10 @@
 <template>
-    <div>
-
-    </div>
-
+<h1>Welcome to the Artists Page</h1>
 </template>
 
 <script>
     export default {
-        name: "HomeComponent.vue"
+        name: "ArtistsHome.vue"
     }
 </script>
 

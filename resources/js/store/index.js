@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         token:null,
-        allVouchers:null,
+        allEvents:null,
         myVouchers:null,
         myRedeemedVouchers:null,
         admin:null
@@ -15,8 +15,8 @@ export default new Vuex.Store({
     },
 
     getters: {
-        getAllVouchers(state){
-            return state.allVouchers
+        getAllEvents(state){
+            return state.allEvents
         },
         getMyVouchers(state){
             return state.myVouchers
@@ -35,12 +35,12 @@ export default new Vuex.Store({
 
     actions: {
 
-        getAllVouchers(state) {
-            axios.get(`/api/voucher/`)
+        getAllEvents(state) {
+            axios.get(`http://events.appp/api/events`)
                 .then(response => {
                     console.log(response.data)
-                    let vouchers = response.data
-                    state.commit('getAllVouchers', vouchers)
+                    let events = response.data
+                    state.commit('getAllEvents', events)
                 }).catch(e => {
                 console.log(e)
             })
@@ -140,8 +140,8 @@ export default new Vuex.Store({
 
     mutations: {
 
-        getAllVouchers(state,payload) {
-            state.allVouchers=payload.data
+        getAllEvents(state,payload) {
+            state.allEvents=payload.data
         },
         getMyVouchers(state,payload) {
             state.myVouchers=payload.data

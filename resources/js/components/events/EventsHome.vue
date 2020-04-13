@@ -1,45 +1,40 @@
 <template>
-    <!-- Two columns -->
-    <div class="flex mb-4">
-        <!--            <h4>Navbar</h4>-->
-        <!--            <a class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">-->
-        <!--                <router-link to="/event">Event</router-link>-->
-        <!--            </a>-->
-        <!--            <a class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">-->
-        <!--                <router-link to="/Erroserous">Erraneous</router-link>-->
-        <!--            </a>-->
-
-
-        <div
-            class="overflow-hidden shadow-lg border-t-4 bg-white mb-4 rounded-b-lg rounded-t border-red-light  w-1/5 bg-gray-400">
-            <div class="px-6 py-4 mb-2 mt-4 mb-8">
-                <div class="uppercase tracking-wide text-c2 mb-4">Dashboard</div>
-                <a class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                    <router-link to="/events/event">Corporate Events</router-link>
-                </a>
-                <a class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                    <router-link to="/events/Erroserous">Social Events</router-link>
-                </a>
-                <br>
-                <a class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                    <router-link to="/events/event">All Events</router-link>
-                </a>
+    <div>
+        <div class="flex mb-4 flex-wrap mx-auto" v-if="this.$store.getters.getAllEvents.length">
+            <div class="w-2/7 m-2  "  v-for="event in this.$store.getters.getAllEvents" :key="event.id">
+                    <EventTemplate v-bind:event=event></EventTemplate>
             </div>
         </div>
-
-
-        <div class="w-4/5 bg-gray-500 ">
-            <h1>Content</h1>
-            <router-view></router-view>
-
+        <div v-else class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
+             role="alert">
+            <div class="flex">
+                <div class="py-1">
+                    <svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 20 20">
+                        <path
+                            d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/>
+                    </svg>
+                </div>
+                <div>
+                    <p class="font-bold">Notification</p>
+                    <p class="text-sm">No Events Available currently</p>
+                </div>
+            </div>
         </div>
     </div>
 
 </template>
 
 <script>
+    import EventTemplate from "./EventTemplate.vue";
+
     export default {
-        name: "EventsHome"
+        name: "EventsHome",
+        components: {EventTemplate},
+
+        mounted() {
+            this.$store.dispatch('getAllEvents');
+        }
     }
 </script>
 

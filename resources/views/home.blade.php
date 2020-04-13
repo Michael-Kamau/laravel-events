@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div id="app">
+    <div id="#">
 {{--        <index></index>--}}
         <router-view></router-view>
     </div>

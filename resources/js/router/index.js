@@ -4,7 +4,11 @@ import Vue from 'vue'
 
 import Index from '../components/Index.vue'
 import EventsHome from "../components/events/EventsHome.vue";
-import Event from "../components/events/Event.vue";
+import EventPage from "../components/events/EventPage.vue";
+
+import VenuesHome from "../components/venues/VenuesHome.vue";
+import ArtistsHome from "../components/artists/ArtistsHome.vue";
+
 import ErrorPage from "../components/ErrorPage.vue";
 
 Vue.use(Router)
@@ -30,16 +34,27 @@ export default new Router({
             name:'events',
             children:[
                 {
-                    path: 'event',
-                    name:'event',
-                    component: Event
-                },
-                {
                     path: '*',
                     name: 'errorEvents',
                     component: ErrorPage
                 }
             ]
+        },
+
+        {
+            path: '/event/:id',
+            name:'eventPage',
+            component: EventPage
+        },
+        {
+            path: '/venues',
+            name:'venues',
+            component: VenuesHome
+        },
+        {
+            path: '/artists',
+            name:'artists',
+            component: ArtistsHome
         },
 
         {

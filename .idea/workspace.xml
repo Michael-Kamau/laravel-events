@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71cae4b9-0f07-41ba-8e79-9a4f9af19b96" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/components/auth/Dashboard.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/auth/events_auth/AddEvent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/auth/events_auth/MyEvents.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/events/EventPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/events/EventPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/events/EventTemplate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/events/EventTemplate.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/events/EventsHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/events/EventsHome.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

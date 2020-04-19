@@ -22,28 +22,44 @@
                     <p class="text-gray-700 text-base">Ksh. {{event[0].charges}}</p>
                 </div>
                 <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    <div class=" mb-6 md:mb-1">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
-                            Number Of Tickets
+                    <div class=" mb-6 mt-6 md:mb-1">
+                        <label class="block  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+                            Ticket Type
                         </label>
                         <div class="relative">
-                            <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                                <option>1 Ticket</option>
-                                <option>2 Tickets</option>
-                                <option>3 Tickets</option>
-                                <option>4 Tickets</option>
-                                <option>5 Tickets</option>
+                            <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" >
+                                <option value="vvip">VVIP</option>
+                                <option value="vip">VIP</option>
+                                <option value="regular">Regular</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
                         </div>
                     </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+
+                    <div class=" mb-6 mt-6 md:mb-1">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+                            Number Of Tickets
+                        </label>
+                        <div class="relative">
+                            <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="1">1 Ticket</option>
+                                <option value="2">2 Tickets</option>
+                                <option value="3">3 Tickets</option>
+                                <option value="4">4 Tickets</option>
+                                <option value="5">5 Tickets</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4 mt-6">
+                        <label class="block  text-gray-700 text-sm font-bold mb-2" for="total-amount">
                             Total Amount
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Amount">
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="total-amount" type="text" disabled placeholder="Amount" v-model="this.totalAmount">
                     </div>
                     <div class="flex items-center justify-between">
                         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
@@ -89,15 +105,18 @@
     import EventTemplate from "./EventTemplate.vue";
 
     export default {
-        name: "EventPage.vue",
+        name: "EventBook.vue",
+        components: {EventTemplate},
 
         data() {
             return {
                 eventId: this.$route.params.id,
-                // event:null
+                ticketsNo:null,
+                ticketType:null,
+                totalAmount:0
+
             }
         },
-        components: {EventTemplate},
         computed: {
             event() {
                 return this.$store.getters.getAllEvents.filter(event => event.id == this.eventId)

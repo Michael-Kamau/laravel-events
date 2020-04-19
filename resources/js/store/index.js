@@ -6,29 +6,22 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        token:null,
-        allEvents:null,
-        myVouchers:null,
-        myRedeemedVouchers:null,
-        admin:null
+        token: null,
+        allEvents: null,
+        userEvents: null,
+        userDetails:[],
+        admin: null
 
     },
 
     getters: {
-        getAllEvents(state){
+        getAllEvents(state) {
             return state.allEvents
         },
-        getMyVouchers(state){
-            return state.myVouchers
-        },
-        getMyRedeemed(state){
-            return state.myRedeemedVouchers
-        },
-        getIfAdmin(state){
-            return state.admin
+
+        getUserEvents(state){
+            return state.userEvents
         }
-
-
 
 
     },
@@ -45,87 +38,38 @@ export default new Vuex.Store({
                 console.log(e)
             })
 
-
         },
-        getMyVouchers(state) {
-            axios.get(`/api/voucher/bought`)
-                .then(response => {
-                    console.log(response.data)
-                    let vouchers = response.data
-                    state.commit('getMyVouchers', vouchers)
-                }).catch(e => {
-                console.log(e)
-            })
 
-
-        },
-        getRedeemedVouchers(state) {
-            axios.get(`/api/voucher/redeemed`)
-                .then(response => {
-                    console.log(response.data)
-                    let vouchers = response.data
-                    state.commit('getRedeemedVouchers', vouchers)
-                }).catch(e => {
-                console.log(e)
-            })
-
-
-        },
-        buyVoucher(state,payload){
-            return new Promise((resolve, reject) => {
-                axios.post(`/api/voucher/buy`, payload)
-                    .then(response => {
-                        console.log(response.data)
-                        state.dispatch('getAllVouchers')
-                        resolve(response)
-                    }).catch(e => {
-                    //this.errors.push(e)
-                    reject(e)
-                    console.log(e)
-                })
-            })
-
-        },
-        giveVoucher(state,payload){
-            axios.post(`/api/voucher/give`,payload)
-                .then(response => {
-                    console.log(response.data)
-                    state.dispatch('getMyVouchers')
-                }).catch(e => {
-                //this.errors.push(e)
-                console.log(e)
-            })
-        },
-        redeemVoucher(state,payload){
-            return new Promise((resolve, reject) => {
-                axios.post(`/api/voucher/redeem`,payload)
-                    .then(response => {
-                        console.log(response.data)
-                        state.dispatch('getMyVouchers')
-                        resolve(response)
-                    }).catch(e => {
-                    reject(e)
-                    console.log(e)
-                })
-            })
-
-        },
-        checkRole(state){
+        checkRole(state) {
             axios.get(`/user/role`)
                 .then(response => {
                     console.log(response.data)
-                    state.commit('checkRole',response.data)
+                    state.commit('checkRole', response.data)
                 }).catch(e => {
                 //this.errors.push(e)
                 console.log(e)
             })
         },
-        generateVouchers(state, payload){
+
+        getUserEvents(state) {
+            return new Promise((resolve, reject) => {
+                axios.get(`/api/events/userEvents`)
+                    .then(response => {
+                        state.commit('getUserEvents', response.data)
+                        resolve(response)
+                    }).catch(e => {
+                    reject(e)
+                    console.log(e)
+                })
+            })
+
+        },
+        addEvent(state, payload) {
             console.log(payload)
             return new Promise((resolve, reject) => {
-                axios.post(`/api/voucher/generate`,payload)
+                axios.post(`/api/events/create`, payload)
                     .then(response => {
-                        console.log(response.data)
+                        console.log(response)
                         resolve(response)
                     }).catch(e => {
                     reject(e)
@@ -140,18 +84,15 @@ export default new Vuex.Store({
 
     mutations: {
 
-        getAllEvents(state,payload) {
-            state.allEvents=payload.data
+        getAllEvents(state, payload) {
+            state.allEvents = payload.data
         },
-        getMyVouchers(state,payload) {
-            state.myVouchers=payload.data
-        },
-        getRedeemedVouchers(state,payload) {
-            state.myRedeemedVouchers=payload.data
+        getUserEvents(state, payload) {
+            state.userEvents = payload.data
         },
 
-        checkRole(state,payload){
-            state.admin=payload
+        checkRole(state, payload) {
+            state.admin = payload
         }
 
     }

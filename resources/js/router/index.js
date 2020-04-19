@@ -4,10 +4,16 @@ import Vue from 'vue'
 
 import Index from '../components/Index.vue'
 import EventsHome from "../components/events/EventsHome.vue";
-import EventPage from "../components/events/EventPage.vue";
+import EventBook from "../components/events/EventBook.vue";
+//Event auth
+import MyEvents from "../components/auth/events_auth/MyEvents.vue"
+import AddEvent from "../components/auth/events_auth/AddEvent.vue";
 
 import VenuesHome from "../components/venues/VenuesHome.vue";
+
 import ArtistsHome from "../components/artists/ArtistsHome.vue";
+
+import Dashboard from "../components/auth/Dashboard.vue";
 
 import ErrorPage from "../components/ErrorPage.vue";
 
@@ -44,7 +50,7 @@ export default new Router({
         {
             path: '/event/:id',
             name:'eventPage',
-            component: EventPage
+            component: EventBook
         },
         {
             path: '/venues',
@@ -55,6 +61,25 @@ export default new Router({
             path: '/artists',
             name:'artists',
             component: ArtistsHome
+        },
+        {
+            path: '/dashboard',
+            name:'dashboard',
+            component: Dashboard,
+            children: [
+                {
+                    name:'myEvents',
+                    path: '/dashboard/myEvents',
+                    component: MyEvents
+                },
+                {
+                    name:'addEvent',
+                    path: '/dashboard/addEvent',
+                    component: AddEvent
+                },
+
+            ]
+
         },
 
         {

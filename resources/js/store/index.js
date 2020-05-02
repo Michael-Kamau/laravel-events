@@ -10,7 +10,7 @@ export default new Vuex.Store({
         allEvents: null,
         userEvents: null,
         userDetails:[],
-        admin: null
+        roles: []
 
     },
 
@@ -21,7 +21,12 @@ export default new Vuex.Store({
 
         getUserEvents(state){
             return state.userEvents
+        },
+
+        getUserRoles(state){
+            return state.roles
         }
+
 
 
     },
@@ -41,9 +46,9 @@ export default new Vuex.Store({
         },
 
         checkRole(state) {
-            axios.get(`/user/role`)
+            axios.get(`/api/user/roles`)
                 .then(response => {
-                    console.log(response.data)
+                    console.log('Roles',response.data)
                     state.commit('checkRole', response.data)
                 }).catch(e => {
                 //this.errors.push(e)
@@ -92,7 +97,7 @@ export default new Vuex.Store({
         },
 
         checkRole(state, payload) {
-            state.admin = payload
+            state.roles = payload
         }
 
     }

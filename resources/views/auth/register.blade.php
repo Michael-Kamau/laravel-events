@@ -39,6 +39,22 @@
                             </div>
                         </div>
 
+                        <div class="input-group form-group mb-3 ">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="account-type" >Account Type</label>
+                            </div>
+                            <select class="custom-select @error('account-type') is-invalid @enderror" id="account-type" name="account-type">
+                                <option value="event-manager">Event Manager</option>
+                                <option value="venue-manager">Venue Manager</option>
+                                <option value="artist">Artist</option>
+                            </select>
+                            @error('account-type')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 

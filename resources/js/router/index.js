@@ -5,13 +5,26 @@ import Vue from 'vue'
 import Index from '../components/Index.vue'
 import EventsHome from "../components/events/EventsHome.vue";
 import EventBook from "../components/events/EventBook.vue";
+
 //Event auth
 import MyEvents from "../components/auth/events_auth/MyEvents.vue"
 import AddEvent from "../components/auth/events_auth/AddEvent.vue";
 
+
+//venues Auth
 import VenuesHome from "../components/venues/VenuesHome.vue";
 
+
+//Artists Auth
 import ArtistsHome from "../components/artists/ArtistsHome.vue";
+
+//Admin Auth
+import EventManagers from "../components/auth/admin_auth/EventManagers.vue";
+import ArtistsManagers from "../components/auth/admin_auth/ArtistManagers.vue";
+import VenueManagers from "../components/auth/admin_auth/VenueManagers.vue";
+
+
+
 
 import Dashboard from "../components/auth/Dashboard.vue";
 
@@ -76,6 +89,21 @@ export default new Router({
                     name:'addEvent',
                     path: '/dashboard/addEvent',
                     component: AddEvent
+                },
+                {
+                    name:'eventManagers',
+                    path: '/dashboard/event-managers',
+                    component: EventManagers
+                },
+                {
+                    name:'artistManagers',
+                    path: '/dashboard/artists',
+                    component: ArtistsManagers
+                },
+                {
+                    name:'venueManagers',
+                    path: '/dashboard/venue-managers',
+                    component: VenueManagers
                 },
 
             ]

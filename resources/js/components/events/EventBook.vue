@@ -4,7 +4,8 @@
         <div class="sm:flex border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white" v-if="event">
             <div class="md:w-2/5 px-2">
                 <div class="text-gray-900 font-bold text-xl mb-2">{{event[0].name}}</div>
-                <img class="max-w-full max-h-full m-auto" src="http://www.ragranjani.com/images/banner-001.jpg" alt="">
+<!--                <img class="max-w-full max-h-full m-auto" src="http://www.ragranjani.com/images/banner-001.jpg" alt="">-->
+                <img class="max-w-full max-h-full m-auto" :src="'/' +event[0].image " alt="">
             </div>
             <div
                 class=" md:w-3/5  rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
@@ -19,7 +20,9 @@
                     </p>
                     <div class="text-gray-900 font-bold text-xl mb-2">{{event[0].name}}</div>
                     <p class="text-gray-700 text-base">{{event[0].location}}</p>
-                    <p class="text-gray-700 text-base">Ksh. {{event[0].charges}}</p>
+                    <p class="text-gray-700 text-base">Vvip: Ksh. {{event[0].vvip}}</p>
+                    <p class="text-gray-700 text-base">Vip: Ksh. {{event[0].vip}}</p>
+                    <p class="text-gray-700 text-base">Regular: Ksh. {{event[0].regular}}</p>
                 </div>
                 <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <div class=" mb-6 mt-6 md:mb-1">
@@ -27,10 +30,10 @@
                             Ticket Type
                         </label>
                         <div class="relative">
-                            <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" >
-                                <option value="vvip">VVIP</option>
-                                <option value="vip">VIP</option>
-                                <option value="regular">Regular</option>
+                            <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" v-model="form.ticket_type">
+                                <option v-bind:value="event[0].vvip">VVIP: Ksh. {{event[0].vvip}}</option>
+                                <option v-bind:value="event[0].vip">VIP: Ksh. {{event[0].vip}}</option>
+                                <option v-bind:value="event[0].regular">REGULAR: Ksh. {{event[0].regular}}</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -43,7 +46,7 @@
                             Number Of Tickets
                         </label>
                         <div class="relative">
-                            <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                            <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" v-model="form.ticket_no">
                                 <option value="1">1 Ticket</option>
                                 <option value="2">2 Tickets</option>
                                 <option value="3">3 Tickets</option>
@@ -59,7 +62,7 @@
                         <label class="block  text-gray-700 text-sm font-bold mb-2" for="total-amount">
                             Total Amount
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="total-amount" type="text" disabled placeholder="Amount" v-model="this.totalAmount">
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="total-amount" type="text" disabled placeholder="Amount"  v-model="amount">
                     </div>
                     <div class="flex items-center justify-between">
                         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
@@ -113,18 +116,29 @@
                 eventId: this.$route.params.id,
                 ticketsNo:null,
                 ticketType:null,
-                totalAmount:0
+                totalAmount:0,
+                form:{}
 
             }
         },
         computed: {
             event() {
+                console.log('event function')
                 return this.$store.getters.getAllEvents.filter(event => event.id == this.eventId)
+            },
+
+            amount(){
+                if(this.form.ticket_no && this.form.ticket_type){
+                    return this.form.ticket_no * this.form.ticket_type
+                }else{
+                    return 0
+                }
             }
 
         },
 
-        mounted() {
+        beforeCreate() {
+            console.log('before Create')
             this.$store.dispatch('getAllEvents');
         }
     }

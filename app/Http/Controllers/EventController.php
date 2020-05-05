@@ -7,6 +7,8 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Events\Event;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use App\Http\Resources\Events\Event as EventResource;
 
 class EventController extends Controller
@@ -59,8 +61,12 @@ class EventController extends Controller
         $location = $request->input('location');
         $startDate = $request->input('startDate');
         $endDate = $request->input('endDate');
-        $charges = $request->input('regular');
+        $vvip = $request->input('vvip');
+        $vip = $request->input('vip');
+        $regular = $request->input('regular');
+        $image=$this->saveImage($request->input('image'));
 
+//        dd($image);
 //        dd($request->input('regular'));
         Event::create([
             'user_id' => $user_id,
@@ -69,7 +75,10 @@ class EventController extends Controller
             'location' => $location,
             'start_date' => $startDate,
             'end_date' => $endDate,
-            'charges' => $charges
+            'vvip' => $vvip,
+            'vip' => $vip,
+            'regular' => $regular,
+            'image'=>$image
         ]);
     }
 
@@ -117,4 +126,51 @@ class EventController extends Controller
     {
         //
     }
+
+
+    /**
+     * get all the users for a particular account type.
+     *
+     * @param $id
+     * @return void
+     */
+    public function delete($id)
+    {
+
+        $event = Event::where('id',$id)->first();
+        if($event->user_id==Auth::id())
+        {
+            File::delete($event->image);
+
+            $event->delete();
+        }
+
+
+    }
+
+
+
+    function saveImage($imageString){
+        $exploded = explode(',',$imageString);
+
+        $decoded=base64_decode($exploded[1]);
+        if($this->str_contains($exploded[0],'jpeg'))
+            $extension='jpg';
+        else
+            $extension='png';
+        $filename=Str::random(16).'.'.$extension;
+
+        $path=public_path().'/'.$filename;
+
+//        dd($path);
+
+        file_put_contents($path,$decoded);
+
+        return $filename;
+    }
+
+    function str_contains(string $haystack, string $needle): bool {
+        return '' === $needle || false !== strpos($haystack, $needle);
+    }
+
 }

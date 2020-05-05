@@ -12,7 +12,7 @@ class Event extends Model
         return $this->belongsTo('App\User');
     }
 
-    protected $fillable = ['user_id', 'name', 'event_category_id', 'location', 'start_date', 'end_date', 'charges'];
+    protected $fillable = ['user_id', 'name', 'event_category_id', 'location', 'start_date', 'end_date', 'vvip','vip','regular','image'];
 
 
     public function scopeUserEvents($query, $user)

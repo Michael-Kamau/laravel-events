@@ -16,10 +16,14 @@ Route::get('/', function () {
 });
 Route::get('api/user/roles','HomeController@userRoles');
 
+//Admin Routes
+Route::get('api/users/{type}','AdminController@getUsers');
+
 
 Auth::routes();
 
 Route::post('api/events/create','EventController@store');
+Route::get('api/events/delete/{id}','EventController@delete');
 Route::get('api/events/userEvents','EventController@userEvents');
 
 //Route::get('/{any?}', 'HomeController@index');

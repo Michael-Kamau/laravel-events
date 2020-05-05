@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -17,16 +18,17 @@ class AdminController extends Controller
     }
 
 
-
     /**
      * get all the users for a particular account type.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param $type
+     * @return void
      */
-    public function getUsers()
+    public function getUsers($type)
     {
-        return view('home');
+        $users = User::role($type)->get();
+
+        return $users;
     }
 
 

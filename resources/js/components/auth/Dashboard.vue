@@ -3,8 +3,9 @@
         <div class=" md:w-1/6 bg-gray-400 p-2">
             <h1>Dashboard</h1>
             <div v-if="roleExists('admin')">
-                <router-link :to="{name:'venueManagers'}"> Venue Managers</router-link><br>
+                <router-link :to="{name:'artistManagers'}"> Artist Managers</router-link><br>
                 <router-link :to="{name:'eventManagers'}"> Event Managers</router-link><br>
+                <router-link :to="{name:'venueManagers'}"> Venue Managers</router-link><br>
             </div>
             <div>
 

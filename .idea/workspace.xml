@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71cae4b9-0f07-41ba-8e79-9a4f9af19b96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/auth/admin_auth/EventManagers.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/Event.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_04_151037_create_events_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_04_151037_create_events_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/Dashboard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/events_auth/AddEvent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/events_auth/AddEvent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/events_auth/MyEvents.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/events_auth/MyEvents.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/events/EventBook.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/events/EventBook.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/events/EventTemplate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/events/EventTemplate.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -186,6 +187,9 @@
       <workItem from="1587592125237" duration="13093000" />
       <workItem from="1587899638384" duration="5300000" />
       <workItem from="1588348053828" duration="127000" />
+      <workItem from="1588704369910" duration="3956000" />
+      <workItem from="1588797266760" duration="193000" />
+      <workItem from="1588873611637" duration="15733000" />
     </task>
     <servers />
   </component>
@@ -193,9 +197,17 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588707823926">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1588707823926" />
     <state x="317" y="232" key="com.intellij.ide.util.TipDialog" timestamp="1588348055014">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="317" y="232" key="com.intellij.ide.util.TipDialog/0.0.1280.800@0.0.1280.800" timestamp="1588348055014" />
+    <state x="561" y="124" key="search.everywhere.popup" timestamp="1588874789730">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="561" y="124" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1588874789730" />
   </component>
 </project>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -41,6 +42,7 @@ class HomeController extends Controller
 //        Auth::user()->addRole('event-manager');
 
 //         dd(Auth::User()->Roles()->pluck('name'));
+
 
         return (Auth::User()->Roles()->pluck('name'));
     }

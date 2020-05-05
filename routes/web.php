@@ -12,9 +12,25 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+Route::get('api/user/roles','HomeController@userRoles');
+
+//Admin Routes
+Route::get('api/users/{type}','AdminController@getUsers');
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('api/events/create','EventController@store');
+Route::get('api/events/userEvents','EventController@userEvents');
+
+//Route::get('/{any?}', 'HomeController@index');
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::get('/events', 'EventController@index')->name('events');
+
+Route::get('/{vue_capture?}', function () {
+    return view('home');
+})->where('vue_capture', '^(?!storage).*$');

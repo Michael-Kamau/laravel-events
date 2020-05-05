@@ -16,6 +16,9 @@ Route::get('/', function () {
 });
 Route::get('api/user/roles','HomeController@userRoles');
 
+//Admin Routes
+Route::get('api/users/{type}','AdminController@getUsers');
+
 
 Auth::routes();
 

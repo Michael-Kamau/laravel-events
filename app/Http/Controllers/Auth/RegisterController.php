@@ -71,8 +71,10 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        if($data['account-type']=='event-manager' || $data['account-type']=='venue-manager' || $data['account-type']=='artist'){
+            $user->assignRole($data['account-type']);
+        }
 
-        $user->assignRole($data['account-type']);
 
         return $user;
     }

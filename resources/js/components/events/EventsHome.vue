@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex mb-4 flex-wrap mx-auto" v-if="this.$store.getters.getAllEvents.length">
+        <div class="flex mb-4 flex-wrap mx-auto items-center justify-center" v-if="this.$store.getters.getAllEvents.length">
             <div class="w-2/7 m-2  "  v-for="event in this.$store.getters.getAllEvents" :key="event.id">
                     <EventTemplate v-bind:event=event></EventTemplate>
             </div>

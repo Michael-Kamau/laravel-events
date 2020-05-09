@@ -28,7 +28,7 @@
                         </button>
                     </td>
                     <td class="border px-4 py-2">
-                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" @click="deleteEvent(event.id)">
                             Delete
                         </button>
                     </td>
@@ -49,14 +49,39 @@
 </template>
 
 <script>
+    import axios from "axios";
+
     export default {
         name: "MyEvents",
+
+        // data(){
+        //
+        // },
+
+        methods:{
+
+            deleteEvent(id){
+                confirm("Are you sure you want to delete this event?");
+                axios.get('/api/events/delete/'+id)
+                    .then(response => {
+                        this.$store.dispatch('getUserEvents')
+                    }).catch(e => {
+                    //this.errors.push(e)
+                    console.log(e)
+                })
+            }
+
+        },
+
         mounted() {
             this.$store.dispatch('getUserEvents')
                 .then(response =>{
                     console.log(response)
                 })
         }
+
+
+
     }
 </script>
 

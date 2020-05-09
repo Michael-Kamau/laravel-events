@@ -20,8 +20,11 @@ class CreateEventsTable extends Migration
             $table->integer('event_category_id');
             $table->date('start_date');
             $table->date('end_date');
-            $table->float('charges');
+            $table->float('vvip');
+            $table->float('vip');
+            $table->float('regular');
             $table->string('location');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

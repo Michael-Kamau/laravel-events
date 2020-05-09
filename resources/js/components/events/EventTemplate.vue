@@ -1,8 +1,8 @@
 <template>
     <div class="">
         <div class="max-w-sm rounded overflow-hidden shadow-lg">
-<!--            <img class="w-full" src="https://som.iitkgp.ac.in/images/align10-12_feb_2020%20-%20Copy.JPG" alt="Sunset in the mountains">-->
-            <img class="w-full" src="http://www.ragranjani.com/images/banner-001.jpg" alt="Sunset in the mountains">
+            <img class="w-full"  :src="'/' +event.image " alt="Sunset in the mountains">
+<!--            <img class="w-full" src="http://www.ragranjani.com/images/banner-001.jpg" alt="Sunset in the mountains">-->
             <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">{{event.name}}</div>
             </div>

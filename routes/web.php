@@ -23,6 +23,7 @@ Route::get('api/users/{type}','AdminController@getUsers');
 Auth::routes();
 
 Route::post('api/events/create','EventController@store');
+Route::post('api/events/edit','EventController@edit');
 Route::get('api/events/delete/{id}','EventController@delete');
 Route::get('api/events/userEvents','EventController@userEvents');
 

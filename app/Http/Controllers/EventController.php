@@ -96,12 +96,39 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Events\Event $event
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit(Request $request)
     {
-        //
+
+//        dd($request);
+        $eventId= $request->input('id');
+        $name= $request->input('name');
+        $location = $request->input('location');
+        $startDate= $request->input('start_date');
+        $endDate= $request->input('end_date');
+        $vvip= $request->input('vvip');
+        $vip= $request->input('vip');
+        $regular= $request->input('regular');
+
+        $event=Event::where('id',$eventId)->first();
+
+        if($event->user_id==Auth::id())
+        {
+            $event->name=$name;
+            $event->location=$location;
+            $event->start_date=$startDate;
+            $event->end_date=$endDate;
+            $event->vvip=$vvip;
+            $event->vip=$vip;
+            $event->regular=$regular;
+
+            $event->save();
+        }
+
+
+
     }
 
     /**

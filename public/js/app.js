@@ -1948,6 +1948,62 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomeComponent.vue"
 });
@@ -2452,7 +2508,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MyEvents",
-  data: function data() {},
+  // data(){
+  //
+  // },
   methods: {
     deleteEvent: function deleteEvent(id) {
       var _this = this;
@@ -38146,9 +38204,124 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "div",
+        {
+          staticClass: "bg-local .bg-no-repeat h-screen bg-local",
+          staticStyle: { "background-image": "url(/netflix.jpg)" }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                " w-full h-full text-center text-white pt-12 items-center justify-center",
+              staticStyle: { background: "rgba(0,0,0,0.4)" }
+            },
+            [
+              _c("h1", { staticClass: "'text-white text-6xl m-12 " }, [
+                _vm._v("Welcome to the All Events Finder")
+              ]),
+              _vm._v(" "),
+              _c("h1", { staticClass: "text-white " }, [
+                _vm._v(
+                  "As an events company we are a very curative in bringing you the right\n                    crowd or parsons to your event whether social event or cooperate event\n                    plus we make it easier for you to reach your target audience as we have\n                    made it possible for like-minded minds to notify/alert each other when\n                    your event comes up."
+                )
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("h1", { staticClass: "text-gray-800 text-2xl p-6" }, [
+        _vm._v("This site will allow you to")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "flex mb-4 flex-wrap mx-auto items-center justify-center"
+        },
+        [
+          _c("div", { staticClass: "w-2/7 m-2 " }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "max-w-sm rounded overflow-hidden shadow-lg border text-gray-900"
+              },
+              [
+                _c("img", { attrs: { src: "/homepage.jpg", alt: "" } }),
+                _vm._v(" "),
+                _c("div", { staticClass: "p-6" }, [
+                  _c("h3", { staticClass: "font-semibold " }, [
+                    _vm._v("Events")
+                  ]),
+                  _vm._v(" "),
+                  _c("h4", [_vm._v(" Upload and view upcoming events.")])
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-2/7 m-2 " }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "max-w-sm rounded overflow-hidden shadow-lg border text-gray-900"
+              },
+              [
+                _c("img", { attrs: { src: "/venues.jpg", alt: "" } }),
+                _vm._v(" "),
+                _c("div", { staticClass: "p-6" }, [
+                  _c("h3", { staticClass: "font-semibold " }, [
+                    _vm._v("Venues")
+                  ]),
+                  _vm._v(" "),
+                  _c("h4", [
+                    _vm._v(" Upload & View outdoor and indoor venues.")
+                  ])
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-2/7 m-2 " }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "max-w-sm rounded overflow-hidden shadow-lg border text-gray-900"
+              },
+              [
+                _c("img", { attrs: { src: "/artist.jpg", alt: "" } }),
+                _vm._v(" "),
+                _c("div", { staticClass: "p-6" }, [
+                  _c("h3", { staticClass: "font-semibold " }, [
+                    _vm._v("Artists")
+                  ]),
+                  _vm._v(" "),
+                  _c("h4", [
+                    _vm._v(" Book Performing artists for your event.")
+                  ])
+                ])
+              ]
+            )
+          ])
+        ]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -38642,7 +38815,7 @@ var render = function() {
               {
                 staticClass:
                   "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
-                attrs: { for: "grid-city" }
+                attrs: { for: "start-date" }
               },
               [
                 _vm._v(
@@ -38662,7 +38835,11 @@ var render = function() {
               ],
               staticClass:
                 "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
-              attrs: { id: "sasas", type: "date", placeholder: "Albuquerque" },
+              attrs: {
+                id: "start-date",
+                type: "date",
+                placeholder: "Albuquerque"
+              },
               domProps: { value: _vm.form.startDate },
               on: {
                 input: function($event) {
@@ -38726,7 +38903,7 @@ var render = function() {
               {
                 staticClass:
                   "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
-                attrs: { for: "grid-city" }
+                attrs: { for: "grid-vvip" }
               },
               [_vm._v("\n                        VVIP\n                    ")]
             ),
@@ -38742,7 +38919,7 @@ var render = function() {
               ],
               staticClass:
                 "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
-              attrs: { id: "grid-city", type: "number", placeholder: "Ksh" },
+              attrs: { id: "grid-vvip", type: "number", placeholder: "Ksh" },
               domProps: { value: _vm.form.vvip },
               on: {
                 input: function($event) {
@@ -39618,7 +39795,10 @@ var render = function() {
     this.$store.getters.getAllEvents.length
       ? _c(
           "div",
-          { staticClass: "flex mb-4 flex-wrap mx-auto" },
+          {
+            staticClass:
+              "flex mb-4 flex-wrap mx-auto items-center justify-center"
+          },
           _vm._l(this.$store.getters.getAllEvents, function(event) {
             return _c(
               "div",

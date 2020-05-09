@@ -32,12 +32,12 @@
 
             <div class="flex flex-wrap -mx-3 mb-2">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="start-date">
                         Start Date
                     </label>
                     <input
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="sasas" type="date" placeholder="Albuquerque" v-model="form.startDate">
+                        id="start-date" type="date" placeholder="Albuquerque" v-model="form.startDate">
                 </div>
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="end-date">
@@ -53,12 +53,12 @@
 
             <div class="flex flex-wrap -mx-3 mb-2">
                 <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-vvip">
                         VVIP
                     </label>
                     <input
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-city" type="number" placeholder="Ksh" v-model="form.vvip">
+                        id="grid-vvip" type="number" placeholder="Ksh" v-model="form.vvip">
                 </div>
                 <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-vip">

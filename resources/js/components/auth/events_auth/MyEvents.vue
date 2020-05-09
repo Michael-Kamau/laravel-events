@@ -54,9 +54,9 @@
     export default {
         name: "MyEvents",
 
-        data(){
-
-        },
+        // data(){
+        //
+        // },
 
         methods:{
 

@@ -2630,6 +2630,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MyEvents",
@@ -2697,6 +2701,71 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _EventTemplate_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EventTemplate.vue */ "./resources/js/components/events/EventTemplate.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2804,6 +2873,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "EventBook.vue",
   components: {
@@ -2813,9 +2883,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       eventId: this.$route.params.id,
       ticketsNo: null,
-      ticketType: null,
+      ticketPrice: null,
       totalAmount: 0,
-      form: {}
+      form: {
+        id: this.eventId
+      }
     };
   },
   computed: {
@@ -2828,11 +2900,29 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     amount: function amount() {
-      if (this.form.ticket_no && this.form.ticket_type) {
-        return this.form.ticket_no * this.form.ticket_type;
+      if (this.form.ticketNo && this.form.ticketPrice) {
+        return this.form.ticketNo * this.form.ticketPrice;
       } else {
         return 0;
       }
+    }
+  },
+  methods: {
+    showBuyModal: function showBuyModal() {
+      this.$modal.show('buy-modal');
+    },
+    hideBuyModal: function hideBuyModal() {
+      this.$modal.hide('buy-modal');
+    },
+    bookEvent: function bookEvent() {
+      this.form.id = this.$route.params.id;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/events/bookEvent", this.form).then(function (response) {
+        console.log(response);
+        resolve(response);
+      })["catch"](function (e) {
+        reject(e);
+        console.log(e);
+      });
     }
   },
   beforeCreate: function beforeCreate() {
@@ -39527,11 +39617,19 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "border px-4 py-2" }, [
-                    _vm._v("100")
+                    _vm._v(_vm._s(event.vvip))
                   ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "border px-4 py-2" }, [
-                    _vm._v("20,000")
+                    _vm._v(_vm._s(event.vip))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "border px-4 py-2" }, [
+                    _vm._v(_vm._s(event.regular))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "border px-4 py-2" }, [
+                    _vm._v(_vm._s(event.paid))
                   ]),
                   _vm._v(" "),
                   _vm._m(1, true),
@@ -40140,7 +40238,11 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Event Title")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Bookings")]),
+        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Vvip")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("vip")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("regular")]),
         _vm._v(" "),
         _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Paid")]),
         _vm._v(" "),
@@ -40202,413 +40304,720 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.event
-      ? _c(
-          "div",
-          {
-            staticClass:
-              "sm:flex border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white"
-          },
-          [
-            _c("div", { staticClass: "md:w-2/5 px-2" }, [
+    _c("div", [
+      _vm.event
+        ? _c(
+            "div",
+            {
+              staticClass:
+                "sm:flex border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white"
+            },
+            [
+              _c("div", { staticClass: "md:w-2/5 px-2" }, [
+                _c(
+                  "div",
+                  { staticClass: "text-gray-900 font-bold text-xl mb-2" },
+                  [_vm._v(_vm._s(_vm.event[0].name))]
+                ),
+                _vm._v(" "),
+                _c("img", {
+                  staticClass: "max-w-full max-h-full m-auto",
+                  attrs: { src: "/" + _vm.event[0].image, alt: "" }
+                })
+              ]),
+              _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "text-gray-900 font-bold text-xl mb-2" },
-                [_vm._v(_vm._s(_vm.event[0].name))]
-              ),
-              _vm._v(" "),
-              _c("img", {
-                staticClass: "max-w-full max-h-full m-auto",
-                attrs: { src: "/" + _vm.event[0].image, alt: "" }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  " md:w-3/5  rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
-              },
-              [
-                _c("div", { staticClass: "mb-8" }, [
-                  _c(
-                    "p",
-                    { staticClass: "text-sm text-gray-600 flex items-center" },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass:
-                            "fill-current text-gray-500 w-3 h-3 mr-2",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            viewBox: "0 0 20 20"
-                          }
-                        },
-                        [
-                          _c("path", {
+                {
+                  staticClass:
+                    " md:w-3/5  rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+                },
+                [
+                  _c("div", { staticClass: "mb-8" }, [
+                    _c(
+                      "p",
+                      {
+                        staticClass: "text-sm text-gray-600 flex items-center"
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass:
+                              "fill-current text-gray-500 w-3 h-3 mr-2",
                             attrs: {
-                              d:
-                                "M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z"
+                              xmlns: "http://www.w3.org/2000/svg",
+                              viewBox: "0 0 20 20"
                             }
-                          })
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(
+                          "\n                        Event Details\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "text-gray-900 font-bold text-xl mb-2" },
+                      [_vm._v(_vm._s(_vm.event[0].name))]
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-gray-700 text-base" }, [
+                      _vm._v(_vm._s(_vm.event[0].location))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-gray-700 text-base" }, [
+                      _vm._v("Vvip: Ksh. " + _vm._s(_vm.event[0].vvip))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-gray-700 text-base" }, [
+                      _vm._v("Vip: Ksh. " + _vm._s(_vm.event[0].vip))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-gray-700 text-base" }, [
+                      _vm._v("Regular: Ksh. " + _vm._s(_vm.event[0].regular))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      staticClass:
+                        "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+                    },
+                    [
+                      _c("div", { staticClass: " mb-6 mt-6 md:mb-1" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "block  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Ticket Type\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "relative" }, [
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.ticketPrice,
+                                  expression: "form.ticketPrice"
+                                }
+                              ],
+                              staticClass:
+                                "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline",
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "ticketPrice",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { domProps: { value: _vm.event[0].vvip } },
+                                [
+                                  _vm._v(
+                                    "VVIP: Ksh. " + _vm._s(_vm.event[0].vvip)
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { domProps: { value: _vm.event[0].vip } },
+                                [
+                                  _vm._v(
+                                    "VIP: Ksh. " + _vm._s(_vm.event[0].vip)
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { domProps: { value: _vm.event[0].regular } },
+                                [
+                                  _vm._v(
+                                    "REGULAR: Ksh. " +
+                                      _vm._s(_vm.event[0].regular)
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass: "fill-current h-4 w-4",
+                                  attrs: {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    viewBox: "0 0 20 20"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                                    }
+                                  })
+                                ]
+                              )
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: " mb-6 mt-6 md:mb-1" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Number Of Tickets\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "relative" }, [
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.ticketNo,
+                                  expression: "form.ticketNo"
+                                }
+                              ],
+                              staticClass:
+                                "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline",
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "ticketNo",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c("option", { attrs: { value: "1" } }, [
+                                _vm._v("1 Ticket")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "2" } }, [
+                                _vm._v("2 Tickets")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "3" } }, [
+                                _vm._v("3 Tickets")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "4" } }, [
+                                _vm._v("4 Tickets")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "5" } }, [
+                                _vm._v("5 Tickets")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass: "fill-current h-4 w-4",
+                                  attrs: {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    viewBox: "0 0 20 20"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                                    }
+                                  })
+                                ]
+                              )
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-4 mt-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "block  text-gray-700 text-sm font-bold mb-2",
+                            attrs: { for: "total-amount" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Total Amount\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.amount,
+                              expression: "amount"
+                            }
+                          ],
+                          staticClass:
+                            "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+                          attrs: {
+                            id: "total-amount",
+                            type: "text",
+                            disabled: "",
+                            placeholder: "Amount"
+                          },
+                          domProps: { value: _vm.amount },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.amount = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "flex items-center justify-between" },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline",
+                              attrs: { type: "button" },
+                              on: { click: _vm.showBuyModal }
+                            },
+                            [
+                              _vm._v(
+                                "\n                            Buy Tickets\n                        "
+                              )
+                            ]
+                          )
                         ]
-                      ),
-                      _vm._v(
-                        "\n                        Event Details\n                    "
                       )
                     ]
                   ),
                   _vm._v(" "),
+                  _vm._m(0)
+                ]
+              )
+            ]
+          )
+        : _c(
+            "div",
+            {
+              staticClass:
+                "bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md",
+              attrs: { role: "alert" }
+            },
+            [
+              _c("div", { staticClass: "flex" }, [
+                _c("div", { staticClass: "py-1" }, [
                   _c(
-                    "div",
-                    { staticClass: "text-gray-900 font-bold text-xl mb-2" },
-                    [_vm._v(_vm._s(_vm.event[0].name))]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-gray-700 text-base" }, [
-                    _vm._v(_vm._s(_vm.event[0].location))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-gray-700 text-base" }, [
-                    _vm._v("Vvip: Ksh. " + _vm._s(_vm.event[0].vvip))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-gray-700 text-base" }, [
-                    _vm._v("Vip: Ksh. " + _vm._s(_vm.event[0].vip))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-gray-700 text-base" }, [
-                    _vm._v("Regular: Ksh. " + _vm._s(_vm.event[0].regular))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "form",
-                  {
-                    staticClass:
-                      "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-                  },
-                  [
-                    _c("div", { staticClass: " mb-6 mt-6 md:mb-1" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass:
-                            "block  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                        },
-                        [
-                          _vm._v(
-                            "\n                            Ticket Type\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "relative" }, [
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.ticket_type,
-                                expression: "form.ticket_type"
-                              }
-                            ],
-                            staticClass:
-                              "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline",
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.form,
-                                  "ticket_type",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
-                            }
-                          },
-                          [
-                            _c(
-                              "option",
-                              { domProps: { value: _vm.event[0].vvip } },
-                              [
-                                _vm._v(
-                                  "VVIP: Ksh. " + _vm._s(_vm.event[0].vvip)
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "option",
-                              { domProps: { value: _vm.event[0].vip } },
-                              [_vm._v("VIP: Ksh. " + _vm._s(_vm.event[0].vip))]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "option",
-                              { domProps: { value: _vm.event[0].regular } },
-                              [
-                                _vm._v(
-                                  "REGULAR: Ksh. " +
-                                    _vm._s(_vm.event[0].regular)
-                                )
-                              ]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                          },
-                          [
-                            _c(
-                              "svg",
-                              {
-                                staticClass: "fill-current h-4 w-4",
-                                attrs: {
-                                  xmlns: "http://www.w3.org/2000/svg",
-                                  viewBox: "0 0 20 20"
-                                }
-                              },
-                              [
-                                _c("path", {
-                                  attrs: {
-                                    d:
-                                      "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                                  }
-                                })
-                              ]
-                            )
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: " mb-6 mt-6 md:mb-1" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass:
-                            "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                        },
-                        [
-                          _vm._v(
-                            "\n                            Number Of Tickets\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "relative" }, [
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.ticket_no,
-                                expression: "form.ticket_no"
-                              }
-                            ],
-                            staticClass:
-                              "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline",
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.form,
-                                  "ticket_no",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
-                            }
-                          },
-                          [
-                            _c("option", { attrs: { value: "1" } }, [
-                              _vm._v("1 Ticket")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "2" } }, [
-                              _vm._v("2 Tickets")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "3" } }, [
-                              _vm._v("3 Tickets")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "4" } }, [
-                              _vm._v("4 Tickets")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "5" } }, [
-                              _vm._v("5 Tickets")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                          },
-                          [
-                            _c(
-                              "svg",
-                              {
-                                staticClass: "fill-current h-4 w-4",
-                                attrs: {
-                                  xmlns: "http://www.w3.org/2000/svg",
-                                  viewBox: "0 0 20 20"
-                                }
-                              },
-                              [
-                                _c("path", {
-                                  attrs: {
-                                    d:
-                                      "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                                  }
-                                })
-                              ]
-                            )
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "mb-4 mt-6" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass:
-                            "block  text-gray-700 text-sm font-bold mb-2",
-                          attrs: { for: "total-amount" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            Total Amount\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.amount,
-                            expression: "amount"
-                          }
-                        ],
-                        staticClass:
-                          "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+                    "svg",
+                    {
+                      staticClass: "fill-current h-6 w-6 text-teal-500 mr-4",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        viewBox: "0 0 20 20"
+                      }
+                    },
+                    [
+                      _c("path", {
                         attrs: {
-                          id: "total-amount",
-                          type: "text",
-                          disabled: "",
-                          placeholder: "Amount"
-                        },
-                        domProps: { value: _vm.amount },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.amount = $event.target.value
-                          }
+                          d:
+                            "M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"
                         }
                       })
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(0)
-                  ]
-                ),
+                    ]
+                  )
+                ]),
                 _vm._v(" "),
                 _vm._m(1)
-              ]
-            )
-          ]
-        )
-      : _c(
-          "div",
+              ])
+            ]
+          )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      [
+        _c(
+          "modal",
           {
-            staticClass:
-              "bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md",
-            attrs: { role: "alert" }
+            attrs: {
+              name: "buy-modal",
+              height: "auto",
+              width: "50%",
+              scrollable: true
+            }
           },
           [
-            _c("div", { staticClass: "flex" }, [
-              _c("div", { staticClass: "py-1" }, [
-                _c(
-                  "svg",
-                  {
-                    staticClass: "fill-current h-6 w-6 text-teal-500 mr-4",
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      viewBox: "0 0 20 20"
-                    }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"
-                      }
-                    })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _vm._m(2)
+            _c("div", { staticClass: "p-6" }, [
+              _vm._v("\n                Buy Modal\n                "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    " md:w-full  rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+                },
+                [
+                  _c("div", { staticClass: "mb-8" }, [
+                    _c(
+                      "p",
+                      {
+                        staticClass: "text-sm text-gray-600 flex items-center"
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass:
+                              "fill-current text-gray-500 w-3 h-3 mr-2",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              viewBox: "0 0 20 20"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(
+                          "\n                            Ticket Details\n                        "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "text-gray-900 font-bold text-xl mb-2" },
+                      [
+                        _vm._v(
+                          "Event Name : " + _vm._s(_vm.event[0].name) + " "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-gray-700 text-base" }, [
+                      _vm._v(
+                        "Tickets : " +
+                          _vm._s(_vm.form.ticketNo) +
+                          " @ " +
+                          _vm._s(_vm.form.ticketPrice) +
+                          " "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-gray-700 text-base" }, [
+                      _vm._v("Total Amount: Ksh. " + _vm._s(_vm.amount))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      staticClass:
+                        "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+                    },
+                    [
+                      _c("div", { staticClass: "mb-4 mt-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "block  text-gray-700 text-sm font-bold mb-2",
+                            attrs: { for: "firstname" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Firstname\n                            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.firstname,
+                              expression: "form.firstname"
+                            }
+                          ],
+                          staticClass:
+                            "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+                          attrs: {
+                            id: "firstname",
+                            type: "text",
+                            placeholder: "Firstname"
+                          },
+                          domProps: { value: _vm.form.firstname },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "firstname",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-4 mt-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "block  text-gray-700 text-sm font-bold mb-2",
+                            attrs: { for: "lastname" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                LastName\n                            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.lastname,
+                              expression: "form.lastname"
+                            }
+                          ],
+                          staticClass:
+                            "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+                          attrs: {
+                            id: "lastname",
+                            type: "text",
+                            placeholder: "Lastname"
+                          },
+                          domProps: { value: _vm.form.lastname },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "lastname",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-4 mt-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "block  text-gray-700 text-sm font-bold mb-2",
+                            attrs: { for: "email" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Email\n                            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.email,
+                              expression: "form.email"
+                            }
+                          ],
+                          staticClass:
+                            "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+                          attrs: {
+                            id: "email",
+                            type: "text",
+                            placeholder: "email"
+                          },
+                          domProps: { value: _vm.form.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "email", $event.target.value)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-4 mt-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "block  text-gray-700 text-sm font-bold mb-2",
+                            attrs: { for: "phone" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Phone Number\n                            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.phone,
+                              expression: "form.phone"
+                            }
+                          ],
+                          staticClass:
+                            "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+                          attrs: {
+                            id: "phone",
+                            type: "text",
+                            placeholder: "+254..(safaricom line)"
+                          },
+                          domProps: { value: _vm.form.phone },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "phone", $event.target.value)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "flex items-center justify-between" },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline",
+                              attrs: { type: "button" },
+                              on: { click: _vm.bookEvent }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                Buy Tickets\n                            "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
             ])
           ]
         )
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex items-center justify-between" }, [
-      _c(
-        "button",
-        {
-          staticClass:
-            "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline",
-          attrs: { type: "button" }
-        },
-        [
-          _vm._v(
-            "\n                            Buy Tickets\n                        "
-          )
-        ]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -58171,6 +58580,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_0__
     getUserEvents: function getUserEvents(state) {
       return new Promise(function (resolve, reject) {
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/events/userEvents").then(function (response) {
+          console.log(response.data);
           state.commit('getUserEvents', response.data);
           resolve(response);
         })["catch"](function (e) {

@@ -5,7 +5,9 @@
                 <thead>
                 <tr>
                     <th class="px-4 py-2">Event Title</th>
-                    <th class="px-4 py-2">Bookings</th>
+                    <th class="px-4 py-2">Vvip</th>
+                    <th class="px-4 py-2">vip</th>
+                    <th class="px-4 py-2">regular</th>
                     <th class="px-4 py-2">Paid</th>
                     <th class="px-4 py-2">View</th>
                     <th class="px-4 py-2">Edit</th>
@@ -15,8 +17,10 @@
                 <tbody>
                 <tr v-for="event in this.$store.getters.getUserEvents" :key="event.id">
                     <td class="border px-4 py-2">{{event.name}}</td>
-                    <td class="border px-4 py-2">100</td>
-                    <td class="border px-4 py-2">20,000</td>
+                    <td class="border px-4 py-2">{{event.vvip}}</td>
+                    <td class="border px-4 py-2">{{event.vip}}</td>
+                    <td class="border px-4 py-2">{{event.regular}}</td>
+                    <td class="border px-4 py-2">{{event.paid}}</td>
                     <td class="border px-4 py-2">
                         <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                             View

@@ -60,6 +60,7 @@ export default new Vuex.Store({
             return new Promise((resolve, reject) => {
                 axios.get(`/api/events/userEvents`)
                     .then(response => {
+                        console.log(response.data)
                         state.commit('getUserEvents', response.data)
                         resolve(response)
                     }).catch(e => {

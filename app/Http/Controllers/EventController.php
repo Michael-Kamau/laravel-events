@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\EventBooking;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
@@ -32,8 +33,28 @@ class EventController extends Controller
      */
     public function userEvents()
     {
-        $events = Event::userEvents(Auth::id())->get();
-        return EventResource::collection($events);
+        $events = Event::userEvents(Auth::id())
+            ->latest()
+            ->get()
+            ->map(function ($event) {
+                return [
+                    'id' => $event->id,
+                    'name' => $event->name,
+                    'vvip' => $event->bookings->where('type','vvip')->sum('number'),
+                    'vip' => $event->bookings->where('type','vip')->sum('number'),
+                    'regular' => $event->bookings->where('type','regular')->sum('number'),
+                    'paid'=>$event->bookings->sum('amount')
+                ];
+            });
+
+
+        return response()->json([
+            'data' => $events,
+            'status'=>200
+        ]);
+
+//        $events = Event::userEvents(Auth::id())->get();
+//        return EventResource::collection($events);
 
     }
 
@@ -64,7 +85,7 @@ class EventController extends Controller
         $vvip = $request->input('vvip');
         $vip = $request->input('vip');
         $regular = $request->input('regular');
-        $image=$this->saveImage($request->input('image'));
+        $image = $this->saveImage($request->input('image'));
 
 //        dd($image);
 //        dd($request->input('regular'));
@@ -78,7 +99,7 @@ class EventController extends Controller
             'vvip' => $vvip,
             'vip' => $vip,
             'regular' => $regular,
-            'image'=>$image
+            'image' => $image
         ]);
     }
 
@@ -103,30 +124,28 @@ class EventController extends Controller
     {
 
 //        dd($request);
-        $eventId= $request->input('id');
-        $name= $request->input('name');
+        $eventId = $request->input('id');
+        $name = $request->input('name');
         $location = $request->input('location');
-        $startDate= $request->input('start_date');
-        $endDate= $request->input('end_date');
-        $vvip= $request->input('vvip');
-        $vip= $request->input('vip');
-        $regular= $request->input('regular');
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+        $vvip = $request->input('vvip');
+        $vip = $request->input('vip');
+        $regular = $request->input('regular');
 
-        $event=Event::where('id',$eventId)->first();
+        $event = Event::where('id', $eventId)->first();
 
-        if($event->user_id==Auth::id())
-        {
-            $event->name=$name;
-            $event->location=$location;
-            $event->start_date=$startDate;
-            $event->end_date=$endDate;
-            $event->vvip=$vvip;
-            $event->vip=$vip;
-            $event->regular=$regular;
+        if ($event->user_id == Auth::id()) {
+            $event->name = $name;
+            $event->location = $location;
+            $event->start_date = $startDate;
+            $event->end_date = $endDate;
+            $event->vvip = $vvip;
+            $event->vip = $vip;
+            $event->regular = $regular;
 
             $event->save();
         }
-
 
 
     }
@@ -164,9 +183,8 @@ class EventController extends Controller
     public function delete($id)
     {
 
-        $event = Event::where('id',$id)->first();
-        if($event->user_id==Auth::id())
-        {
+        $event = Event::where('id', $id)->first();
+        if ($event->user_id == Auth::id()) {
             File::delete($event->image);
 
             $event->delete();
@@ -176,27 +194,28 @@ class EventController extends Controller
     }
 
 
+    function saveImage($imageString)
+    {
+        $exploded = explode(',', $imageString);
 
-    function saveImage($imageString){
-        $exploded = explode(',',$imageString);
-
-        $decoded=base64_decode($exploded[1]);
-        if($this->str_contains($exploded[0],'jpeg'))
-            $extension='jpg';
+        $decoded = base64_decode($exploded[1]);
+        if ($this->str_contains($exploded[0], 'jpeg'))
+            $extension = 'jpg';
         else
-            $extension='png';
-        $filename=Str::random(16).'.'.$extension;
+            $extension = 'png';
+        $filename = Str::random(16) . '.' . $extension;
 
-        $path=public_path().'/'.$filename;
+        $path = public_path() . '/' . $filename;
 
 //        dd($path);
 
-        file_put_contents($path,$decoded);
+        file_put_contents($path, $decoded);
 
         return $filename;
     }
 
-    function str_contains(string $haystack, string $needle): bool {
+    function str_contains(string $haystack, string $needle): bool
+    {
         return '' === $needle || false !== strpos($haystack, $needle);
     }
 

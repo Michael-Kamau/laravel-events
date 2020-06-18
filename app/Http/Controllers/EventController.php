@@ -33,6 +33,7 @@ class EventController extends Controller
      */
     public function userEvents()
     {
+
         $events = Event::userEvents(Auth::id())
             ->latest()
             ->get()
@@ -40,17 +41,37 @@ class EventController extends Controller
                 return [
                     'id' => $event->id,
                     'name' => $event->name,
-                    'vvip' => $event->bookings->where('type','vvip')->sum('number'),
-                    'vip' => $event->bookings->where('type','vip')->sum('number'),
-                    'regular' => $event->bookings->where('type','regular')->sum('number'),
-                    'paid'=>$event->bookings->sum('amount')
+                    'vvip' => $event->vvip,
+                    'vip' => $event->vip,
+                    'regular' => $event->regular,
+                    'location' => $event->location,
+                    'image' => $event->image,
+                    'start_date' => $event->start_date,
+                    'end_date' => $event->end_date,
+                    'bookings' => EventBooking::userEventBookings($event->id)
+                        ->latest()
+                        ->get()
+                        ->map(function($booking){
+                            return[
+                                'id'=>$booking->id,
+                                'name'=>$booking->firstname." ". $booking->lastname,
+                                'email'=>$booking->email,
+                                'type'=>$booking->type,
+                                'number'=>$booking->number,
+                                'amount'=>$booking->amount
+                            ];
+                        }),
+                    'vvipBookings' => $event->bookings->where('type', 'vvip')->sum('number'),
+                    'vipBookings' => $event->bookings->where('type', 'vip')->sum('number'),
+                    'regularBookings' => $event->bookings->where('type', 'regular')->sum('number'),
+                    'paid' => $event->bookings->sum('amount')
                 ];
             });
 
 
         return response()->json([
             'data' => $events,
-            'status'=>200
+            'status' => 200
         ]);
 
 //        $events = Event::userEvents(Auth::id())->get();

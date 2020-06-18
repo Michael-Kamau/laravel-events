@@ -14,4 +14,12 @@ class EventBooking extends Model
     {
         return $this->belongsTo(Event::class, 'event_id');
     }
+
+
+    public function scopeUserEventBookings($query,$event)
+    {
+        return $query->where([
+            'event_id'=>$event
+        ]);
+    }
 }

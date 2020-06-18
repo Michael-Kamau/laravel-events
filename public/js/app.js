@@ -2634,13 +2634,90 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MyEvents",
   data: function data() {
     return {
       loading: false,
-      modalEvent: null
+      modalEvent: null,
+      bookings: null
     };
   },
   methods: {
@@ -2670,9 +2747,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     showEditModal: function showEditModal(id) {
-      console.log(this.$store.getters.getUserEvents.filter(function (event) {
-        return event.id === id;
-      }));
       this.modalEvent = this.$store.getters.getUserEvents.filter(function (event) {
         return event.id === id;
       });
@@ -2680,6 +2754,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     hideEditModal: function hideEditModal() {
       this.$modal.hide('edit-modal');
+    },
+    showBookingsModal: function showBookingsModal(id) {
+      this.modalEvent = this.$store.getters.getUserEvents.filter(function (event) {
+        return event.id === id;
+      });
+      this.$modal.show('bookings-modal');
+    },
+    hideBookingsModal: function hideBookingsModal() {
+      this.$modal.hide('bookings-modal');
     }
   },
   mounted: function mounted() {
@@ -39617,22 +39700,40 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "border px-4 py-2" }, [
-                    _vm._v(_vm._s(event.vvip))
+                    _vm._v(_vm._s(event.vvipBookings))
                   ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "border px-4 py-2" }, [
-                    _vm._v(_vm._s(event.vip))
+                    _vm._v(_vm._s(event.vipBookings))
                   ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "border px-4 py-2" }, [
-                    _vm._v(_vm._s(event.regular))
+                    _vm._v(_vm._s(event.regularBookings))
                   ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "border px-4 py-2" }, [
                     _vm._v(_vm._s(event.paid))
                   ]),
                   _vm._v(" "),
-                  _vm._m(1, true),
+                  _c("td", { staticClass: "border px-4 py-2" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded",
+                        on: {
+                          click: function($event) {
+                            return _vm.showBookingsModal(event.id)
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        View\n                    "
+                        )
+                      ]
+                    )
+                  ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "border px-4 py-2" }, [
                     _c(
@@ -39709,7 +39810,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _vm._m(2)
+              _vm._m(1)
             ])
           ]
         ),
@@ -40223,6 +40324,184 @@ var render = function() {
                 )
               : _vm._e()
           ]
+        ),
+        _vm._v(" "),
+        _c(
+          "modal",
+          {
+            attrs: {
+              name: "bookings-modal",
+              height: "auto",
+              width: "80%",
+              scrollable: true
+            }
+          },
+          [
+            _vm.modalEvent
+              ? _c(
+                  "div",
+                  {
+                    staticClass:
+                      "sm:flex border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white p-6"
+                  },
+                  [
+                    this.modalEvent[0].bookings.length
+                      ? _c("div", [
+                          _c("table", { staticClass: "table-auto" }, [
+                            _c("thead", [
+                              _c("tr", [
+                                _c("th", { staticClass: "px-4 py-2" }, [
+                                  _vm._v("Ticket Code")
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { staticClass: "px-4 py-2" }, [
+                                  _vm._v("Name")
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { staticClass: "px-4 py-2" }, [
+                                  _vm._v("Email")
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { staticClass: "px-4 py-2" }, [
+                                  _vm._v("Ticket Type")
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { staticClass: "px-4 py-2" }, [
+                                  _vm._v("Ticket Number")
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { staticClass: "px-4 py-2" }, [
+                                  _vm._v("Amount Paid")
+                                ])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "tbody",
+                              _vm._l(this.modalEvent[0].bookings, function(
+                                booking
+                              ) {
+                                return _c("tr", { key: booking.id }, [
+                                  _c(
+                                    "td",
+                                    { staticClass: "border px-4 py-2" },
+                                    [_vm._v(_vm._s(booking.id))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    { staticClass: "border px-4 py-2" },
+                                    [_vm._v(_vm._s(booking.name))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    { staticClass: "border px-4 py-2" },
+                                    [_vm._v(_vm._s(booking.email))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    { staticClass: "border px-4 py-2" },
+                                    [_vm._v(_vm._s(booking.type))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    { staticClass: "border px-4 py-2" },
+                                    [_vm._v(_vm._s(booking.number))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    { staticClass: "border px-4 py-2" },
+                                    [_vm._v(_vm._s(booking.amount))]
+                                  )
+                                ])
+                              }),
+                              0
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "shadow bg-green-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded",
+                              attrs: { type: "button" },
+                              on: { click: _vm.hideBookingsModal }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        Cancel\n                    "
+                              )
+                            ]
+                          )
+                        ])
+                      : _c(
+                          "div",
+                          {
+                            staticClass:
+                              "bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md",
+                            attrs: { role: "alert" }
+                          },
+                          [
+                            _c("div", { staticClass: "flex" }, [
+                              _c("div", { staticClass: "py-1" }, [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass:
+                                      "fill-current h-6 w-6 text-teal-500 mr-4",
+                                    attrs: {
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      viewBox: "0 0 20 20"
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"
+                                      }
+                                    })
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", [
+                                _c("p", { staticClass: "font-bold" }, [
+                                  _vm._v("Notification")
+                                ]),
+                                _vm._v(" "),
+                                _c("p", { staticClass: "text-sm" }, [
+                                  _vm._v(
+                                    "The Event does not have any bookings at the moment"
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "shadow bg-green-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded",
+                                    attrs: { type: "button" },
+                                    on: { click: _vm.hideBookingsModal }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                Cancel\n                            "
+                                    )
+                                  ]
+                                )
+                              ])
+                            ])
+                          ]
+                        )
+                  ]
+                )
+              : _vm._e()
+          ]
         )
       ],
       1
@@ -40252,21 +40531,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Delete")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "border px-4 py-2" }, [
-      _c(
-        "button",
-        {
-          staticClass:
-            "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-        },
-        [_vm._v("\n                        View\n                    ")]
-      )
     ])
   },
   function() {

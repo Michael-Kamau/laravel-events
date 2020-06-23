@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="71cae4b9-0f07-41ba-8e79-9a4f9af19b96" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/EventBooking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/EventBooking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/events_auth/MyEvents.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/events_auth/MyEvents.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/auth/Dashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/events/EventTemplate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/events/EventTemplate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,6 +195,12 @@
       <workItem from="1592125142922" duration="1714000" />
       <workItem from="1592378790603" duration="577000" />
       <workItem from="1592381430079" duration="408000" />
+      <workItem from="1592465589950" duration="651000" />
+      <workItem from="1592476295045" duration="484000" />
+      <workItem from="1592510749385" duration="2319000" />
+      <workItem from="1592561777750" duration="2272000" />
+      <workItem from="1592564833328" duration="2408000" />
+      <workItem from="1592900453495" duration="344000" />
     </task>
     <servers />
   </component>
@@ -206,10 +212,14 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1590402199560" />
-    <state x="317" y="234" key="com.intellij.ide.util.TipDialog" timestamp="1592381463015">
+    <state x="317" y="235" key="com.intellij.ide.util.TipDialog" timestamp="1592564836750">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="317" y="234" key="com.intellij.ide.util.TipDialog/0.0.1280.800@0.0.1280.800" timestamp="1592381463015" />
+    <state x="317" y="235" key="com.intellij.ide.util.TipDialog/0.0.1280.800@0.0.1280.800" timestamp="1592564836750" />
+    <state x="221" y="130" width="837" height="540" key="find.popup" timestamp="1592562822544">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="221" y="130" width="837" height="540" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1592562822544" />
     <state x="561" y="124" key="search.everywhere.popup" timestamp="1588874789730">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

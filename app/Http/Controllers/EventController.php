@@ -196,7 +196,7 @@ class EventController extends Controller
 
 
     /**
-     * get all the users for a particular account type.
+     * delete a particular event
      *
      * @param $id
      * @return void

@@ -34,7 +34,7 @@ export default new Vuex.Store({
     actions: {
 
         getAllEvents(state) {
-            axios.get(`http://events.appp/api/events`)
+            axios.get(`/api/events`)
                 .then(response => {
                     console.log(response.data)
                     let events = response.data

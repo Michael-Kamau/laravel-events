@@ -11,9 +11,12 @@
 |
 */
 
+
+
 Route::get('/', function () {
     return view('home');
 });
+
 Route::get('api/user/roles','HomeController@userRoles');
 
 //Admin Routes

@@ -6,6 +6,8 @@ use App\Events\Event;
 use App\Events\EventBooking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\Events\EventBookingsMail;
+use Illuminate\Support\Facades\Mail;
 
 class EventBookingController extends Controller
 {
@@ -83,5 +85,48 @@ class EventBookingController extends Controller
         } else {
             return false;
         }
+    }
+
+    public function mailEventBookingPdf($eventId){
+
+
+
+        $bookings = EventBooking::userEventBookings($eventId)
+            ->latest()
+            ->get()
+            ->map(function($booking){
+                return[
+                    'id'=>$booking->id,
+                    'name'=>$booking->firstname." ". $booking->lastname,
+                    'email'=>$booking->email,
+                    'type'=>$booking->type,
+                    'number'=>$booking->number,
+                    'amount'=>$booking->amount
+                ];
+            });
+
+        Mail::to('email@email.com')->send(new EventBookingsMail('this is the parameter'));
+
+//        $events = Event::userEvents(Auth::id())
+//            ->latest()
+//            ->get()
+//            ->map(function ($event) {
+//                return [
+//                    'id' => $event->id,
+//                    'name' => $event->name,
+//                    'vvip' => $event->vvip,
+//                    'vip' => $event->vip,
+//                    'regular' => $event->regular,
+//                    'location' => $event->location,
+//                    'image' => $event->image,
+//                    'start_date' => $event->start_date,
+//                    'end_date' => $event->end_date,
+//
+//                    'vvipBookings' => $event->bookings->where('type', 'vvip')->sum('number'),
+//                    'vipBookings' => $event->bookings->where('type', 'vip')->sum('number'),
+//                    'regularBookings' => $event->bookings->where('type', 'regular')->sum('number'),
+//                    'paid' => $event->bookings->sum('amount')
+//                ];
+//            });
     }
 }

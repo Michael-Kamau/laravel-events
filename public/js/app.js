@@ -2721,6 +2721,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MyEvents",
@@ -40394,6 +40399,21 @@ var render = function() {
                   [
                     this.modalEvent[0].bookings.length
                       ? _c("div", [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "shadow bg-red-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded",
+                              attrs: { type: "button" },
+                              on: { click: function($event) {} }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        Download PDF\n                    "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
                           _c("table", { staticClass: "table-auto" }, [
                             _c("thead", [
                               _c("tr", [
@@ -58869,7 +58889,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_0__
   },
   actions: {
     getAllEvents: function getAllEvents(state) {
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("http://events.appp/api/events").then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/events").then(function (response) {
         console.log(response.data);
         var events = response.data;
         state.commit('getAllEvents', events);

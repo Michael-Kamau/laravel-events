@@ -13,9 +13,14 @@ class User extends Authenticatable
     use Notifiable;
     use HasRoles;
 
-    public function articles()
+    public function events()
     {
-       return $this->hasMany('App\Events\Event');
+       return $this->hasMany('App\Models\Events\Event');
+    }
+
+    public function venues()
+    {
+        return $this->hasMany('App\Models\Venues\Venue');
     }
 
     /**

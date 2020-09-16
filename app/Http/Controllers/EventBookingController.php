@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\Event;
-use App\Events\EventBooking;
+use App\Models\Events\Event;
+use App\Models\Events\EventBooking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

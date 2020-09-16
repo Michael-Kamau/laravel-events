@@ -2965,13 +2965,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "EventBook.vue",
   components: {
     EventTemplate: _EventTemplate_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  beforeCreate: function beforeCreate() {
+    console.log('before Create');
+    this.$store.dispatch('getAllEvents');
   },
   data: function data() {
     return {
@@ -3018,10 +3021,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(e);
       });
     }
-  },
-  beforeCreate: function beforeCreate() {
-    console.log('before Create');
-    this.$store.dispatch('getAllEvents');
   }
 });
 

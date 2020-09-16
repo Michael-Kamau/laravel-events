@@ -1,7 +1,6 @@
 <template>
 
     <div>
-
         <div>
             <div class="sm:flex border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white" v-if="event">
                 <div class="md:w-2/5 px-2">
@@ -175,6 +174,11 @@
         name: "EventBook.vue",
         components: {EventTemplate},
 
+        beforeCreate() {
+            console.log('before Create')
+            this.$store.dispatch('getAllEvents');
+        },
+
         data() {
             return {
                 eventId: this.$route.params.id,
@@ -226,10 +230,7 @@
             }
         },
 
-        beforeCreate() {
-            console.log('before Create')
-            this.$store.dispatch('getAllEvents');
-        }
+
     }
 </script>
 

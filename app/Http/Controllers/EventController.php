@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\EventBooking;
+use App\Models\Events\EventBooking;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use App\Events\Event;
+use App\Models\Events\Event;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use App\Http\Resources\Events\Event as EventResource;

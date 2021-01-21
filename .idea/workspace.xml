@@ -2,20 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71cae4b9-0f07-41ba-8e79-9a4f9af19b96" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/events.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/events.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/auth/venues_auth/AddVenue.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/auth/venues_auth/MyVenues.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/venues/VenueBook.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/venues/VenuesHome.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Events/Event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/EventBooking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Events/EventBooking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/EventCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Events/EventCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventBookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventBookingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventCategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Venues/Venue.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Venues/Venue.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/events/EventBook.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/events/EventBook.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ErrorPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/ErrorPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/artists/ArtistsHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/artists/ArtistsHome.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/Dashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/admin_auth/ArtistManagers.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/admin_auth/ArtistManagers.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/admin_auth/EventManagers.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/admin_auth/EventManagers.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/admin_auth/VenueManagers.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/admin_auth/VenueManagers.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/events_auth/AddEvent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/events_auth/AddEvent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/auth/events_auth/MyEvents.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/events_auth/MyEvents.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/events/Event.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/events/Event.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/events/EventBook.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/events/EventBook.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/events/EventTemplate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/events/EventTemplate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/events/EventsHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/events/EventsHome.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/partials/DatePicker.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/partials/DatePicker.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/registerComponents.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/registerComponents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/venues/VenueTemplate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/venues/VenueTemplate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/venues/VenuesHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/venues_auth/modals/EditVenue.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,6 +166,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/js/components/events" />
       <recent name="$PROJECT_DIR$/app/Models" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/resources/js/components" />
@@ -217,6 +234,20 @@
       <workItem from="1592564833328" duration="2408000" />
       <workItem from="1592900453495" duration="344000" />
       <workItem from="1600265329194" duration="3737000" />
+      <workItem from="1600281626718" duration="113000" />
+      <workItem from="1600324385037" duration="280000" />
+      <workItem from="1609217522096" duration="8471000" />
+      <workItem from="1609778974652" duration="2286000" />
+      <workItem from="1609877406141" duration="2374000" />
+      <workItem from="1609961394484" duration="921000" />
+      <workItem from="1610142341819" duration="1613000" />
+      <workItem from="1610181125624" duration="1353000" />
+      <workItem from="1610738105569" duration="7396000" />
+      <workItem from="1611168025054" duration="1095000" />
+      <workItem from="1611206957637" duration="16022000" />
+      <workItem from="1611241217282" duration="9478000" />
+      <workItem from="1611257354953" duration="44000" />
+      <workItem from="1611257517347" duration="2024000" />
     </task>
     <servers />
   </component>
@@ -224,21 +255,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590402199560">
+    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1611248915733">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1590402199560" />
-    <state x="317" y="235" key="com.intellij.ide.util.TipDialog" timestamp="1592564836750">
+    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1611248915733" />
+    <state x="317" y="233" key="com.intellij.ide.util.TipDialog" timestamp="1611257483291">
+      <screen x="0" y="23" width="1280" height="723" />
+    </state>
+    <state x="317" y="232" key="com.intellij.ide.util.TipDialog/0.0.1280.800@0.0.1280.800" timestamp="1611241224084" />
+    <state x="317" y="233" key="com.intellij.ide.util.TipDialog/0.23.1280.723@0.23.1280.723" timestamp="1611257483291" />
+    <state x="298" y="162" width="683" height="476" key="find.popup" timestamp="1611233534280">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="317" y="235" key="com.intellij.ide.util.TipDialog/0.0.1280.800@0.0.1280.800" timestamp="1592564836750" />
-    <state x="221" y="130" width="837" height="540" key="find.popup" timestamp="1592562822544">
+    <state x="298" y="162" width="683" height="476" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1611233534279" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1610961881070">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="221" y="130" width="837" height="540" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1592562822544" />
-    <state x="561" y="124" key="search.everywhere.popup" timestamp="1588874789730">
-      <screen x="0" y="0" width="1280" height="800" />
-    </state>
-    <state x="561" y="124" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1588874789730" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1610961881070" />
   </component>
 </project>

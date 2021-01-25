@@ -2038,6 +2038,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomeComponent.vue"
 });
@@ -3422,7 +3433,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3470,10 +3480,14 @@ __webpack_require__.r(__webpack_exports__);
       this.$modal.hide('buy-modal');
     },
     bookEvent: function bookEvent() {
+      var _this2 = this;
+
       this.form.id = this.$route.params.id;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/events/bookEvent", this.form).then(function (response) {
         console.log(response);
         resolve(response);
+
+        _this2.$modal.hideAll();
       })["catch"](function (e) {
         reject(e);
         console.log(e);
@@ -3493,6 +3507,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3835,10 +3856,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "VenueTemplate",
-  props: ['venue']
+  props: ['venue'],
+  computed: {
+    description: function description() {
+      return this.venue.description.substring(0, 20) + '...';
+    }
+  }
 });
 
 /***/ }),
@@ -19434,7 +19459,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.15';
+  var VERSION = '4.17.19';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -23141,8 +23166,21 @@ return jQuery;
      * @returns {Array} Returns the new sorted array.
      */
     function baseOrderBy(collection, iteratees, orders) {
+      if (iteratees.length) {
+        iteratees = arrayMap(iteratees, function(iteratee) {
+          if (isArray(iteratee)) {
+            return function(value) {
+              return baseGet(value, iteratee.length === 1 ? iteratee[0] : iteratee);
+            }
+          }
+          return iteratee;
+        });
+      } else {
+        iteratees = [identity];
+      }
+
       var index = -1;
-      iteratees = arrayMap(iteratees.length ? iteratees : [identity], baseUnary(getIteratee()));
+      iteratees = arrayMap(iteratees, baseUnary(getIteratee()));
 
       var result = baseMap(collection, function(value, key, collection) {
         var criteria = arrayMap(iteratees, function(iteratee) {
@@ -23399,6 +23437,10 @@ return jQuery;
         var key = toKey(path[index]),
             newValue = value;
 
+        if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
+          return object;
+        }
+
         if (index != lastIndex) {
           var objValue = nested[key];
           newValue = customizer ? customizer(objValue, key, nested) : undefined;
@@ -23551,11 +23593,14 @@ return jQuery;
      *  into `array`.
      */
     function baseSortedIndexBy(array, value, iteratee, retHighest) {
-      value = iteratee(value);
-
       var low = 0,
-          high = array == null ? 0 : array.length,
-          valIsNaN = value !== value,
+          high = array == null ? 0 : array.length;
+      if (high === 0) {
+        return 0;
+      }
+
+      value = iteratee(value);
+      var valIsNaN = value !== value,
           valIsNull = value === null,
           valIsSymbol = isSymbol(value),
           valIsUndefined = value === undefined;
@@ -25040,10 +25085,11 @@ return jQuery;
       if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
         return false;
       }
-      // Assume cyclic values are equal.
-      var stacked = stack.get(array);
-      if (stacked && stack.get(other)) {
-        return stacked == other;
+      // Check that cyclic values are equal.
+      var arrStacked = stack.get(array);
+      var othStacked = stack.get(other);
+      if (arrStacked && othStacked) {
+        return arrStacked == other && othStacked == array;
       }
       var index = -1,
           result = true,
@@ -25205,10 +25251,11 @@ return jQuery;
           return false;
         }
       }
-      // Assume cyclic values are equal.
-      var stacked = stack.get(object);
-      if (stacked && stack.get(other)) {
-        return stacked == other;
+      // Check that cyclic values are equal.
+      var objStacked = stack.get(object);
+      var othStacked = stack.get(other);
+      if (objStacked && othStacked) {
+        return objStacked == other && othStacked == object;
       }
       var result = true;
       stack.set(object, other);
@@ -28589,6 +28636,10 @@ return jQuery;
      * // The `_.property` iteratee shorthand.
      * _.filter(users, 'active');
      * // => objects for ['barney']
+     *
+     * // Combining several predicates using `_.overEvery` or `_.overSome`.
+     * _.filter(users, _.overSome([{ 'age': 36 }, ['age', 40]]));
+     * // => objects for ['fred', 'barney']
      */
     function filter(collection, predicate) {
       var func = isArray(collection) ? arrayFilter : baseFilter;
@@ -29338,15 +29389,15 @@ return jQuery;
      * var users = [
      *   { 'user': 'fred',   'age': 48 },
      *   { 'user': 'barney', 'age': 36 },
-     *   { 'user': 'fred',   'age': 40 },
+     *   { 'user': 'fred',   'age': 30 },
      *   { 'user': 'barney', 'age': 34 }
      * ];
      *
      * _.sortBy(users, [function(o) { return o.user; }]);
-     * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
+     * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 30]]
      *
      * _.sortBy(users, ['user', 'age']);
-     * // => objects for [['barney', 34], ['barney', 36], ['fred', 40], ['fred', 48]]
+     * // => objects for [['barney', 34], ['barney', 36], ['fred', 30], ['fred', 48]]
      */
     var sortBy = baseRest(function(collection, iteratees) {
       if (collection == null) {
@@ -34221,11 +34272,11 @@ return jQuery;
 
       // Use a sourceURL for easier debugging.
       // The sourceURL gets injected into the source that's eval-ed, so be careful
-      // with lookup (in case of e.g. prototype pollution), and strip newlines if any.
-      // A newline wouldn't be a valid sourceURL anyway, and it'd enable code injection.
+      // to normalize all kinds of whitespace, so e.g. newlines (and unicode versions of it) can't sneak in
+      // and escape the comment, thus injecting code that gets evaled.
       var sourceURL = '//# sourceURL=' +
         (hasOwnProperty.call(options, 'sourceURL')
-          ? (options.sourceURL + '').replace(/[\r\n]/g, ' ')
+          ? (options.sourceURL + '').replace(/\s/g, ' ')
           : ('lodash.templateSources[' + (++templateCounter) + ']')
         ) + '\n';
 
@@ -34258,8 +34309,6 @@ return jQuery;
 
       // If `variable` is not specified wrap a with-statement around the generated
       // code to add the data object to the top of the scope chain.
-      // Like with sourceURL, we take care to not check the option's prototype,
-      // as this configuration is a code injection vector.
       var variable = hasOwnProperty.call(options, 'variable') && options.variable;
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
@@ -34966,6 +35015,9 @@ return jQuery;
      * values against any array or object value, respectively. See `_.isEqual`
      * for a list of supported value comparisons.
      *
+     * **Note:** Multiple values can be checked by combining several matchers
+     * using `_.overSome`
+     *
      * @static
      * @memberOf _
      * @since 3.0.0
@@ -34981,6 +35033,10 @@ return jQuery;
      *
      * _.filter(objects, _.matches({ 'a': 4, 'c': 6 }));
      * // => [{ 'a': 4, 'b': 5, 'c': 6 }]
+     *
+     * // Checking for several possible values
+     * _.filter(users, _.overSome([_.matches({ 'a': 1 }), _.matches({ 'a': 4 })]));
+     * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
      */
     function matches(source) {
       return baseMatches(baseClone(source, CLONE_DEEP_FLAG));
@@ -34994,6 +35050,9 @@ return jQuery;
      * **Note:** Partial comparisons will match empty array and empty object
      * `srcValue` values against any array or object value, respectively. See
      * `_.isEqual` for a list of supported value comparisons.
+     *
+     * **Note:** Multiple values can be checked by combining several matchers
+     * using `_.overSome`
      *
      * @static
      * @memberOf _
@@ -35011,6 +35070,10 @@ return jQuery;
      *
      * _.find(objects, _.matchesProperty('a', 4));
      * // => { 'a': 4, 'b': 5, 'c': 6 }
+     *
+     * // Checking for several possible values
+     * _.filter(users, _.overSome([_.matchesProperty('a', 1), _.matchesProperty('a', 4)]));
+     * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
      */
     function matchesProperty(path, srcValue) {
       return baseMatchesProperty(path, baseClone(srcValue, CLONE_DEEP_FLAG));
@@ -35234,6 +35297,10 @@ return jQuery;
      * Creates a function that checks if **all** of the `predicates` return
      * truthy when invoked with the arguments it receives.
      *
+     * Following shorthands are possible for providing predicates.
+     * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
+     * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+     *
      * @static
      * @memberOf _
      * @since 4.0.0
@@ -35260,6 +35327,10 @@ return jQuery;
      * Creates a function that checks if **any** of the `predicates` return
      * truthy when invoked with the arguments it receives.
      *
+     * Following shorthands are possible for providing predicates.
+     * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
+     * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+     *
      * @static
      * @memberOf _
      * @since 4.0.0
@@ -35279,6 +35350,9 @@ return jQuery;
      *
      * func(NaN);
      * // => false
+     *
+     * var matchesFunc = _.overSome([{ 'a': 1 }, { 'a': 2 }])
+     * var matchesPropertyFunc = _.overSome([['a', 1], ['a', 2]])
      */
     var overSome = createOver(arraySome);
 
@@ -40294,35 +40368,71 @@ var staticRenderFns = [
       _c(
         "div",
         {
-          staticClass: "bg-local .bg-no-repeat h-screen bg-local",
-          staticStyle: { "background-image": "url(/netflix.jpg)" }
+          staticClass: "bg-auto bg-cover h-75",
+          staticStyle: {
+            "background-image": "url(/images/homepage/events2.jpg)"
+          }
         },
         [
           _c(
             "div",
             {
               staticClass:
-                " w-full h-full text-center text-white pt-12 items-center justify-center",
-              staticStyle: { background: "rgba(0,0,0,0.4)" }
+                " w-full h-full text-center text-white pt-12 items-center justify-center p-6",
+              staticStyle: { background: "rgba(0,0,0,0.6)" }
             },
             [
-              _c("h1", { staticClass: "'text-white text-6xl m-12 " }, [
-                _vm._v("Welcome to the All Events Finder")
-              ]),
+              _c(
+                "h1",
+                {
+                  staticClass:
+                    "'text-white text-5xl m-12 text-uppercase italic "
+                },
+                [_vm._v("All Events Finder")]
+              ),
               _vm._v(" "),
-              _c("h1", { staticClass: "text-white " }, [
-                _vm._v(
-                  "As an events company we are a very curative in bringing you the right\n                    crowd or parsons to your event whether social event or cooperate event\n                    plus we make it easier for you to reach your target audience as we have\n                    made it possible for like-minded minds to notify/alert each other when\n                    your event comes up."
-                )
-              ])
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "hide grid gap-4 md:grid-cols-3 md:grid-cols-1 p-4 pb-8"
+                },
+                [
+                  _c("img", {
+                    staticClass: "transform md:rotate-45 rounded-md",
+                    attrs: { src: "/images/homepage/events.jpg" }
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    staticClass: "transform md:-rotate-12 rounded-md",
+                    attrs: { src: "/images/homepage/venues.jpg" }
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    staticClass: "transform md:rotate-45 rounded-md",
+                    attrs: { src: "/images/homepage/artists.jpg" }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "rounded p-4 bg-none bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500  mt-8"
+                },
+                [
+                  _c("h1", { staticClass: "text-gray text-2xl" }, [
+                    _vm._v(
+                      "As an events company we are a very curative in bringing you the right\n                        crowd or parsons to your event whether social event or cooperate event\n                        plus we make it easier for you to reach your target audience as we have\n                        made it possible for like-minded minds to notify/alert each other when\n                        your event comes up."
+                    )
+                  ])
+                ]
+              )
             ]
           )
         ]
       ),
-      _vm._v(" "),
-      _c("h1", { staticClass: "text-gray-800 text-2xl p-6" }, [
-        _vm._v("This site will allow you to")
-      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -40340,12 +40450,25 @@ var staticRenderFns = [
               [
                 _c("img", { attrs: { src: "/homepage.jpg", alt: "" } }),
                 _vm._v(" "),
-                _c("div", { staticClass: "p-6" }, [
-                  _c("h3", { staticClass: "font-semibold " }, [
-                    _vm._v("Events")
-                  ]),
+                _c("div", { staticClass: "p-8" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uppercase tracking-wide text-sm text-indigo-500 font-semibold"
+                    },
+                    [_vm._v("Events")]
+                  ),
                   _vm._v(" "),
-                  _c("h4", [_vm._v(" Upload and view upcoming events.")])
+                  _c(
+                    "p",
+                    {
+                      staticClass:
+                        "block mt-1 text-md leading-tight font-medium text-gray-600",
+                      attrs: { href: "#" }
+                    },
+                    [_vm._v("Add and view upcoming events.")]
+                  )
                 ])
               ]
             )
@@ -40361,14 +40484,25 @@ var staticRenderFns = [
               [
                 _c("img", { attrs: { src: "/venues.jpg", alt: "" } }),
                 _vm._v(" "),
-                _c("div", { staticClass: "p-6" }, [
-                  _c("h3", { staticClass: "font-semibold " }, [
-                    _vm._v("Venues")
-                  ]),
+                _c("div", { staticClass: "p-8" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uppercase tracking-wide text-sm text-indigo-500 font-semibold"
+                    },
+                    [_vm._v("Venues")]
+                  ),
                   _vm._v(" "),
-                  _c("h4", [
-                    _vm._v(" Upload & View outdoor and indoor venues.")
-                  ])
+                  _c(
+                    "p",
+                    {
+                      staticClass:
+                        "block mt-1 text-md leading-tight font-medium text-gray-600",
+                      attrs: { href: "#" }
+                    },
+                    [_vm._v("Upload & View outdoor and indoor venues.")]
+                  )
                 ])
               ]
             )
@@ -40384,14 +40518,25 @@ var staticRenderFns = [
               [
                 _c("img", { attrs: { src: "/artist.jpg", alt: "" } }),
                 _vm._v(" "),
-                _c("div", { staticClass: "p-6" }, [
-                  _c("h3", { staticClass: "font-semibold " }, [
-                    _vm._v("Artists")
-                  ]),
+                _c("div", { staticClass: "p-8" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uppercase tracking-wide text-sm text-indigo-500 font-semibold"
+                    },
+                    [_vm._v("Artists")]
+                  ),
                   _vm._v(" "),
-                  _c("h4", [
-                    _vm._v(" Book Performing artists for your event.")
-                  ])
+                  _c(
+                    "p",
+                    {
+                      staticClass:
+                        "block mt-1 text-md leading-tight font-medium text-gray-600",
+                      attrs: { href: "#" }
+                    },
+                    [_vm._v("Book Performing artists for your event.")]
+                  )
                 ])
               ]
             )
@@ -42785,7 +42930,7 @@ var render = function() {
                 "sm:flex border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white"
             },
             [
-              _c("div", { staticClass: "md:w-2/5 px-2" }, [
+              _c("div", { staticClass: "md:w-2/5 px-2 pt-2" }, [
                 _c(
                   "div",
                   { staticClass: "text-gray-900 font-bold text-xl mb-2" },
@@ -42835,12 +42980,6 @@ var render = function() {
                           "\n                        Event Details\n                    "
                         )
                       ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "text-gray-900 font-bold text-xl mb-2" },
-                      [_vm._v(_vm._s(_vm.event[0].name))]
                     ),
                     _vm._v(" "),
                     _c("p", { staticClass: "text-gray-700 text-base" }, [
@@ -43199,7 +43338,7 @@ var render = function() {
             attrs: {
               name: "buy-modal",
               height: "auto",
-              width: "50%",
+              adaptive: true,
               scrollable: true
             }
           },
@@ -43554,48 +43693,67 @@ var render = function() {
         [
           _c(
             "div",
-            { staticClass: "max-w-sm rounded overflow-hidden shadow-lg" },
+            {
+              staticClass:
+                "max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl"
+            },
             [
-              _c("img", {
-                staticClass: "w-full ",
-                attrs: {
-                  src: "/" + _vm.event.image,
-                  alt: "Sunset in the mountains"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "px-6 py-4" }, [
-                _c("div", { staticClass: "font-bold text-xl " }, [
-                  _vm._v(_vm._s(_vm.event.name))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "px-3 mb-2 text-center" }, [
-                _c(
-                  "span",
-                  {
-                    staticClass:
-                      "inline-block w-2/5 bg-gray-200 rounded px-3 py-1 text-sm text-center font-semibold text-gray-700 mr-1"
-                  },
-                  [
-                    _vm._v("Start Date "),
-                    _c("br"),
-                    _vm._v(_vm._s(_vm.event.start_date))
-                  ]
-                ),
+              _c("div", { staticClass: "md:flex flex-col" }, [
+                _c("div", { staticClass: "md:flex-shrink-0" }, [
+                  _c("img", {
+                    staticClass: "h-56 w-full object-cover ",
+                    attrs: { src: "/" + _vm.event.image }
+                  })
+                ]),
                 _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    staticClass:
-                      "inline-block w-2/5 bg-gray-200 rounded px-3 py-1 text-sm text-center font-semibold text-gray-700 "
-                  },
-                  [
-                    _vm._v("End Date "),
-                    _c("br"),
-                    _vm._v(" " + _vm._s(_vm.event.end_date))
-                  ]
-                )
+                _c("div", { staticClass: "p-8" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uppercase tracking-wide text-sm text-indigo-500 font-semibold"
+                    },
+                    [_vm._v(_vm._s(_vm.event.name))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "block mt-1 text-lg leading-tight font-medium text-black hover:underline",
+                      attrs: { href: "#" }
+                    },
+                    [_vm._v(_vm._s(_vm.event.location))]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "px-3 mb-2 text-center" }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "inline-block w-2/5 bg-gray-200 rounded px-3 py-1 text-sm text-center font-semibold text-gray-700 mr-1"
+                    },
+                    [
+                      _vm._v("Start Date "),
+                      _c("br"),
+                      _vm._v(_vm._s(_vm.event.start_date))
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "inline-block w-2/5 bg-gray-200 rounded px-3 py-1 text-sm text-center font-semibold text-gray-700 "
+                    },
+                    [
+                      _vm._v("End Date "),
+                      _c("br"),
+                      _vm._v(" " + _vm._s(_vm.event.end_date))
+                    ]
+                  )
+                ])
               ])
             ]
           )
@@ -43631,19 +43789,14 @@ var render = function() {
     this.$store.getters.getAllEvents.length
       ? _c(
           "div",
-          {
-            staticClass:
-              "flex mb-4 flex-wrap mx-auto items-center justify-center"
-          },
+          { staticClass: "grid gap-4 md:grid-cols-3 md:grid-cols-1 p-4" },
           _vm._l(this.$store.getters.getAllEvents, function(event) {
-            return _c(
-              "div",
-              { key: event.id, staticClass: "w-2/7 m-2  " },
-              [_c("EventTemplate", { attrs: { event: event } })],
-              1
-            )
+            return _c("EventTemplate", {
+              key: event.id,
+              attrs: { event: event }
+            })
           }),
-          0
+          1
         )
       : _c(
           "div",
@@ -43858,7 +44011,7 @@ var render = function() {
                 attrs: {
                   name: "book-modal",
                   height: "auto",
-                  width: "50%",
+                  adaptive: true,
                   scrollable: true
                 }
               },
@@ -43871,7 +44024,7 @@ var render = function() {
                     "div",
                     {
                       staticClass:
-                        " md:w-full  rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+                        " md:w-full  rounded-b lg:rounded-b-none lg:rounded-r sm:p-2 md:p-4  flex flex-col justify-between leading-normal"
                     },
                     [
                       _c("div", { staticClass: "mb-8" }, [
@@ -43926,7 +44079,7 @@ var render = function() {
                         "form",
                         {
                           staticClass:
-                            "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+                            "bg-white shadow-md rounded sm:px-8 md:px-8 pt-6 pb-8 mb-4"
                         },
                         [
                           _c("div", { staticClass: "mb-4 mt-6" }, [
@@ -44332,32 +44485,43 @@ var render = function() {
         [
           _c(
             "div",
-            { staticClass: "max-w-sm rounded overflow-hidden shadow-lg" },
+            {
+              staticClass:
+                "max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl"
+            },
             [
-              _c("img", {
-                staticClass: "w-full ",
-                attrs: { src: "/" + _vm.venue.image, alt: "venue" }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "px-6 py-4" }, [
-                _c("div", { staticClass: "font-bold text-xl " }, [
-                  _vm._v(_vm._s(_vm.venue.name))
+              _c("div", { staticClass: "md:flex flex-col" }, [
+                _c("div", { staticClass: "md:flex-shrink-0" }, [
+                  _c("img", {
+                    staticClass: "h-56 w-full object-cover ",
+                    attrs: { src: "/" + _vm.venue.image }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "p-8" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uppercase tracking-wide text-sm text-indigo-500 font-semibold"
+                    },
+                    [_vm._v(_vm._s(_vm.venue.name))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "block mt-1 text-lg leading-tight font-medium text-black hover:underline",
+                      attrs: { href: "#" }
+                    },
+                    [_vm._v(_vm._s(_vm.venue.location))]
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "mt-2 text-gray-500" }, [
+                    _vm._v(_vm._s(_vm.description) + ".")
+                  ])
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "px-3 mb-2 text-center" }, [
-                _c(
-                  "span",
-                  {
-                    staticClass:
-                      "inline-block w-2/5 bg-gray-200 rounded px-3 py-1 text-sm text-center font-semibold text-gray-700 mr-1"
-                  },
-                  [
-                    _vm._v("Start Date "),
-                    _c("br"),
-                    _vm._v(_vm._s(_vm.venue.location))
-                  ]
-                )
               ])
             ]
           )
@@ -44393,19 +44557,14 @@ var render = function() {
     this.$store.getters.getAllVenues.length
       ? _c(
           "div",
-          {
-            staticClass:
-              "flex mb-4 flex-wrap mx-auto items-center justify-center"
-          },
+          { staticClass: "grid gap-4 md:grid-cols-3 md:grid-cols-1 p-4" },
           _vm._l(this.$store.getters.getAllVenues, function(venue) {
-            return _c(
-              "div",
-              { key: venue.id, staticClass: "w-2/7 m-2  " },
-              [_c("VenueTemplate", { attrs: { venue: venue } })],
-              1
-            )
+            return _c("VenueTemplate", {
+              key: venue.id,
+              attrs: { venue: venue }
+            })
           }),
-          0
+          1
         )
       : _c(
           "div",

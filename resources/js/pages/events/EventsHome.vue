@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div class="flex mb-4 flex-wrap mx-auto items-center justify-center" v-if="this.$store.getters.getAllEvents.length">
-            <div class="w-2/7 m-2  "  v-for="event in this.$store.getters.getAllEvents" :key="event.id">
-                    <EventTemplate v-bind:event=event></EventTemplate>
-            </div>
+        <div class="grid gap-4 md:grid-cols-3 md:grid-cols-1 p-4" v-if="this.$store.getters.getAllEvents.length">
+<!--            <div class="w-2/7 m-2  "  >-->
+                    <EventTemplate v-bind:event=event v-for="event in this.$store.getters.getAllEvents" :key="event.id"></EventTemplate>
+<!--            </div>-->
         </div>
         <div v-else class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
              role="alert">

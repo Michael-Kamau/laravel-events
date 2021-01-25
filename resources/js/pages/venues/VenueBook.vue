@@ -75,11 +75,11 @@
         </div>
 
         <div v-if="venue">
-            <modal name="book-modal" height="auto" width="50%" :scrollable="true">
+            <modal name="book-modal" height="auto" :adaptive="true" :scrollable="true">
                 <div class="p-6">
                     Book Venue
                     <div
-                        class=" md:w-full  rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                        class=" md:w-full  rounded-b lg:rounded-b-none lg:rounded-r sm:p-2 md:p-4  flex flex-col justify-between leading-normal">
                         <div class="mb-8">
                             <p class="text-sm text-gray-600 flex items-center">
                                 <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +94,7 @@
                                 the event booking to your email address</p>
 
                         </div>
-                        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                        <form class="bg-white shadow-md rounded sm:px-8 md:px-8 pt-6 pb-8 mb-4">
                             <div class="mb-4 mt-6">
                                 <label class="block  text-gray-700 text-sm font-bold mb-2" for="firstname">
                                     Firstname

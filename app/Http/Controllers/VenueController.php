@@ -88,6 +88,7 @@ class VenueController extends Controller
         $description = $request->input('description');
         $charges = $request->input('charges');
         $image = $this->saveImage($request->input('image'));
+        $status = Status::where('name', 'inactive')->first();
 
         Venue::create([
             'user_id' => $user_id,
@@ -97,7 +98,7 @@ class VenueController extends Controller
             'description' => $description,
             'charges' => $charges,
             'image' => $image,
-            'status' => 6
+            'status' => $status
         ]);
     }
 

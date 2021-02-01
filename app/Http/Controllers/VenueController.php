@@ -48,9 +48,9 @@ class VenueController extends Controller
                     'name' => $venue->name,
                     'location' => $venue->location,
                     'description' => $venue->description,
-                    'submitted' => $venue->bookings->where('status', 4)->count(),
-                    'confirmed' => $venue->bookings->where('status', 3)->count(),
-                    'completed' => $venue->bookings->where('status', 1)->count(),
+                    'submitted' => $venue->bookings->where('status_id', 4)->count(),
+                    'confirmed' => $venue->bookings->where('status_id', 3)->count(),
+                    'completed' => $venue->bookings->where('status_id', 1)->count(),
                     'active' => $venue->status->name == 'active'
                 ];
             });
@@ -144,7 +144,7 @@ class VenueController extends Controller
     }
 
     /**
-     * delete a particular venue
+     * Toggle status
      *
      * @param $id
      * @return void

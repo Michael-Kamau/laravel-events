@@ -2,22 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71cae4b9-0f07-41ba-8e79-9a4f9af19b96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/homepage/artists.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/homepage/events.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/homepage/events2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/homepage/venues.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/auth/venues_auth/ViewVenue.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/auth/venues_auth/modals/BookingActions.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/venues/venueDetails.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VenueBookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VenueBookingController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VenueController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VenueController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Venues/VenueBooking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Venues/VenueBooking.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_04_172404_create_venue_bookings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_04_172404_create_venue_bookings_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/events/EventBook.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/events/EventBook.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/events/EventTemplate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/events/EventTemplate.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/events/EventsHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/events/EventsHome.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/venues/VenueBook.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/venues/VenueBook.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/venues/VenueTemplate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/venues/VenueTemplate.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/venues/VenuesHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/venues/VenuesHome.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/auth/venues_auth/MyVenues.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/venues_auth/MyVenues.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,22 +145,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images/homepage" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/emails/venues" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/images/homepage" />
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/public/js" />
-      <recent name="$PROJECT_DIR$/resources/js" />
-      <recent name="$PROJECT_DIR$/resources/js/events" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/js/components/events" />
       <recent name="$PROJECT_DIR$/app/Models" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/resources/js/components" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/emails/venues" />
+      <recent name="$PROJECT_DIR$/public/images/homepage" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/public/js" />
+      <recent name="$PROJECT_DIR$/resources/js" />
     </key>
   </component>
   <component name="RunManager">
@@ -235,7 +233,14 @@
       <workItem from="1611257354953" duration="44000" />
       <workItem from="1611257517347" duration="2444000" />
       <workItem from="1611318411313" duration="484000" />
-      <workItem from="1611582501349" duration="11743000" />
+      <workItem from="1611582501349" duration="13037000" />
+      <workItem from="1611644124344" duration="3665000" />
+      <workItem from="1611687333045" duration="9529000" />
+      <workItem from="1611747328070" duration="1239000" />
+      <workItem from="1611760648788" duration="670000" />
+      <workItem from="1611860338068" duration="1047000" />
+      <workItem from="1611992869878" duration="2710000" />
+      <workItem from="1612117300156" duration="3407000" />
     </task>
     <servers />
   </component>
@@ -243,38 +248,38 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1611248915733">
+    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1611687971468">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1611248915733" />
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1611612121304">
+    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1611687971468" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1611614885257">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1611612121304" />
-    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1611612121303">
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1611614885257" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1611614885256">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1611612121303" />
-    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1611612121302">
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1611614885256" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1611614885255">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1611612121302" />
-    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1611612121303">
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1611614885255" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1611614885256">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1611612121303" />
-    <state x="317" y="233" key="com.intellij.ide.util.TipDialog" timestamp="1611257483291">
-      <screen x="0" y="23" width="1280" height="723" />
-    </state>
-    <state x="317" y="232" key="com.intellij.ide.util.TipDialog/0.0.1280.800@0.0.1280.800" timestamp="1611241224084" />
-    <state x="317" y="233" key="com.intellij.ide.util.TipDialog/0.23.1280.723@0.23.1280.723" timestamp="1611257483291" />
-    <state x="298" y="162" width="683" height="476" key="find.popup" timestamp="1611233534280">
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1611614885256" />
+    <state x="317" y="233" key="com.intellij.ide.util.TipDialog" timestamp="1612117301746">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="298" y="162" width="683" height="476" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1611233534279" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1610961881070">
+    <state x="317" y="233" key="com.intellij.ide.util.TipDialog/0.0.1280.800@0.0.1280.800" timestamp="1612117301746" />
+    <state x="317" y="233" key="com.intellij.ide.util.TipDialog/0.23.1280.723@0.23.1280.723" timestamp="1611687335178" />
+    <state x="298" y="162" width="837" height="540" key="find.popup" timestamp="1611694633581">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1610961881070" />
+    <state x="298" y="162" width="837" height="540" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1611694633581" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1612168575373">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1612168575373" />
   </component>
 </project>

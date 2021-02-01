@@ -13,7 +13,7 @@
                     <img class="transform md:-rotate-12 rounded-md" src="/images/homepage/venues.jpg">
                     <img class="transform md:rotate-45 rounded-md" src="/images/homepage/artists.jpg">
                 </div>
-                <div class="rounded p-4 bg-none bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500  mt-8">
+                <div class="rounded p-4 bg-black mt-8 bg-opacity-50">
                     <h1 class="text-gray text-2xl">As an events company we are a very curative in bringing you the right
                         crowd or parsons to your event whether social event or cooperate event
                         plus we make it easier for you to reach your target audience as we have

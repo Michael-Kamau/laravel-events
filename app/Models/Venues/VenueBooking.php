@@ -17,7 +17,7 @@ class VenueBooking extends Model
 
     public function status()
     {
-        return $this->belongsTo(Status::class, 'status');
+        return $this->belongsTo(Status::class, 'status_id');
     }
 
 

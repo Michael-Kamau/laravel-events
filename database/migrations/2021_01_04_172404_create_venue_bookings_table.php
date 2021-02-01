@@ -24,7 +24,7 @@ class CreateVenueBookingsTable extends Migration
             $table->date('book_date');
             $table->integer('amount');
             $table->string('description');
-            $table->integer('status');
+            $table->integer('status_id');
             $table->timestamps();
         });
     }

@@ -6,13 +6,18 @@ import Index from '../pages/Index.vue'
 import EventsHome from "../pages/events/EventsHome.vue";
 import EventBook from "../pages/events/EventBook.vue";
 
+import VenuesHome from "../pages/venues/VenuesHome.vue";
+import VenueBook from "../pages/venues/VenueBook";
+
 //Event auth
 import MyEvents from "../pages/auth/events_auth/MyEvents.vue"
 import AddEvent from "../pages/auth/events_auth/AddEvent.vue";
 
 
 //venues Auth
-import VenuesHome from "../pages/venues/VenuesHome.vue";
+import MyVenues from "../pages/auth/venues_auth/MyVenues";
+import AddVenue from "../pages/auth/venues_auth/AddVenue";
+import ViewVenue from "../pages/auth/venues_auth/ViewVenue";
 
 
 //Artists Auth
@@ -27,9 +32,7 @@ import VenueManagers from "../pages/auth/admin_auth/VenueManagers.vue";
 import Dashboard from "../pages/auth/Dashboard.vue";
 
 import ErrorPage from "../pages/ErrorPage.vue";
-import AddVenue from "../pages/auth/venues_auth/AddVenue";
-import MyVenues from "../pages/auth/venues_auth/MyVenues";
-import VenueBook from "../pages/venues/VenueBook";
+
 
 Vue.use(Router)
 
@@ -114,6 +117,11 @@ export default new Router({
                     name: 'addVenue',
                     path: '/dashboard/addVenue',
                     component: AddVenue
+                },
+                {
+                    name: 'viewVenue',
+                    path: '/dashboard/viewVenue/:id',
+                    component: ViewVenue
                 },
                 {
                     name: 'artistManagers',

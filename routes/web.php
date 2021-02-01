@@ -41,6 +41,8 @@ Route::post('api/venues/edit','VenueController@edit');
 Route::get('api/venues/delete/{id}','VenueController@delete');
 Route::get('/api/venues/toggleActive/{id}','VenueController@toggleActive');
 Route::get('api/venues/userVenues','VenueController@userVenues');
+Route::get('api/venues/bookings/{id}','VenueBookingController@venueBookings');
+Route::post('api/venues/bookingActions','VenueBookingController@bookingActions');
 Route::post('api/venues/bookVenue','VenueBookingController@bookVenue');
 
 

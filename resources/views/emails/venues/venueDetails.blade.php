@@ -4,7 +4,7 @@
 @if ($booking->status->name== 'confirmed')
     Kindly click on the link below to proceed with making the payment.
     The link will expire after 24 hrs, after which the request will be automatically rejected.
-@component('mail::button', ['url' => \URL::to('/')])
+@component('mail::button', ['url' => \URL::to('/venue/venuePayment/'.$booking->code.'-'.$booking->id)])
 Make Payment
 @endcomponent
 @endif

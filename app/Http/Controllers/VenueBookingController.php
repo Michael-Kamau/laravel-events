@@ -50,7 +50,8 @@ class VenueBookingController extends Controller
             'amount' => $amount,
             'status_id' => 4,
             'description' => $description,
-            'book_date' => $book_date
+            'book_date' => $book_date,
+            'code' => rand(99999, 10000000),
         ]);
 
 
@@ -138,6 +139,46 @@ class VenueBookingController extends Controller
         } else {
             return response()->json([
                 'error' => 'unauthenticated'
+            ]);
+        }
+
+    }
+
+
+    /**
+     * Booking information
+     *
+     * @param $id
+     * @param $code
+     * @return void
+     */
+    public function bookingInformation($code, $id)
+    {
+        $booking = VenueBooking::where([
+            ['id','=' ,$id],
+            ['code', '=', $code]
+        ])->first();
+        if ($booking) {
+            $bookingDetails = [
+                'id' => $booking->id,
+                'name' => $booking->firstname . ' ' . $booking->lastname,
+                'venue' => [
+                    'name' => $booking->venue->name,
+                    'image' => $booking->venue->image,
+                ],
+                'description' => $booking->venue->description,
+                'date' => $booking->book_date,
+                'status' => $booking->status->name,
+            ];
+
+            return response()->json([
+                'booking' => $bookingDetails,
+                'status' => 201
+            ]);
+
+        } else {
+            return response()->json([
+                'error' => 'ivalid'
             ]);
         }
 

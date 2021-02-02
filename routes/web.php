@@ -43,7 +43,10 @@ Route::get('/api/venues/toggleActive/{id}','VenueController@toggleActive');
 Route::get('api/venues/userVenues','VenueController@userVenues');
 Route::get('api/venues/bookings/{id}','VenueBookingController@venueBookings');
 Route::post('api/venues/bookingActions','VenueBookingController@bookingActions');
+
+
 Route::post('api/venues/bookVenue','VenueBookingController@bookVenue');
+Route::get('api/venues/booking-information/{code}/{id}','VenueBookingController@bookingInformation');
 
 
 //Artists

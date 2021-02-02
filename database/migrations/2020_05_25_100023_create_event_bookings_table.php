@@ -17,6 +17,7 @@ class CreateEventBookingsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('event_id');
             $table->integer('payment_id');
+            $table->string('code');
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email');

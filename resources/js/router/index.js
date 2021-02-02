@@ -8,6 +8,7 @@ import EventBook from "../pages/events/EventBook.vue";
 
 import VenuesHome from "../pages/venues/VenuesHome.vue";
 import VenueBook from "../pages/venues/VenueBook";
+import VenuePayment from "../pages/venues/VenuePayment";
 
 //Event auth
 import MyEvents from "../pages/auth/events_auth/MyEvents.vue"
@@ -76,6 +77,11 @@ export default new Router({
             path: '/venue/:id',
             name: 'venuePage',
             component: VenueBook
+        },
+        {
+            path: '/venue/venuePayment/:id',
+            name: 'venuePayment',
+            component: VenuePayment
         },
         {
             path: '/artists',

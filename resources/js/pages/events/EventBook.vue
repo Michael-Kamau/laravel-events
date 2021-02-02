@@ -3,7 +3,7 @@
     <div>
         <div>
             <div class="sm:flex border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white" v-if="event">
-                <div class="md:w-2/5 px-2">
+                <div class="md:w-2/5 px-2 pt-2">
                     <div class="text-gray-900 font-bold text-xl mb-2">{{event[0].name}}</div>
                     <!--                <img class="max-w-full max-h-full m-auto" src="http://www.ragranjani.com/images/banner-001.jpg" alt="">-->
                     <img class="max-w-full max-h-full m-auto" :src="'/' +event[0].image " alt="">
@@ -19,7 +19,6 @@
                             </svg>
                             Event Details
                         </p>
-                        <div class="text-gray-900 font-bold text-xl mb-2">{{event[0].name}}</div>
                         <p class="text-gray-700 text-base">{{event[0].location}}</p>
                         <p class="text-gray-700 text-base">Vvip: Ksh. {{event[0].vvip}}</p>
                         <p class="text-gray-700 text-base">Vip: Ksh. {{event[0].vip}}</p>
@@ -102,7 +101,7 @@
         </div>
 
         <div>
-            <modal name="buy-modal" height="auto" width="50%" :scrollable="true">
+            <modal name="buy-modal" height="auto" :adaptive="true" :scrollable="true">
                 <div class="p-6">
                     Buy Modal
                     <div
@@ -223,6 +222,7 @@
                     .then(response => {
                         console.log(response)
                         resolve(response)
+                        this.$modal.hideAll()
                     }).catch(e => {
                     reject(e)
                     console.log(e)

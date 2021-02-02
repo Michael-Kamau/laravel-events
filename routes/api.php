@@ -21,6 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('events','EventController@index');
 
+Route::get('venues','VenueController@index');
+
+
 Route::get('/email/{eventId}', 'EventBookingController@mailEventBookingPdf');
 
 Route::get('STKPay','MpesaPaymentController@STK_Push');

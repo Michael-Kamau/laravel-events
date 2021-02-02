@@ -30,6 +30,15 @@
                 </router-link>
             </div>
 
+            <div v-if="roleExists('venue-manager')" class=" pl-1">
+                <router-link :to="{name:'myVenues'}">
+                    <span class="inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2">My Venues</span>
+                </router-link><br>
+                <router-link :to="{ name: 'addVenue'}">
+                    <span class="inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2">Add Venue</span>
+                </router-link>
+            </div>
+
 
 <!--            <button-->
 <!--                class="shadow bg-blue-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"-->

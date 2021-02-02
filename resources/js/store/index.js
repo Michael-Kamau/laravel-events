@@ -7,14 +7,20 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         token: null,
-        allEvents: null,
-        userEvents: null,
+        allEvents: [],
+        userEvents: [],
+        allVenues:[],
+        userVenues:[],
         userDetails:[],
         roles: []
 
     },
 
     getters: {
+        getUserRoles(state){
+            return state.roles
+        },
+
         getAllEvents(state) {
             return state.allEvents
         },
@@ -23,8 +29,12 @@ export default new Vuex.Store({
             return state.userEvents
         },
 
-        getUserRoles(state){
-            return state.roles
+        getAllVenues(state){
+            return state.allVenues
+        },
+
+        getUserVenues(state){
+         return state.userVenues
         }
 
 
@@ -32,6 +42,17 @@ export default new Vuex.Store({
     },
 
     actions: {
+
+        checkRole(state) {
+            axios.get(`/api/user/roles`)
+                .then(response => {
+                    console.log('Roles',response.data)
+                    state.commit('checkRole', response.data)
+                }).catch(e => {
+                //this.errors.push(e)
+                console.log(e)
+            })
+        },
 
         getAllEvents(state) {
             axios.get(`/api/events`)
@@ -43,17 +64,6 @@ export default new Vuex.Store({
                 console.log(e)
             })
 
-        },
-
-        checkRole(state) {
-            axios.get(`/api/user/roles`)
-                .then(response => {
-                    console.log('Roles',response.data)
-                    state.commit('checkRole', response.data)
-                }).catch(e => {
-                //this.errors.push(e)
-                console.log(e)
-            })
         },
 
         getUserEvents(state) {
@@ -85,20 +95,68 @@ export default new Vuex.Store({
 
         },
 
+        getAllVenues(state) {
+            axios.get(`/api/venues`)
+                .then(response => {
+                    console.log(response.data)
+                    let venues = response.data
+                    state.commit('getAllVenues', venues)
+                }).catch(e => {
+                console.log(e)
+            })
+
+        },
+
+
+        getUserVenues(state){
+            axios.get('/api/venues/userVenues')
+                .then(response => {
+                    console.log(response.data)
+                    let userVenues = response.data
+                    state.commit('getUserVenues', userVenues)
+                }).catch(e => {
+                    console.log(e)
+            })
+        },
+
+
+        addVenue(state, payload) {
+            console.log(payload)
+            return new Promise((resolve, reject) => {
+                axios.post(`/api/venues/create`, payload)
+                    .then(response => {
+                        console.log(response)
+                        resolve(response)
+                    }).catch(e => {
+                    reject(e)
+                    console.log(e)
+                })
+            })
+
+        },
+
 
     },
 
     mutations: {
 
+        checkRole(state, payload) {
+            state.roles = payload
+        },
         getAllEvents(state, payload) {
             state.allEvents = payload.data
         },
+
         getUserEvents(state, payload) {
             state.userEvents = payload.data
         },
 
-        checkRole(state, payload) {
-            state.roles = payload
+        getAllVenues(state, payload) {
+            state.allVenues = payload.data
+        },
+
+        getUserVenues(state, payload) {
+            state.userVenues = payload.data
         }
 
     }

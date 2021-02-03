@@ -11,6 +11,8 @@ export default new Vuex.Store({
         userEvents: [],
         allVenues:[],
         userVenues:[],
+        allArtists:[],
+        userArtist:[],
         userDetails:[],
         roles: []
 
@@ -35,6 +37,14 @@ export default new Vuex.Store({
 
         getUserVenues(state){
          return state.userVenues
+        },
+
+        getAllArtists(state){
+            return state.allArtists
+        },
+
+        getUserArtists(state){
+            return state.userArtist
         }
 
 
@@ -136,6 +146,31 @@ export default new Vuex.Store({
         },
 
 
+        getAllArtists(state) {
+            axios.get(`/api/venues`)
+                .then(response => {
+                    console.log(response.data)
+                    let venues = response.data
+                    state.commit('getAllArtists', venues)
+                }).catch(e => {
+                console.log(e)
+            })
+
+        },
+
+
+        getUserArtist(state){
+            axios.get('/api/venues/userVenues')
+                .then(response => {
+                    console.log(response.data)
+                    let userVenues = response.data
+                    state.commit('getUserArtist', userVenues)
+                }).catch(e => {
+                console.log(e)
+            })
+        },
+
+
     },
 
     mutations: {
@@ -157,6 +192,14 @@ export default new Vuex.Store({
 
         getUserVenues(state, payload) {
             state.userVenues = payload.data
+        },
+
+        getAllArtists(state, payload) {
+            state.allArtists = payload.data
+        },
+
+        getUserArtist(state, payload) {
+            state.userArtist = payload.data
         }
 
     }

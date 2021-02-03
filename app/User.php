@@ -23,6 +23,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Venues\Venue');
     }
 
+    public function artist()
+    {
+        return $this->hasOne('App\Models\Venues\Venue');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

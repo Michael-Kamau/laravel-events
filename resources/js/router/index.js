@@ -3,12 +3,16 @@ import Vue from 'vue'
 
 
 import Index from '../pages/Index.vue'
+
 import EventsHome from "../pages/events/EventsHome.vue";
 import EventBook from "../pages/events/EventBook.vue";
 
 import VenuesHome from "../pages/venues/VenuesHome.vue";
 import VenueBook from "../pages/venues/VenueBook";
 import VenuePayment from "../pages/venues/VenuePayment";
+
+import ArtistsHome from "../pages/artists/ArtistsHome.vue";
+import ArtistBook from "../pages/artists/ArtistBook";
 
 //Event auth
 import MyEvents from "../pages/auth/events_auth/MyEvents.vue"
@@ -22,7 +26,10 @@ import ViewVenue from "../pages/auth/venues_auth/ViewVenue";
 
 
 //Artists Auth
-import ArtistsHome from "../pages/artists/ArtistsHome.vue";
+import ViewArtist from "../pages/auth/artists_auth/ViewArtist";
+import ArtistBookings from "../pages/auth/artists_auth/ArtistBookings";
+
+
 
 //Admin Auth
 import EventManagers from "../pages/auth/admin_auth/EventManagers.vue";
@@ -89,6 +96,11 @@ export default new Router({
             component: ArtistsHome
         },
         {
+            path: '/artists/:id',
+            name: 'artistPage',
+            component: ArtistBook
+        },
+        {
             path: '/dashboard',
             name: 'dashboard',
             component: Dashboard,
@@ -134,6 +146,17 @@ export default new Router({
                     path: '/dashboard/artists',
                     component: ArtistsManagers
                 },
+                {
+                    name: 'viewArtist',
+                    path: '/dashboard/artistProfile',
+                    component: ViewArtist
+
+                },
+                {
+                    name: 'artistBookings',
+                    path: '/dashboard/artistBookings',
+                    component: ArtistBookings
+                }
 
             ]
 

@@ -16,9 +16,12 @@
             <div>
 
             </div>
-            <div v-if="roleExists('artist')">
-                <router-link :to="{name:'artistManagers'}">
-                    <span class="inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2">Performing Artists</span>
+            <div>
+                <router-link :to="{name:'viewArtist'}">
+                    <span class="inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2">Artist Profile</span>
+                </router-link><br>
+                <router-link :to="{name:'artistBookings'}">
+                    <span class="inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2">Artist Bookings</span>
                 </router-link><br>
             </div>
             <div v-if="roleExists('event-manager')" class=" pl-1">

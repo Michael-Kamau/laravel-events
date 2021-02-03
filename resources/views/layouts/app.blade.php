@@ -48,11 +48,11 @@
                         </a>
                     </li>
 
-{{--                    <li class="nav-item">--}}
-{{--                        <a id="" class="nav-link " href="/artists" role="button" v-pre>--}}
-{{--                            Artists <span class="caret"></span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li class="nav-item">
+                        <a id="" class="nav-link " href="/artists" role="button" v-pre>
+                            Artists <span class="caret"></span>
+                        </a>
+                    </li>
 
                 </ul>
 

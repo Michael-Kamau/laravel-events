@@ -23,6 +23,8 @@ Route::get('events','EventController@index');
 
 Route::get('venues','VenueController@index');
 
+Route::get('artists','ArtistController@index');
+
 
 Route::get('/email/{eventId}', 'EventBookingController@mailEventBookingPdf');
 

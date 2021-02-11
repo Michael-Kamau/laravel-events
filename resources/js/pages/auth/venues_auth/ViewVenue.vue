@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex p-1">
+        <div class="flex p-1 ">
             <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-1"
                     @click="setStatus('submitted')">
                 Submitted

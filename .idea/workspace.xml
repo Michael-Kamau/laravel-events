@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71cae4b9-0f07-41ba-8e79-9a4f9af19b96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/pages/artists/ArtistBook.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/pages/artists/ArtistTemplate.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Artists/Artist.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Artists/Artist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ArtistController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ArtistController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/artists/ArtistsHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/artists/ArtistsHome.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/auth/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/Dashboard.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/auth/artists_auth/ArtistBookings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/artists_auth/ArtistBookings.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/auth/venues_auth/MyVenues.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/venues_auth/MyVenues.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/auth/venues_auth/ViewVenue.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/venues_auth/ViewVenue.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +239,8 @@
       <workItem from="1612258680490" duration="6291000" />
       <workItem from="1612340391952" duration="13435000" />
       <workItem from="1612416128477" duration="42000" />
-      <workItem from="1612451143505" duration="2601000" />
+      <workItem from="1612451143505" duration="3568000" />
+      <workItem from="1612950068990" duration="7290000" />
     </task>
     <servers />
   </component>
@@ -251,10 +248,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1611687971468">
+    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1612987634125">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1611687971468" />
+    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1612987634125" />
     <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1611614885257">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

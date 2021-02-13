@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Artist extends Model
 {
-    //
+    protected $fillable =['user_id','name', 'description'];
 
     public function user()
     {
@@ -15,6 +15,6 @@ class Artist extends Model
 
     public function videos()
     {
-        return $this->morphMany('App\Models\Video','videoable');
+        return $this->morphMany('App\Models\Videos\Video','videoable');
     }
 }

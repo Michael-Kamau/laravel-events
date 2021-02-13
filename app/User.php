@@ -25,7 +25,7 @@ class User extends Authenticatable
 
     public function artist()
     {
-        return $this->hasOne('App\Models\Venues\Venue');
+        return $this->hasOne('App\Models\Artists\Artist');
     }
 
     /**

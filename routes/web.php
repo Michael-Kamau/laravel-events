@@ -45,14 +45,13 @@ Route::get('api/venues/bookings/{id}','VenueBookingController@venueBookings');
 Route::post('api/venues/bookingActions','VenueBookingController@bookingActions');
 
 
-//Artists
-
-
 Route::post('api/venues/bookVenue','VenueBookingController@bookVenue');
 Route::get('api/venues/booking-information/{code}/{id}','VenueBookingController@bookingInformation');
 
 
 //Artists
+Route::get('api/artists/profile','ArtistController@artistProfile');
+
 
 //Route::get('/{any?}', 'HomeController@index');
 

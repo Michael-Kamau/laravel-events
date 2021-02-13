@@ -35,7 +35,7 @@
             <div>
 
             </div>
-            <div>
+            <div v-if="roleExists('artist')" class=" pl-1">
                 <router-link :to="{name:'viewArtist'}">
                     <span class="inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2">Artist Profile</span>
                 </router-link><br>

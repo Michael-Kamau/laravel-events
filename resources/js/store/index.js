@@ -160,11 +160,11 @@ export default new Vuex.Store({
 
 
         getUserArtist(state){
-            axios.get('/api/venues/userVenues')
+            axios.get('/api/artists/profile')
                 .then(response => {
                     console.log(response.data)
-                    let userVenues = response.data
-                    state.commit('getUserArtist', userVenues)
+                    let userArtist = response.data
+                    state.commit('getUserArtist', userArtist)
                 }).catch(e => {
                 console.log(e)
             })

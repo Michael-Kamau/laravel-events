@@ -2784,7 +2784,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ViewArtist"
+  name: "ViewArtist",
+  // data(){
+  //     return{
+  //         artist:this.$store.getters.getUserArtists
+  //     }
+  //
+  // },
+  mounted: function mounted() {
+    this.artistProfile();
+  },
+  computed: {
+    artist: function artist() {
+      return this.$store.getters.getUserArtists;
+    }
+  },
+  methods: {
+    artistProfile: function artistProfile() {
+      this.$store.dispatch('getUserArtist').then(function (response) {
+        console.log(response);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -3273,9 +3294,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.$store.dispatch('getUserEvents').then(function (response) {
-      console.log(response);
-    });
+    this.$store.dispatch('getUserEvents');
   }
 });
 
@@ -41972,35 +41991,42 @@ var render = function() {
         _vm._v(" "),
         _c("div"),
         _vm._v(" "),
-        _c(
-          "div",
-          [
-            _c("router-link", { attrs: { to: { name: "viewArtist" } } }, [
-              _c(
-                "span",
-                {
-                  staticClass:
-                    "inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2"
-                },
-                [_vm._v("Artist Profile")]
-              )
-            ]),
-            _c("br"),
-            _vm._v(" "),
-            _c("router-link", { attrs: { to: { name: "artistBookings" } } }, [
-              _c(
-                "span",
-                {
-                  staticClass:
-                    "inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2"
-                },
-                [_vm._v("Artist Bookings")]
-              )
-            ]),
-            _c("br")
-          ],
-          1
-        ),
+        _vm.roleExists("artist")
+          ? _c(
+              "div",
+              { staticClass: " pl-1" },
+              [
+                _c("router-link", { attrs: { to: { name: "viewArtist" } } }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2"
+                    },
+                    [_vm._v("Artist Profile")]
+                  )
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  { attrs: { to: { name: "artistBookings" } } },
+                  [
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2"
+                      },
+                      [_vm._v("Artist Bookings")]
+                    )
+                  ]
+                ),
+                _c("br")
+              ],
+              1
+            )
+          : _vm._e(),
         _vm._v(" "),
         _vm.roleExists("event-manager")
           ? _c(
@@ -42600,160 +42626,177 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return this.$store.getters.getUserArtists.description
+    ? _c("div", { staticClass: "m-2 p-4 rounded-lg shadow" }, [
+        _c(
+          "h1",
+          { staticClass: "text-3xl font-bold pt-8 lg:pt-0 text-gray-700" },
+          [_vm._v("Profile")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "md:flex" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "p-2 w-full md:w-3/5 " }, [
+            _c(
+              "h1",
+              {
+                staticClass:
+                  "text-2xl font-bold pt-8 mb-2 lg:pt-0 text-gray-700"
+              },
+              [_vm._v(_vm._s(_vm.artist.name))]
+            ),
+            _vm._v(" "),
+            _c(
+              "h1",
+              { staticClass: "text-1xl font-bold pt-8 lg:pt-0 text-gray-700" },
+              [_vm._v("Description")]
+            ),
+            _vm._v(" "),
+            _c("h6", { staticClass: "p-1 mb-2" }, [
+              _vm._v(_vm._s(_vm.artist.description))
+            ]),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _vm._m(3)
+          ])
+        ])
+      ])
+    : _vm._e()
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "m-2 p-4 rounded-lg shadow" }, [
+    return _c("div", { staticClass: "w-full md:w-2/5 h-auto " }, [
+      _c("img", {
+        staticClass: "max-w-full h-auto rounded",
+        attrs: {
+          src:
+            "https://www.zaziehotel.paris/images/annuaire/hd/%c2%a9%20Paris%20Tourist%20Office%20-%20Photographe%20%20Annemiek%20Veldman.jpg",
+          alt: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "md:flex justify-between" }, [
       _c(
         "h1",
-        { staticClass: "text-3xl font-bold pt-8 lg:pt-0 text-gray-700" },
-        [_vm._v("My Profile")]
+        { staticClass: "text-1xl font-bold pt-8 lg:pt-0 text-gray-700" },
+        [_vm._v("Categories")]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "md:flex" }, [
-        _c("div", { staticClass: "w-full md:w-2/5 h-auto " }, [
-          _c("img", {
-            staticClass: "max-w-full h-auto rounded",
-            attrs: {
-              src:
-                "https://www.zaziehotel.paris/images/annuaire/hd/%c2%a9%20Paris%20Tourist%20Office%20-%20Photographe%20%20Annemiek%20Veldman.jpg",
-              alt: ""
-            }
+      _c("div", [
+        _c(
+          "label",
+          {
+            staticClass: "text-1xl font-bold pt-8 lg:pt-0 text-gray-700 ",
+            attrs: { for: "cars" }
+          },
+          [_vm._v("Add category:")]
+        ),
+        _vm._v(" "),
+        _c("select", { attrs: { name: "cars", id: "cars" } }, [
+          _c("option", { attrs: { value: "volvo" } }, [_vm._v("Volvo")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "saab" } }, [_vm._v("Saab")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "mercedes" } }, [_vm._v("Mercedes")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "audi" } }, [_vm._v("Audi")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "shadow p-1 rounded flex flex-wrap space-x-2" },
+      [
+        _c("p", { staticClass: "rounded-full bg-gray-400 p-1 w-auto " }, [
+          _vm._v(" One man "),
+          _c("i", {
+            staticClass: "fa fa-times",
+            attrs: { "aria-hidden": "true" }
           })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "p-2 w-full md:w-3/5 " }, [
-          _c(
-            "h1",
-            {
-              staticClass: "text-2xl font-bold pt-8 mb-2 lg:pt-0 text-gray-700"
-            },
-            [_vm._v("Michie Brownlee")]
-          ),
-          _vm._v(" "),
-          _c(
-            "h1",
-            { staticClass: "text-1xl font-bold pt-8 lg:pt-0 text-gray-700" },
-            [_vm._v("Description")]
-          ),
-          _vm._v(" "),
-          _c("h6", { staticClass: "p-1 mb-2" }, [
-            _vm._v(
-              "Save time with the online editor for Tailwind CSS that has a simple, intuitive drag ... Too often developers don't have time to implement their designs perfectly. ... a layout to the refining stage so that you can have time to work on the details."
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "md:flex justify-between" }, [
-            _c(
-              "h1",
-              { staticClass: "text-1xl font-bold pt-8 lg:pt-0 text-gray-700" },
-              [_vm._v("Categories")]
-            ),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "label",
-                {
-                  staticClass: "text-1xl font-bold pt-8 lg:pt-0 text-gray-700 ",
-                  attrs: { for: "cars" }
-                },
-                [_vm._v("Add category:")]
-              ),
-              _vm._v(" "),
-              _c("select", { attrs: { name: "cars", id: "cars" } }, [
-                _c("option", { attrs: { value: "volvo" } }, [_vm._v("Volvo")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "saab" } }, [_vm._v("Saab")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "mercedes" } }, [
-                  _vm._v("Mercedes")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "audi" } }, [_vm._v("Audi")])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "shadow p-1 rounded flex flex-wrap space-x-2" },
-            [
-              _c("p", { staticClass: "rounded-full bg-gray-400 p-1 w-auto " }, [
-                _vm._v(" One man "),
-                _c("i", {
-                  staticClass: "fa fa-times",
-                  attrs: { "aria-hidden": "true" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "rounded-full bg-gray-400 p-1 w-auto" }, [
-                _vm._v(" One man "),
-                _c("i", {
-                  staticClass: "fa fa-times",
-                  attrs: { "aria-hidden": "true" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "rounded-full bg-gray-400 p-1 w-auto " }, [
-                _vm._v(" One man "),
-                _c("i", {
-                  staticClass: "fa fa-times",
-                  attrs: { "aria-hidden": "true" }
-                })
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "flex" }, [
-            _c("div", { staticClass: "pt-12 pb-8 mx-2 justify-center" }, [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "bg-yellow-700 hover:bg-yellow-900 text-white font-bold py-2 px-4 rounded-full"
-                },
-                [_vm._v("\n                        1\n                    ")]
-              ),
-              _vm._v(" "),
-              _c("p", { staticClass: "text-gray-700 text-center font-bold" }, [
-                _vm._v("Bookings")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "pt-12 pb-8 mx-2 justify-center" }, [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full"
-                },
-                [_vm._v("\n                        1\n                    ")]
-              ),
-              _vm._v(" "),
-              _c("p", { staticClass: "text-gray-700 text-center font-bold" }, [
-                _vm._v("confirmed")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "pt-12 pb-8 mx-2 justify-center" }, [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
-                },
-                [_vm._v("\n                        1\n                    ")]
-              ),
-              _vm._v(" "),
-              _c("p", { staticClass: "text-gray-700 text-center font-bold" }, [
-                _vm._v("Paid")
-              ])
-            ])
-          ])
+        _c("p", { staticClass: "rounded-full bg-gray-400 p-1 w-auto" }, [
+          _vm._v(" One man "),
+          _c("i", {
+            staticClass: "fa fa-times",
+            attrs: { "aria-hidden": "true" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "rounded-full bg-gray-400 p-1 w-auto " }, [
+          _vm._v(" One man "),
+          _c("i", {
+            staticClass: "fa fa-times",
+            attrs: { "aria-hidden": "true" }
+          })
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex" }, [
+      _c("div", { staticClass: "pt-12 pb-8 mx-2 justify-center" }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "bg-yellow-700 hover:bg-yellow-900 text-white font-bold py-2 px-4 rounded-full"
+          },
+          [_vm._v("\n                        1\n                    ")]
+        ),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-gray-700 text-center font-bold" }, [
+          _vm._v("Bookings")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "pt-12 pb-8 mx-2 justify-center" }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full"
+          },
+          [_vm._v("\n                        1\n                    ")]
+        ),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-gray-700 text-center font-bold" }, [
+          _vm._v("confirmed")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "pt-12 pb-8 mx-2 justify-center" }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
+          },
+          [_vm._v("\n                        1\n                    ")]
+        ),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-gray-700 text-center font-bold" }, [
+          _vm._v("Paid")
         ])
       ])
     ])
@@ -65374,10 +65417,10 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_0__
       });
     },
     getUserArtist: function getUserArtist(state) {
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/venues/userVenues').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/artists/profile').then(function (response) {
         console.log(response.data);
-        var userVenues = response.data;
-        state.commit('getUserArtist', userVenues);
+        var userArtist = response.data;
+        state.commit('getUserArtist', userArtist);
       })["catch"](function (e) {
         console.log(e);
       });

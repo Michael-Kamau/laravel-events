@@ -1,6 +1,6 @@
 <template>
-    <div class="m-2 p-4 rounded-lg shadow">
-        <h1 class="text-3xl font-bold pt-8 lg:pt-0 text-gray-700">My Profile</h1>
+    <div v-if="this.$store.getters.getUserArtists.description" class="m-2 p-4 rounded-lg shadow">
+        <h1 class="text-3xl font-bold pt-8 lg:pt-0 text-gray-700">Profile</h1>
 
         <div class="md:flex">
             <div class="w-full md:w-2/5 h-auto ">
@@ -8,10 +8,10 @@
             </div>
 
             <div class="p-2 w-full md:w-3/5 ">
-                <h1 class="text-2xl font-bold pt-8 mb-2 lg:pt-0 text-gray-700">Michie Brownlee</h1>
+                <h1 class="text-2xl font-bold pt-8 mb-2 lg:pt-0 text-gray-700">{{artist.name}}</h1>
 
                 <h1 class="text-1xl font-bold pt-8 lg:pt-0 text-gray-700">Description</h1>
-                <h6 class="p-1 mb-2">Save time with the online editor for Tailwind CSS that has a simple, intuitive drag ... Too often developers don't have time to implement their designs perfectly. ... a layout to the refining stage so that you can have time to work on the details.</h6>
+                <h6 class="p-1 mb-2">{{artist.description}}</h6>
 
 
                 <div class="md:flex justify-between">
@@ -72,7 +72,35 @@
 
 <script>
     export default {
-        name: "ViewArtist"
+        name: "ViewArtist",
+        // data(){
+        //     return{
+        //         artist:this.$store.getters.getUserArtists
+        //     }
+        //
+        // },
+        mounted() {
+            this.artistProfile()
+
+        },
+
+        computed:{
+            artist(){
+                return this.$store.getters.getUserArtists
+            }
+
+        },
+
+        methods:{
+            artistProfile(){
+                this.$store.dispatch('getUserArtist')
+                    .then(response => {
+                        console.log(response)
+                    })
+            }
+        }
+
+
     }
 </script>
 

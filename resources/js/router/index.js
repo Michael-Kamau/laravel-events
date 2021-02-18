@@ -32,9 +32,9 @@ import ArtistBookings from "../pages/auth/artists_auth/ArtistBookings";
 
 
 //Admin Auth
-import EventManagers from "../pages/auth/admin_auth/EventManagers.vue";
-import ArtistsManagers from "../pages/auth/admin_auth/ArtistManagers.vue";
-import VenueManagers from "../pages/auth/admin_auth/VenueManagers.vue";
+import EventManagers from "../pages/auth/admin_auth/events/EventManagers.vue";
+import ArtistsManagers from "../pages/auth/admin_auth/artists/ArtistManagers.vue";
+import VenueManagers from "../pages/auth/admin_auth/venues/VenueManagers.vue";
 
 
 import Dashboard from "../pages/auth/Dashboard.vue";

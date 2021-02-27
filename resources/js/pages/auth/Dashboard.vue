@@ -34,8 +34,8 @@
                         </svg>
                     </div>
                     <div :class="itemFocus.adminArtistOpen ? 'block' : 'hidden'" class="px-2">
-                        <router-link :to="{name:'artistManagers'}">
-                            <span class=""> Artist Managers</span>
+                        <router-link :to="{name:'artistMenu'}">
+                            <span class=""> Artist Menu</span>
                         </router-link>
                         <br>
                         <router-link :to="{name:'artistManagers'}">

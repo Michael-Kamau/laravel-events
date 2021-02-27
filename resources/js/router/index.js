@@ -34,6 +34,7 @@ import ArtistBookings from "../pages/auth/artists_auth/ArtistBookings";
 //Admin Auth
 import EventManagers from "../pages/auth/admin_auth/events/EventManagers.vue";
 import ArtistsManagers from "../pages/auth/admin_auth/artists/ArtistManagers.vue";
+import ArtistMenu from "../pages/auth/admin_auth/artists/ArtistMenu";
 import VenueManagers from "../pages/auth/admin_auth/venues/VenueManagers.vue";
 
 
@@ -145,6 +146,11 @@ export default new Router({
                     name: 'artistManagers',
                     path: '/dashboard/artists',
                     component: ArtistsManagers
+                },
+                {
+                    name: 'artistMenu',
+                    path: '/dashboard/artistsMenu',
+                    component: ArtistMenu
                 },
                 {
                     name: 'viewArtist',

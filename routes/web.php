@@ -51,6 +51,7 @@ Route::get('api/venues/booking-information/{code}/{id}','VenueBookingController@
 
 //Artists
 Route::get('api/artists/profile','ArtistController@artistProfile');
+Route::post('api/artists/genres','ArtistGenreController@store');
 
 
 //Route::get('/{any?}', 'HomeController@index');

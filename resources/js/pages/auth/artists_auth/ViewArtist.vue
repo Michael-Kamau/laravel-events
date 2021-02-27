@@ -19,12 +19,17 @@
                     <div>
                         <label class="text-1xl font-bold pt-8 lg:pt-0 text-gray-700 " for="cars">Add category:</label>
 
-                        <select name="cars" id="cars">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                        <select name="cars" id="cars" >
+                            <option  v-for="genre in genres" :value=genre.slug >{{genre.name}}</option>
+<!--                            <option value="saab">Saab</option>-->
+<!--                            <option value="mercedes">Mercedes</option>-->
+<!--                            <option value="audi">Audi</option>-->
                         </select>
+                        <button
+                            class="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-xs px-2 py-1 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1"
+                            type="button" style="transition: all .15s ease" @click="addGenre()">
+                            <i class="fa fa-plus-circle"></i>
+                        </button>
                     </div>
 
 
@@ -71,16 +76,19 @@
 </template>
 
 <script>
+    import axios from "axios";
+
     export default {
         name: "ViewArtist",
-        // data(){
-        //     return{
-        //         artist:this.$store.getters.getUserArtists
-        //     }
-        //
-        // },
+        data(){
+            return{
+                genres:[]
+            }
+
+        },
         mounted() {
             this.artistProfile()
+            this.fetchGenres()
 
         },
 
@@ -92,11 +100,22 @@
         },
 
         methods:{
+            fetchGenres(){
+                axios.get(`/api/artists/genres`)
+                    .then(response => {
+                        console.log('mmmmmm',response)
+                        this.genres = response.data.data
+                    }).catch(e => {
+                    console.log(e)
+                })
+            },
+
+            addGenre(){
+
+            },
+
             artistProfile(){
                 this.$store.dispatch('getUserArtist')
-                    .then(response => {
-                        console.log(response)
-                    })
             }
         }
 

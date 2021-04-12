@@ -170,6 +170,47 @@ export default new Vuex.Store({
             })
         },
 
+        editArtist(state, payload) {
+            console.log(payload)
+            return new Promise((resolve, reject) => {
+                axios.post(`/api/artists/edit`, payload)
+                    .then(response => {
+                        console.log(response)
+                        resolve(response)
+                    }).catch(e => {
+                    reject(e)
+                    console.log(e)
+                })
+            })
+
+        },
+
+
+        addVideo(state, payload) {
+            return new Promise((resolve, reject) => {
+                axios.post(`/video/save`, payload)
+                    .then(response => {
+                        resolve(response)
+                    }).catch(e => {
+                    reject(e)
+                })
+            })
+
+        },
+        deleteVideo(state, imageId) {
+            return new Promise((resolve, reject) => {
+                axios.get(`/video/delete/`+imageId)
+                    .then(response => {
+                        console.log(response)
+                        resolve(response)
+                    }).catch(e => {
+                    reject(e)
+                    console.log(e)
+                })
+            })
+
+        }
+
 
     },
 

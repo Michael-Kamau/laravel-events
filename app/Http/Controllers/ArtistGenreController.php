@@ -19,6 +19,13 @@ class ArtistGenreController extends Controller
     {
         $genres = Genre::all();
 
+        $genres = $genres->map(function($genre){
+            return[
+                'id' => $genre->id,
+                'name' => $genre->name
+            ];
+        });
+
         return response()->json([
             'data' => $genres,
             'status' => 200

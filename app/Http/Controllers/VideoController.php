@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artists\Artist;
+use App\Models\Videos\Video;
 use Illuminate\Http\Request;
 
 class VideoController extends Controller
@@ -22,7 +23,8 @@ class VideoController extends Controller
 
 
         $artist->videos()->create([
-            'url' => $request->input('video')
+            'url' => $request->input('video'),
+            'description' => ''
         ]);
 
         return response()->json([

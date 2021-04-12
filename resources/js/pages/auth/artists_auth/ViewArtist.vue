@@ -4,40 +4,66 @@
 
         <div class="md:flex">
             <div class="w-full md:w-2/5 h-auto ">
-                <img class="max-w-full h-auto rounded" src="https://www.zaziehotel.paris/images/annuaire/hd/%c2%a9%20Paris%20Tourist%20Office%20-%20Photographe%20%20Annemiek%20Veldman.jpg" alt="">
+                <img class="max-w-full h-auto rounded"
+                     src="https://www.zaziehotel.paris/images/annuaire/hd/%c2%a9%20Paris%20Tourist%20Office%20-%20Photographe%20%20Annemiek%20Veldman.jpg"
+                     alt="">
             </div>
 
             <div class="p-2 w-full md:w-3/5 ">
-                <h1 class="text-2xl font-bold pt-8 mb-2 lg:pt-0 text-gray-700">{{artist.name}}</h1>
+                <p class="text-2xl font-bold pt-8 lg:pt-0 text-gray-700">{{artist.name}}</p>
+                <label class="block">
+                    <span class="text-gray-700">Edit Username</span>
+                    <input class="form-input mt-1 block w-full" v-model="artist.name" placeholder="New username">
+                </label>
 
-                <h1 class="text-1xl font-bold pt-8 lg:pt-0 text-gray-700">Description</h1>
-                <h6 class="p-1 mb-2">{{artist.description}}</h6>
+                <label class="block">
+                    <span class="text-gray-700">Description</span>
+                    <textarea class="form-textarea mt-1 block w-full p-2" rows="3"
+                              v-model="artist.description"></textarea>
+                </label>
 
 
                 <div class="md:flex justify-between">
-                    <h1 class="text-1xl font-bold pt-8 lg:pt-0 text-gray-700">Categories</h1>
+                    <h1 class="text-1xl font-bold pt-8 lg:pt-0 text-gray-700">Categories ( The categories of songs you
+                        perform )</h1>
                     <div>
-                        <label class="text-1xl font-bold pt-8 lg:pt-0 text-gray-700 " for="cars">Add category:</label>
+                        <label class="text-1xl font-bold pt-8 lg:pt-0 text-gray-700 " for="genre">Add category:</label>
 
-                        <select name="cars" id="cars" >
-                            <option  v-for="genre in genres" :value=genre.slug >{{genre.name}}</option>
-<!--                            <option value="saab">Saab</option>-->
-<!--                            <option value="mercedes">Mercedes</option>-->
-<!--                            <option value="audi">Audi</option>-->
+                        <select name="genre" id="genre" v-model="form.genre" @change="genreActions('add', $event)">
+                            <option v-for="genre in genres" :value="genre.id">{{genre.name}}</option>
+
                         </select>
-                        <button
-                            class="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-xs px-2 py-1 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1"
-                            type="button" style="transition: all .15s ease" @click="addGenre()">
-                            <i class="fa fa-plus-circle"></i>
-                        </button>
+
+                        <!--                        <button-->
+                        <!--                            class="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-xs px-2 py-1 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1"-->
+                        <!--                            type="button" style="transition: all .15s ease" @click="genreActions('add')">-->
+                        <!--                            <i class="fa fa-plus-circle"></i>-->
+                        <!--                        </button>-->
                     </div>
 
 
                 </div>
                 <div class="shadow p-1 rounded flex flex-wrap space-x-2">
-                    <p class="rounded-full bg-gray-400 p-1 w-auto "> One man <i class="fa fa-times" aria-hidden="true"></i></p>
-                    <p class="rounded-full bg-gray-400 p-1 w-auto"> One man <i class="fa fa-times" aria-hidden="true"></i></p>
-                    <p class="rounded-full bg-gray-400 p-1 w-auto "> One man <i class="fa fa-times" aria-hidden="true"></i></p>
+                    <p class="rounded-full bg-gray-400 p-1 w-auto " v-for="genre in artist.genres"
+                       @click="genreActions('remove', genre)"> {{genre.name}} <i
+                        class="fa fa-times"
+                        aria-hidden="true"></i></p>
+
+                </div>
+
+                <div class="p-2">
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
+                            @click="showModal('videos-modal')">
+                        <i class="fa fa-youtube" aria-hidden="true"></i> Videos {{artist.videos.length}}
+                    </button>
+
+                </div>
+
+                <div class="p-2">
+                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
+                            @click="editArtist()">
+                        Save
+                    </button>
 
                 </div>
 
@@ -72,50 +98,117 @@
         </div>
 
 
+        <modal name="videos-modal" height="auto" width="95%" :scrollable="true">
+            <div>
+                <ArtistVideos v-bind:artist="artist" @close-modal="hideModal('videos-modal')"/>
+            </div>
+        </modal>
+
+
     </div>
 </template>
 
 <script>
     import axios from "axios";
+    import ArtistVideos from "./modals/ArtistVideos";
+    import {shallowEqual} from "../../../globals/functions";
 
     export default {
         name: "ViewArtist",
-        data(){
-            return{
-                genres:[]
-            }
-
-        },
+        components: {ArtistVideos},
         mounted() {
             this.artistProfile()
             this.fetchGenres()
 
         },
 
-        computed:{
-            artist(){
+        data() {
+            return {
+                genres: [],
+                form: {}
+            }
+
+        },
+
+
+        computed: {
+            artist() {
                 return this.$store.getters.getUserArtists
             }
 
         },
 
-        methods:{
-            fetchGenres(){
+        methods: {
+            showModal(modal, id) {
+                // this.selectedProvider = this.providers[0].providers.filter(provider => provider.id === id)[0]
+                this.$modal.show(modal);
+            },
+            hideModal(modal) {
+                this.$modal.hide(modal);
+            },
+            fetchGenres() {
                 axios.get(`/api/artists/genres`)
                     .then(response => {
-                        console.log('mmmmmm',response)
                         this.genres = response.data.data
                     }).catch(e => {
                     console.log(e)
                 })
             },
 
-            addGenre(){
+            genreActions(action, genreNew) {
+                switch (action) {
+                    case 'add':
+                        let newGenre = this.artist.genres.filter(genre => genre.id == genreNew.target.value)
+                        if (newGenre.length === 0) {
+
+                            newGenre = this.genres.filter(genre => genre.id == genreNew.target.value)
+                            this.artist.genres = [...this.artist.genres, ...newGenre]
+                            console.log()
+                        }
+
+                        break;
+                    case 'remove':
+                        console.log('genreActions function ', genreNew)
+                        this.artist.genres = this.artist.genres.filter(genre => genre.id !== genreNew.id)
+
+                        break;
+                }
+
 
             },
 
-            artistProfile(){
+            artistProfile() {
                 this.$store.dispatch('getUserArtist')
+            },
+
+            createPayload() {
+                let {id, name, description} = this.artist
+                this.form = {
+                    id,
+                    name,
+                    description,
+                    genres: this.artist.genres.map((genre) => genre.id)
+                }
+
+            },
+
+            editArtist() {
+                this.createPayload()
+                if (false) {
+                    this.error = true
+                } else {
+
+                    console.log('Object data sent', this.form)
+                    this.wait = true
+                    this.$store.dispatch('editArtist', this.form)
+                        .then(response => {
+                            this.artistProfile()
+                            this.success = "success"
+                            this.form = {}
+                            this.wait = false
+                        })
+                }
+
             }
         }
 

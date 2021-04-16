@@ -5,8 +5,11 @@
         <div class="md:flex">
             <div class="w-full md:w-2/5 h-auto ">
                 <img class="max-w-full h-auto rounded"
-                     src="https://www.zaziehotel.paris/images/annuaire/hd/%c2%a9%20Paris%20Tourist%20Office%20-%20Photographe%20%20Annemiek%20Veldman.jpg"
+                     :src="'/images/artistImages/' +artist.image"
                      alt="">
+                <button class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded" @click="showModal('edit-image-modal')">
+                    Edit Image
+                </button>
             </div>
 
             <div class="p-2 w-full md:w-3/5 ">
@@ -104,6 +107,12 @@
             </div>
         </modal>
 
+        <modal name="edit-image-modal" height="auto" width="95%" :scrollable="true">
+            <div>
+                <EditImageModal v-bind:artist="artist" @close-modal="hideModal('edit-image-modal')"/>
+            </div>
+        </modal>
+
 
     </div>
 </template>
@@ -112,10 +121,11 @@
     import axios from "axios";
     import ArtistVideos from "./modals/ArtistVideos";
     import {shallowEqual} from "../../../globals/functions";
+    import EditImageModal from "./modals/EditImageModal";
 
     export default {
         name: "ViewArtist",
-        components: {ArtistVideos},
+        components: {EditImageModal, ArtistVideos},
         mounted() {
             this.artistProfile()
             this.fetchGenres()
@@ -140,7 +150,6 @@
 
         methods: {
             showModal(modal, id) {
-                // this.selectedProvider = this.providers[0].providers.filter(provider => provider.id === id)[0]
                 this.$modal.show(modal);
             },
             hideModal(modal) {

@@ -53,7 +53,7 @@ Route::get('api/venues/booking-information/{code}/{id}','VenueBookingController@
 Route::get('api/artists/profile','ArtistController@artistProfile');
 Route::post('api/artists/genres','ArtistGenreController@store');
 Route::post('api/artists/edit','ArtistController@edit');
-Route::post('api/artists/saveImage','ArtistController@saveImage');
+Route::post('api/artists/saveImage','ArtistController@editImage');
 
 
 //Video Routes

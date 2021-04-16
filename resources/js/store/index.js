@@ -43,6 +43,10 @@ export default new Vuex.Store({
             return state.allArtists
         },
 
+        getAnArtist: (state) => (id) => {
+            return state.allArtists.filter(artist=>artist.id === id)
+        },
+
         getUserArtists(state){
             return state.userArtist
         }
@@ -147,7 +151,7 @@ export default new Vuex.Store({
 
 
         getAllArtists(state) {
-            axios.get(`/api/venues`)
+            axios.get(`/api/artists`)
                 .then(response => {
                     console.log(response.data)
                     let venues = response.data

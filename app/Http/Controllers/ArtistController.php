@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Artists\Artist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class ArtistController extends Controller
@@ -18,7 +19,26 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        $artists = Artist::all();
+        $artists = Artist::all()->map(function($artist){
+        return[
+            'id' => $artist->id,
+            'name' => $artist->name,
+            'description' =>$artist->description,
+            'image'=>$artist->image,
+            'genres' =>  $artist->genres->map(function($genre){
+                return[
+                    'id' => $genre->id,
+                    'name' => $genre->name
+                ];
+            }),
+            'videos' =>  $artist->videos->map(function($video){
+                return[
+                    'url' => $video->url,
+                    'id' =>$video->id
+                ];
+            }),
+        ];
+    });
 
         return response()->json([
             'data' => $artists,
@@ -102,15 +122,14 @@ class ArtistController extends Controller
     public function editImage(Request $request)
     {
         $artistId = $request->input('id');
-        $name = $request->input('name');
-        $description = $request->input('description');
+        $image = $request->input('image');
 
         $artist = Artist::where('id', $artistId)->first();
 
-        if ($artist->user_id == Auth::id()) {
-            $artist->name = $name;
-            $artist->description = $description;
 
+        if ($artist->user->id == Auth::id()) {
+            File::delete('images/artistImages/'.$artist->image);
+            $artist->image = $this->saveImage($image);
             $artist->save();
         }
 
@@ -132,7 +151,7 @@ class ArtistController extends Controller
             $extension = 'png';
         $filename = Str::random(16) . '.' . $extension;
 
-        $path = public_path() . '/' . $filename;
+        $path = public_path() . '/images/artistImages/' . $filename;
 
 //        dd($path);
 

@@ -55,6 +55,9 @@ Route::post('api/artists/genres','ArtistGenreController@store');
 Route::post('api/artists/edit','ArtistController@edit');
 Route::post('api/artists/saveImage','ArtistController@editImage');
 
+Route::post('api/artists/bookArtist','ArtistBookingController@bookArtist');
+
+
 
 //Video Routes
 Route::post('/video/save', 'VideoController@store');

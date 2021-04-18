@@ -2,7 +2,9 @@
 
     <div>
         <div>
-            <div class="sm:flex border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white" v-if="event">
+            <div
+                class="sm:flex border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white"
+                v-if="event">
                 <div class="md:w-2/5 px-2 pt-2">
                     <div class="text-gray-900 font-bold text-xl mb-2">{{event[0].name}}</div>
                     <!--                <img class="max-w-full max-h-full m-auto" src="http://www.ragranjani.com/images/banner-001.jpg" alt="">-->
@@ -26,35 +28,49 @@
                     </div>
                     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                         <div class=" mb-6 mt-6 md:mb-1">
-                            <label class="block  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+                            <label class="block  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                                 Ticket Type
                             </label>
                             <div class="relative">
-                                <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" v-model="form.ticketPrice">
+                                <select
+                                    class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                    v-model="form.ticketPrice">
                                     <option v-bind:value="event[0].vvip">VVIP: Ksh. {{event[0].vvip}}</option>
                                     <option v-bind:value="event[0].vip">VIP: Ksh. {{event[0].vip}}</option>
                                     <option v-bind:value="event[0].regular">REGULAR: Ksh. {{event[0].regular}}</option>
                                 </select>
-                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
 
                         <div class=" mb-6 mt-6 md:mb-1">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                                 Number Of Tickets
                             </label>
                             <div class="relative">
-                                <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" v-model="form.ticketNo">
+                                <select
+                                    class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                    v-model="form.ticketNo">
                                     <option value="1">1 Ticket</option>
                                     <option value="2">2 Tickets</option>
                                     <option value="3">3 Tickets</option>
                                     <option value="4">4 Tickets</option>
                                     <option value="5">5 Tickets</option>
                                 </select>
-                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -62,10 +78,14 @@
                             <label class="block  text-gray-700 text-sm font-bold mb-2" for="total-amount">
                                 Total Amount
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="total-amount" type="text" disabled placeholder="Amount"  v-model="amount">
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="total-amount" type="text" disabled placeholder="Amount" v-model="amount">
                         </div>
                         <div class="flex items-center justify-between">
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" @click="showBuyModal">
+                            <button
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                type="button" @click="showBuyModal">
                                 Buy Tickets
                             </button>
                         </div>
@@ -75,9 +95,10 @@
                             <p class="text-gray-900 leading-none">Share</p>
                             <p class="text-gray-600">Event</p>
                         </div>
-                        <i class="fab fa-whatsapp w-30 h-30 rounded-full mr-4"></i>
-                        <i class="fab fa-twitter w-30 h-30 rounded-full mr-4"></i>
-                        <i class="fab fa-facebook-f w-30 h-30 rounded-full mr-4"></i>
+                        <a :href="'https://www.facebook.com/sharer/sharer.php?u='+url($route.fullPath)" target="_blank"><i class="fab fa-facebook-f w-30 h-30 rounded-full mr-4"></i></a>
+                        <a :href="'https://wa.me/?text='+url($route.fullPath)"><i class="fab fa-whatsapp w-30 h-30 rounded-full mr-4"></i></a>
+                        <a :href="'https://twitter.com/intent/tweet?text='+url($route.fullPath)"><i class="fab fa-twitter w-30 h-30 rounded-full mr-4"></i></a>
+
                     </div>
                 </div>
             </div>
@@ -115,7 +136,7 @@
                                 </svg>
                                 Ticket Details
                             </p>
-                            <div class="text-gray-900 font-bold text-xl mb-2">Event Name : {{event[0].name}} </div>
+                            <div class="text-gray-900 font-bold text-xl mb-2">Event Name : {{event[0].name}}</div>
                             <p class="text-gray-700 text-base">Tickets : {{form.ticketNo}} @ {{form.ticketPrice}} </p>
                             <p class="text-gray-700 text-base">Total Amount: Ksh. {{amount}}</p>
 
@@ -125,31 +146,41 @@
                                 <label class="block  text-gray-700 text-sm font-bold mb-2" for="firstname">
                                     Firstname
                                 </label>
-                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text"  placeholder="Firstname"  v-model="form.firstname">
+                                <input
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="firstname" type="text" placeholder="Firstname" v-model="form.firstname">
                             </div>
 
                             <div class="mb-4 mt-6">
                                 <label class="block  text-gray-700 text-sm font-bold mb-2" for="lastname">
                                     LastName
                                 </label>
-                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lastname" type="text"  placeholder="Lastname" v-model="form.lastname" >
+                                <input
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="lastname" type="text" placeholder="Lastname" v-model="form.lastname">
                             </div>
 
                             <div class="mb-4 mt-6">
                                 <label class="block  text-gray-700 text-sm font-bold mb-2" for="email">
                                     Email
                                 </label>
-                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text"  placeholder="email" v-model="form.email" >
+                                <input
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="email" type="text" placeholder="email" v-model="form.email">
                             </div>
 
                             <div class="mb-4 mt-6">
                                 <label class="block  text-gray-700 text-sm font-bold mb-2" for="phone">
                                     Phone Number
                                 </label>
-                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="text"  placeholder="+254..(safaricom line)" v-model="form.phone"  >
+                                <input
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="phone" type="text" placeholder="+254..(safaricom line)" v-model="form.phone">
                             </div>
                             <div class="flex items-center justify-between">
-                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" @click="bookEvent">
+                                <button
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                    type="button" @click="bookEvent">
                                     Buy Tickets
                                 </button>
                             </div>
@@ -168,6 +199,7 @@
 <script>
     import EventTemplate from "./EventTemplate.vue";
     import axios from "axios";
+    import {siteUrl} from '../../globals/functions';
 
     export default {
         name: "EventBook.vue",
@@ -181,11 +213,11 @@
         data() {
             return {
                 eventId: this.$route.params.id,
-                ticketsNo:null,
-                ticketPrice:null,
-                totalAmount:0,
-                form:{
-                    id:this.eventId
+                ticketsNo: null,
+                ticketPrice: null,
+                totalAmount: 0,
+                form: {
+                    id: this.eventId
                 }
 
             }
@@ -196,17 +228,17 @@
                 return this.$store.getters.getAllEvents.filter(event => event.id == this.eventId)
             },
 
-            amount(){
-                if(this.form.ticketNo && this.form.ticketPrice){
+            amount() {
+                if (this.form.ticketNo && this.form.ticketPrice) {
                     return this.form.ticketNo * this.form.ticketPrice
-                }else{
+                } else {
                     return 0
                 }
-            }
+            },
 
         },
 
-        methods:{
+        methods: {
             showBuyModal() {
                 this.$modal.show('buy-modal');
             },
@@ -216,8 +248,8 @@
                 this.$modal.hide('buy-modal');
             },
 
-            bookEvent(){
-                this.form.id=this.$route.params.id;
+            bookEvent() {
+                this.form.id = this.$route.params.id;
                 axios.post(`/api/events/bookEvent`, this.form)
                     .then(response => {
                         console.log(response)
@@ -227,6 +259,10 @@
                     reject(e)
                     console.log(e)
                 })
+            },
+
+            url(path){
+                return siteUrl(path)
             }
         },
 

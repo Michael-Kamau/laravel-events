@@ -59,24 +59,24 @@
                                 </th>
                                 <th
                                     class="px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    User
+                                    Amount
                                 </th>
                                 <th
                                     class="px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Rol
-                                </th>
-                                <th
-                                    class="px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Created at
+                                    Booking date
                                 </th>
                                 <th
                                     class="px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                     Status
                                 </th>
+                                <th
+                                    class="px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Details
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <tr v-for="booking in artist.bookings">
                                 <td class="px-2 py-2 border-b border-gray-200 bg-white text-sm">
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 w-10 h-10">
@@ -85,21 +85,18 @@
                                         </div>
                                         <div class="ml-2">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                Vera Carpenter
+                                                {{booking.name}}
                                             </p>
                                         </div>
                                     </div>
                                 </td>
 
                                 <td class="px-2 py-2 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">Admin</p>
-                                </td>
-                                <td class="px-2 py-2 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">Admin</p>
+                                    <p class="text-gray-900 whitespace-no-wrap">{{booking.amount}}</p>
                                 </td>
                                 <td class="px-2 py-2 border-b border-gray-200 bg-white text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap">
-                                        Jan 21, 2020
+                                        {{booking.date}}
                                     </p>
                                 </td>
                                 <td class="px-2 py-2 border-b border-gray-200 bg-white text-sm">
@@ -107,8 +104,13 @@
                                         class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                         <span aria-hidden
                                               class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                        <span class="relative">Activo</span>
+                                        <span class="relative">{{booking.status}}</span>
                                     </span>
+                                </td>
+                                <td class="px-2 py-2 border-b border-gray-200 bg-white text-sm">
+                                    <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                                        Details
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>
@@ -122,7 +124,23 @@
 
 <script>
     export default {
-        name: "ArtistBookings"
+        name: "ArtistBookings",
+
+        mounted(){
+            this.artistProfile()
+        },
+
+        computed:{
+            artist() {
+                return this.$store.getters.getUserArtists
+            }
+        },
+
+        methods:{
+            artistProfile() {
+                this.$store.dispatch('getUserArtist')
+            },
+        }
     }
 </script>
 

@@ -66,6 +66,16 @@ class ArtistController extends Controller
                     'name' => $genre->name
                 ];
             }),
+            'bookings' =>  $artist->bookings->map(function($booking){
+                return[
+                    'id' => $booking->id,
+                    'name' => $booking->firstname . ' ' . $booking->lastname,
+                    'description' => $booking->description,
+                    'date' => $booking->book_date,
+                    'amount' => $booking->amount,
+                    'status' => $booking->status->name,
+                ];
+            }),
             'videos' =>  $artist->videos->map(function($video){
                 return[
                     'url' => $video->url,

@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71cae4b9-0f07-41ba-8e79-9a4f9af19b96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/pages/artists/modals/ArtistVideos.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/pages/artists/partials/VideoFrame.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/pages/auth/artists_auth/modals/EditImageModal.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ArtistController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ArtistController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/artists/ArtistBook.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/artists/ArtistBook.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/artists/ArtistTemplate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/artists/ArtistTemplate.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/auth/artists_auth/ViewArtist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/artists_auth/ViewArtist.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +133,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/pages/artists" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -262,7 +251,13 @@
       <workItem from="1618109887561" duration="11968000" />
       <workItem from="1618252702336" duration="4782000" />
       <workItem from="1618508318301" duration="2875000" />
-      <workItem from="1618511999254" duration="5951000" />
+      <workItem from="1618511999254" duration="8326000" />
+      <workItem from="1618594070668" duration="71000" />
+      <workItem from="1618594866861" duration="2345000" />
+      <workItem from="1618694312929" duration="244000" />
+      <workItem from="1618760728823" duration="8521000" />
+      <workItem from="1618781323208" duration="357000" />
+      <workItem from="1618821433167" duration="79000" />
     </task>
     <servers />
   </component>
@@ -270,10 +265,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1618514736556">
+    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1618779948756">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1618514736556" />
+    <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1618779948756" />
     <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1611614885257">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -290,19 +285,19 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1611614885256" />
-    <state x="317" y="233" key="com.intellij.ide.util.TipDialog" timestamp="1618512144283">
+    <state x="317" y="233" key="com.intellij.ide.util.TipDialog" timestamp="1618781331535">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="317" y="233" key="com.intellij.ide.util.TipDialog/0.0.1280.800@0.0.1280.800" timestamp="1618512144283" />
+    <state x="317" y="233" key="com.intellij.ide.util.TipDialog/0.0.1280.800@0.0.1280.800" timestamp="1618781331535" />
     <state x="317" y="233" key="com.intellij.ide.util.TipDialog/0.23.1280.723@0.23.1280.723" timestamp="1611687335178" />
     <state x="317" y="234" key="com.intellij.ide.util.TipDialog/0.23.1280.724@0.23.1280.724" timestamp="1618508334539" />
     <state x="298" y="162" width="837" height="540" key="find.popup" timestamp="1618508851242">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="298" y="162" width="837" height="540" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1618508851242" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1618516299587">
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1618776006649">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1618516299587" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1618776006649" />
   </component>
 </project>

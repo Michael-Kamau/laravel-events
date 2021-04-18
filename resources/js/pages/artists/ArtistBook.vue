@@ -29,7 +29,7 @@
                         <i class="fa fa-youtube" aria-hidden="true"></i> Videos {{artist.videos.length}}
                     </button>
 
-                    <button class="h-10 px-2 text-indigo-100 transition-colors duration-150 bg-green-700 rounded-lg focus:shadow-outline hover:bg-green-800">
+                    <button class="h-10 px-2 text-indigo-100 transition-colors duration-150 bg-green-700 rounded-lg focus:shadow-outline hover:bg-green-800" @click="showModal('book-modal')">
                         <span class="mr-2">Book Artist</span>
                     </button>
                 </div>
@@ -44,6 +44,12 @@
             </div>
         </modal>
 
+        <modal name="book-modal" height="auto" width="95%" :scrollable="true">
+            <div>
+                <BookArtistModal v-bind:artist="artist" @close-modal="hideModal('book-modal')"/>
+            </div>
+        </modal>
+
 
     </div>
 </template>
@@ -51,9 +57,11 @@
 <script>
     import {mapGetters, mapActions} from 'vuex';
     import ArtistVideos from "./modals/ArtistVideos";
+    import BookArtistModal from "./modals/BookArtistModal";
+    import axios from "axios";
     export default {
         name: "ArtistBook",
-        components: {ArtistVideos},
+        components: {BookArtistModal, ArtistVideos},
         mounted() {
             this.getAllArtists();
         },
@@ -61,14 +69,13 @@
         computed: {
 
             artist(){
-              return this.$store.getters.getAnArtist(1)[0]
+              return this.$store.getters.getAnArtist(this.$route.params.id)[0]
             },
         },
 
         methods:{
 
-            showModal(modal, id) {
-                // this.selectedProvider = this.providers[0].providers.filter(provider => provider.id === id)[0]
+            showModal(modal) {
                 this.$modal.show(modal);
             },
             hideModal(modal) {

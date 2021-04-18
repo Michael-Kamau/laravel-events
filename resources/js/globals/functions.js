@@ -1,3 +1,10 @@
+
+
+export const siteUrl = (path) => {
+    return 'http://events.appp'+path
+}
+
+
 export const shallowEqual = (object1, object2) => {
     const keys1 = Object.keys(object1);
     const keys2 = Object.keys(object2);

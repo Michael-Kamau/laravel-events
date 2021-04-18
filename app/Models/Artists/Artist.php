@@ -18,6 +18,11 @@ class Artist extends Model
         return $this->belongsToMany(Genre::class);
     }
 
+    public function bookings()
+    {
+        return $this->hasMany(ArtistBooking::class,'artist_id');
+    }
+
     public function videos()
     {
         return $this->morphMany('App\Models\Videos\Video','videoable');

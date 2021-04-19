@@ -25,11 +25,12 @@
     },
     "dependencies": {
         "css": "^2.2.4",
+        "moment": "^2.29.1",
+        "serialize-javascript": ">=3.1.0",
         "tailwind": "^4.0.0",
         "tailwindcss": "^1.2.0",
         "vue-js-modal": "^2.0.0-rc.3",
         "vue-router": "^3.1.5",
-        "vuex": "^3.1.2",
-        "serialize-javascript": ">=3.1.0"
+        "vuex": "^3.1.2"
     }
 }

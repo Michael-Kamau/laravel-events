@@ -19,4 +19,9 @@ class Status extends Model
     {
         return $this->hasMany('App\Models\Venues\VenueBooking');
     }
+
+    public function artistBookings()
+    {
+        return $this->hasMany('App\Models\Venues\ArtistBooking');
+    }
 }

@@ -11,6 +11,8 @@ export default new Vuex.Store({
         userEvents: [],
         allVenues:[],
         userVenues:[],
+        allArtists:[],
+        userArtist:[],
         userDetails:[],
         roles: []
 
@@ -35,6 +37,18 @@ export default new Vuex.Store({
 
         getUserVenues(state){
          return state.userVenues
+        },
+
+        getAllArtists(state){
+            return state.allArtists
+        },
+
+        getAnArtist: (state) => (id) => {
+            return state.allArtists.filter(artist=>artist.id === id)
+        },
+
+        getUserArtists(state){
+            return state.userArtist
         }
 
 
@@ -136,6 +150,72 @@ export default new Vuex.Store({
         },
 
 
+        getAllArtists(state) {
+            axios.get(`/api/artists`)
+                .then(response => {
+                    console.log(response.data)
+                    let venues = response.data
+                    state.commit('getAllArtists', venues)
+                }).catch(e => {
+                console.log(e)
+            })
+
+        },
+
+
+        getUserArtist(state){
+            axios.get('/api/artists/profile')
+                .then(response => {
+                    console.log(response.data)
+                    let userArtist = response.data
+                    state.commit('getUserArtist', userArtist)
+                }).catch(e => {
+                console.log(e)
+            })
+        },
+
+        editArtist(state, payload) {
+            console.log(payload)
+            return new Promise((resolve, reject) => {
+                axios.post(`/api/artists/edit`, payload)
+                    .then(response => {
+                        console.log(response)
+                        resolve(response)
+                    }).catch(e => {
+                    reject(e)
+                    console.log(e)
+                })
+            })
+
+        },
+
+
+        addVideo(state, payload) {
+            return new Promise((resolve, reject) => {
+                axios.post(`/video/save`, payload)
+                    .then(response => {
+                        resolve(response)
+                    }).catch(e => {
+                    reject(e)
+                })
+            })
+
+        },
+        deleteVideo(state, imageId) {
+            return new Promise((resolve, reject) => {
+                axios.get(`/video/delete/`+imageId)
+                    .then(response => {
+                        console.log(response)
+                        resolve(response)
+                    }).catch(e => {
+                    reject(e)
+                    console.log(e)
+                })
+            })
+
+        }
+
+
     },
 
     mutations: {
@@ -157,6 +237,14 @@ export default new Vuex.Store({
 
         getUserVenues(state, payload) {
             state.userVenues = payload.data
+        },
+
+        getAllArtists(state, payload) {
+            state.allArtists = payload.data
+        },
+
+        getUserArtist(state, payload) {
+            state.userArtist = payload.data
         }
 
     }

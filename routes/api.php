@@ -21,7 +21,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('events','EventController@index');
 
+//Venues Routes
+
 Route::get('venues','VenueController@index');
+
+
+//Artists Routes
+Route::get('artists','ArtistController@index');
+Route::get('artists/genres','ArtistGenreController@index');
+
 
 
 Route::get('/email/{eventId}', 'EventBookingController@mailEventBookingPdf');

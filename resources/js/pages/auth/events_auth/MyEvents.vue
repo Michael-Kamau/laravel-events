@@ -319,9 +319,7 @@
 
         mounted() {
             this.$store.dispatch('getUserEvents')
-                .then(response => {
-                    console.log(response)
-                })
+
         }
 
 

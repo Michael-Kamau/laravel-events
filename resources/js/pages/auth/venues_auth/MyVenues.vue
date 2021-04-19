@@ -2,27 +2,27 @@
     <div>
 
         <div v-if="this.$store.getters.getUserVenues.length">
-            <table class="table-auto">
+            <table class="table-auto min-w-full leading-normal shadow mx-1">
                 <thead>
                 <tr>
-                    <th class="px-4 py-2">Venue Title</th>
-                    <th class="px-4 py-2">Unconfirmed</th>
-                    <th class="px-4 py-2">Awaiting payment</th>
-                    <th class="px-4 py-2">Paid</th>
-                    <th class="px-4 py-2">View</th>
-                    <th class="px-4 py-2">Edit</th>
-                    <th class="px-4 py-2">Status</th>
+                    <th class="t-head">Venue Title</th>
+                    <th class="t-head">Unconfirmed</th>
+                    <th class="t-head">Awaiting payment</th>
+                    <th class="t-head">Paid</th>
+                    <th class="t-head">View</th>
+                    <th class="t-head">Edit</th>
+                    <th class="t-head">Status</th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr v-for="venue in this.$store.getters.getUserVenues" :key="venue.id">
 
-                        <td class="border px-4 py-2">{{venue.name}}</td>
-                        <td class="border px-4 py-2">{{venue.submitted}}</td>
-                        <td class="border px-4 py-2">{{venue.confirmed}}</td>
+                        <td class="t-data">{{venue.name}}</td>
+                        <td class="t-data">{{venue.submitted}}</td>
+                        <td class="t-data">{{venue.confirmed}}</td>
 
-                        <td class="border px-4 py-2">{{venue.completed}}</td>
-                        <td class="border px-4 py-2">
+                        <td class="t-data">{{venue.completed}}</td>
+                        <td class="t-data">
                             <router-link :to="{ name: 'viewVenue', params: { id: venue.id }}">
                                 <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                                     View
@@ -30,13 +30,13 @@
                             </router-link>
 
                         </td>
-                        <td class="border px-4 py-2">
+                        <td class="t-data">
                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                     @click="showModal('edit-modal', venue.id)">
                                 Edit
                             </button>
                         </td>
-                        <td class="border px-4 py-2">
+                        <td class="t-data">
                             <ToggleButton v-bind:active="venue.active" @toggle-active="toggleActive(venue.id)"/>
                         </td>
                     </tr>
@@ -149,6 +149,14 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+    .t-head{
+        @apply px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider;
+    }
+
+    .t-data{
+        @apply px-2 py-2 border-b border-gray-200 bg-white text-sm;
+    }
 
 </style>

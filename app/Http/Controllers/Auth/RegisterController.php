@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Artists\Artist;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -73,6 +74,14 @@ class RegisterController extends Controller
         ]);
         if($data['account-type']=='event-manager' || $data['account-type']=='venue-manager' || $data['account-type']=='artist'){
             $user->assignRole($data['account-type']);
+        }
+
+        if($data['account-type']=='artist'){
+            Artist::create([
+                'user_id'=>$user->id,
+                'name'=>$user->name,
+                'description'=>'Enter your description here'
+            ]);
         }
 
 

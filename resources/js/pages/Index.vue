@@ -15,10 +15,7 @@
                 </div>
                 <div class="rounded p-4 bg-black mt-8 bg-opacity-50">
                     <h1 class="text-gray text-2xl">As an events company we are a very curative in bringing you the right
-                        crowd or parsons to your event whether social event or cooperate event
-                        plus we make it easier for you to reach your target audience as we have
-                        made it possible for like-minded minds to notify/alert each other when
-                        your event comes up.</h1>
+                        crowd or persons to your event whether social event or cooperate event .</h1>
                 </div>
 
 

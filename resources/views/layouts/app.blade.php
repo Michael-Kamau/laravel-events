@@ -22,7 +22,7 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="sticky top-0 z-10 navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Events Finder') }}
@@ -48,11 +48,11 @@
                         </a>
                     </li>
 
-{{--                    <li class="nav-item">--}}
-{{--                        <a id="" class="nav-link " href="/artists" role="button" v-pre>--}}
-{{--                            Artists <span class="caret"></span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li class="nav-item">
+                        <a id="" class="nav-link " href="/artists" role="button" v-pre>
+                            Artists <span class="caret"></span>
+                        </a>
+                    </li>
 
                 </ul>
 

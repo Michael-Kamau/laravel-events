@@ -74,7 +74,6 @@
         },
 
         methods:{
-
             showModal(modal) {
                 this.$modal.show(modal);
             },

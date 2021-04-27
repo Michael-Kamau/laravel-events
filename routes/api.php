@@ -31,6 +31,10 @@ Route::get('artists','ArtistController@index');
 Route::get('artists/genres','ArtistGenreController@index');
 
 
+//Terms and conditions
+Route::get('terms','HomeController@terms');
+
+
 
 Route::get('/email/{eventId}', 'EventBookingController@mailEventBookingPdf');
 

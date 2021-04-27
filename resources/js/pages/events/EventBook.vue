@@ -82,6 +82,10 @@
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="total-amount" type="text" disabled placeholder="Amount" v-model="amount">
                         </div>
+                        <div>
+                            <p>By booking ticket, you agree to our <a href="/terms" class="text-blue-600">Terms and conditions</a> </p>
+
+                        </div>
                         <div class="flex items-center justify-between">
                             <button
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

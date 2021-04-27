@@ -41,14 +41,15 @@
                             </button>
                         </div>
 
-                        <div class="flex items-center pt-2">
+                        <div class="flex items-center">
                             <div class="text-sm mr-4">
                                 <p class="text-gray-900 leading-none">Share</p>
                                 <p class="text-gray-600">Event</p>
                             </div>
-                            <i class="fab fa-whatsapp w-30 h-30 rounded-full mr-4"></i>
-                            <i class="fab fa-twitter w-30 h-30 rounded-full mr-4"></i>
-                            <i class="fab fa-facebook-f w-30 h-30 rounded-full mr-4"></i>
+                            <a :href="'https://www.facebook.com/sharer/sharer.php?u='+url($route.fullPath)" target="_blank"><i class="fab fa-facebook-f w-30 h-30 rounded-full mr-4"></i></a>
+                            <a :href="'https://wa.me/?text='+url($route.fullPath)"><i class="fab fa-whatsapp w-30 h-30 rounded-full mr-4"></i></a>
+                            <a :href="'https://twitter.com/intent/tweet?text='+url($route.fullPath)"><i class="fab fa-twitter w-30 h-30 rounded-full mr-4"></i></a>
+
                         </div>
 
                     </form>
@@ -176,6 +177,7 @@
 
 <script>
     import axios from "axios";
+    import {siteUrl} from "../../globals/functions";
 
     export default {
         name: "VenueBook",
@@ -224,6 +226,10 @@
                     reject(e)
                     console.log(e)
                 })
+            },
+
+            url(path){
+                return siteUrl(path)
             }
 
         }

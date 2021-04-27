@@ -1,7 +1,7 @@
 
 
 export const siteUrl = (path) => {
-    return 'http://events.appp'+path
+    return 'http://alleventsfinder.com'+path
 }
 
 

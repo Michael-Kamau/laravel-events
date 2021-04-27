@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Terms\Term;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('terms');;
     }
 
     /**
@@ -45,5 +46,20 @@ class HomeController extends Controller
 
 
         return (Auth::User()->Roles()->pluck('name'));
+    }
+
+    /**
+     * Show the application terms and conditions.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function terms()
+    {
+        $terms= Term::all();
+
+        return response()->json([
+            'data' => $terms,
+            'status' => 200
+        ]);
     }
 }

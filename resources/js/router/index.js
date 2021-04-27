@@ -14,6 +14,8 @@ import VenuePayment from "../pages/venues/VenuePayment";
 import ArtistsHome from "../pages/artists/ArtistsHome.vue";
 import ArtistBook from "../pages/artists/ArtistBook";
 
+import TermsAndConditions from "../pages/terms/TermsAndConditions";
+
 //Event auth
 import MyEvents from "../pages/auth/events_auth/MyEvents.vue"
 import AddEvent from "../pages/auth/events_auth/AddEvent.vue";
@@ -101,6 +103,7 @@ export default new Router({
             name: 'artistPage',
             component: ArtistBook
         },
+
         {
             path: '/dashboard',
             name: 'dashboard',
@@ -167,6 +170,13 @@ export default new Router({
             ]
 
         },
+
+        {
+            path: '/terms',
+            name: 'termsPage',
+            component: TermsAndConditions
+        },
+
 
         {
             path: '*',

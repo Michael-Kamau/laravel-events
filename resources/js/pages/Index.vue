@@ -26,7 +26,7 @@
         <div class="flex mb-4 flex-wrap mx-auto items-center justify-center">
 
 
-            <div class="w-2/7 m-2 ">
+            <router-link to="/events" class="w-2/7 m-2 ">
                 <div class="max-w-sm rounded overflow-hidden shadow-lg border text-gray-900">
                     <img class="" src="/homepage.jpg" alt="">
                     <div class="p-8">
@@ -35,9 +35,9 @@
                     </div>
                 </div>
 
-            </div>
+            </router-link>
 
-            <div class="w-2/7 m-2 ">
+            <router-link to="/venues" class="w-2/7 m-2 ">
                 <div class="max-w-sm rounded overflow-hidden shadow-lg border text-gray-900">
                     <img class="" src="/venues.jpg" alt="">
                     <div class="p-8">
@@ -46,9 +46,9 @@
                     </div>
                 </div>
 
-            </div>
+            </router-link>
 
-            <div class="w-2/7 m-2 ">
+            <router-link to="/artists" class="w-2/7 m-2 ">
                 <div class="max-w-sm rounded overflow-hidden shadow-lg border text-gray-900">
                     <img class="" src="/artist.jpg" alt="">
                     <div class="p-8">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
 
-            </div>
+            </router-link>
 
 
 

@@ -42345,87 +42345,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "div",
-        {
-          staticClass: "bg-auto bg-cover h-75",
-          staticStyle: {
-            "background-image": "url(/images/homepage/events2.jpg)"
-          }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                " w-full h-full text-center text-white pt-12 items-center justify-center p-6",
-              staticStyle: { background: "rgba(0,0,0,0.6)" }
-            },
-            [
-              _c(
-                "h1",
-                {
-                  staticClass:
-                    "'text-white text-5xl m-12 text-uppercase italic "
-                },
-                [_vm._v("All Events Finder")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "hide grid gap-4 md:grid-cols-3 md:grid-cols-1 p-4 pb-8"
-                },
-                [
-                  _c("img", {
-                    staticClass: "transform md:rotate-45 rounded-md",
-                    attrs: { src: "/images/homepage/events.jpg" }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    staticClass: "transform md:-rotate-12 rounded-md",
-                    attrs: { src: "/images/homepage/venues.jpg" }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    staticClass: "transform md:rotate-45 rounded-md",
-                    attrs: { src: "/images/homepage/artists.jpg" }
-                  })
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "rounded p-4 bg-black mt-8 bg-opacity-50" },
-                [
-                  _c("h1", { staticClass: "text-gray text-2xl" }, [
-                    _vm._v(
-                      "As an events company we are a very curative in bringing you the right\n                        crowd or persons to your event whether social event or cooperate event ."
-                    )
-                  ])
-                ]
-              )
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "flex mb-4 flex-wrap mx-auto items-center justify-center"
-        },
-        [
-          _c("div", { staticClass: "w-2/7 m-2 " }, [
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "flex mb-4 flex-wrap mx-auto items-center justify-center"
+      },
+      [
+        _c(
+          "router-link",
+          { staticClass: "w-2/7 m-2 ", attrs: { to: "/events" } },
+          [
             _c(
               "div",
               {
@@ -42457,9 +42389,13 @@ var staticRenderFns = [
                 ])
               ]
             )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/7 m-2 " }, [
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          { staticClass: "w-2/7 m-2 ", attrs: { to: "/venues" } },
+          [
             _c(
               "div",
               {
@@ -42491,9 +42427,13 @@ var staticRenderFns = [
                 ])
               ]
             )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/7 m-2 " }, [
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          { staticClass: "w-2/7 m-2 ", attrs: { to: "/artists" } },
+          [
             _c(
               "div",
               {
@@ -42525,10 +42465,80 @@ var staticRenderFns = [
                 ])
               ]
             )
-          ])
-        ]
-      )
-    ])
+          ]
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "bg-auto bg-cover h-75",
+        staticStyle: { "background-image": "url(/images/homepage/events2.jpg)" }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              " w-full h-full text-center text-white pt-12 items-center justify-center p-6",
+            staticStyle: { background: "rgba(0,0,0,0.6)" }
+          },
+          [
+            _c(
+              "h1",
+              {
+                staticClass: "'text-white text-5xl m-12 text-uppercase italic "
+              },
+              [_vm._v("All Events Finder")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "hide grid gap-4 md:grid-cols-3 md:grid-cols-1 p-4 pb-8"
+              },
+              [
+                _c("img", {
+                  staticClass: "transform md:rotate-45 rounded-md",
+                  attrs: { src: "/images/homepage/events.jpg" }
+                }),
+                _vm._v(" "),
+                _c("img", {
+                  staticClass: "transform md:-rotate-12 rounded-md",
+                  attrs: { src: "/images/homepage/venues.jpg" }
+                }),
+                _vm._v(" "),
+                _c("img", {
+                  staticClass: "transform md:rotate-45 rounded-md",
+                  attrs: { src: "/images/homepage/artists.jpg" }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "rounded p-4 bg-black mt-8 bg-opacity-50" },
+              [
+                _c("h1", { staticClass: "text-gray text-2xl" }, [
+                  _vm._v(
+                    "As an events company we are a very curative in bringing you the right\n                        crowd or persons to your event whether social event or cooperate event ."
+                  )
+                ])
+              ]
+            )
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true

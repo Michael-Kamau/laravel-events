@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71cae4b9-0f07-41ba-8e79-9a4f9af19b96" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,6 +262,7 @@
       <workItem from="1619182322555" duration="1018000" />
       <workItem from="1619505398246" duration="3287000" />
       <workItem from="1619512528164" duration="1719000" />
+      <workItem from="1620379747591" duration="1307000" />
     </task>
     <servers />
   </component>
@@ -272,35 +274,18 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="378" y="162" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1618779948756" />
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1611614885257">
+    <state x="317" y="233" key="com.intellij.ide.util.TipDialog" timestamp="1620379773485">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1611614885257" />
-    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1611614885256">
-      <screen x="0" y="0" width="1280" height="800" />
-    </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1611614885256" />
-    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1611614885255">
-      <screen x="0" y="0" width="1280" height="800" />
-    </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1611614885255" />
-    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1611614885256">
-      <screen x="0" y="0" width="1280" height="800" />
-    </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1611614885256" />
-    <state x="317" y="233" key="com.intellij.ide.util.TipDialog" timestamp="1619512530836">
-      <screen x="0" y="0" width="1280" height="800" />
-    </state>
-    <state x="317" y="233" key="com.intellij.ide.util.TipDialog/0.0.1280.800@0.0.1280.800" timestamp="1619512530836" />
-    <state x="317" y="233" key="com.intellij.ide.util.TipDialog/0.23.1280.723@0.23.1280.723" timestamp="1611687335178" />
+    <state x="317" y="233" key="com.intellij.ide.util.TipDialog/0.0.1280.800@0.0.1280.800" timestamp="1620379773485" />
     <state x="317" y="234" key="com.intellij.ide.util.TipDialog/0.23.1280.724@0.23.1280.724" timestamp="1618508334539" />
     <state x="298" y="162" width="837" height="540" key="find.popup" timestamp="1618508851242">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="298" y="162" width="837" height="540" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1618508851242" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1619514307360">
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1620377914140">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1619514307360" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1620377914140" />
   </component>
 </project>

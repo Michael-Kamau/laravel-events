@@ -2,6 +2,7 @@
 
 namespace App\Models\Artists;
 
+use App\Models\Payments\Payment;
 use App\Models\Status;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +18,10 @@ class ArtistBooking extends Model
     public function status()
     {
         return $this->belongsTo(Status::class, 'status_id');
+    }
+
+    public function payment(){
+        return $this->morphOne(Payment::class, 'paymentable');
     }
 
     public function scopeUserArtistBookings($query,$event)

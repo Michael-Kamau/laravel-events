@@ -65,6 +65,11 @@ Route::post('/video/save', 'VideoController@store');
 Route::get('/video/delete/{id}','VideoController@delete');
 
 
+//Payment Routes
+
+Route::get('payment/test','PaymentController@generateToken2');
+
+
 //Route::get('/{any?}', 'HomeController@index');
 
 //Route::get('/home', 'HomeController@index')->name('home');

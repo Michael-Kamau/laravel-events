@@ -8,9 +8,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\Events\EventBookingsMail;
 use Illuminate\Support\Facades\Mail;
+use \App\Traits\Payments\DPOPayment;
+
 
 class EventBookingController extends Controller
 {
+
+
+    use DPOPayment;
 
 
     /**
@@ -22,8 +27,6 @@ class EventBookingController extends Controller
     public function bookEvent(Request $request)
     {
 
-//        dd($request);
-
         $eventId = $request->input('id');
         $ticketPrice = $request->input('ticketPrice');
         $ticketNumber = $request->input('ticketNo');
@@ -33,19 +36,13 @@ class EventBookingController extends Controller
         $phone = $request->input('phone');
 
 
-        //Ensure all the fields are correctly filled
-
-
-        //get the event price and type and compute total
-
-        //send request to mobile for authentication
-
-
-        //save the data to the table after successful completion
-
-        //send the user a notification on email with the event booking details
-
-//        $tota
+        /*
+         * Ensure all the fields are correctly filled
+         * Get the event price and type and compute total
+         * send request to mobile for authentication
+         * save the data to the table after successful completion
+         * send the user a notification on email with the event booking details
+        */
 
         $event = Event::where('id', $eventId)->first();
         $ticketType = $this->ticketType($event, $ticketPrice);
@@ -68,6 +65,13 @@ class EventBookingController extends Controller
             'number' => $ticketNumber,
             'amount'=>$totalAmount
         ]);
+
+        //Trait from DPOPayment
+        $paymentResponse=$this->generateToken2($totalAmount, 'Event', $event->id);
+
+
+
+        return $paymentResponse;
 
 
     }

@@ -17,6 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('paymentable_id');
             $table->string('paymentable_type');
+            $table->string('token');
             $table->integer('amount');
             $table->integer('status');
             $table->timestamps();

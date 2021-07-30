@@ -4161,6 +4161,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MyEvents",
@@ -46245,20 +46252,37 @@ var render = function() {
                   [
                     this.modalEvent[0].bookings.length
                       ? _c("div", [
-                          _c(
-                            "button",
-                            {
-                              staticClass:
-                                "shadow bg-red-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded",
-                              attrs: { type: "button" },
-                              on: { click: function($event) {} }
-                            },
-                            [
-                              _vm._v(
-                                "\n                        Download PDF\n                    "
-                              )
-                            ]
-                          ),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded",
+                                attrs: { type: "button" },
+                                on: { click: function($event) {} }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                            Download PDF\n                        "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded",
+                                attrs: { type: "button" },
+                                on: { click: function($event) {} }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                            Process Payments\n                        "
+                                )
+                              ]
+                            )
+                          ]),
                           _vm._v(" "),
                           _c("table", { staticClass: "table-auto" }, [
                             _c("thead", [

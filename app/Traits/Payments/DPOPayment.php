@@ -84,6 +84,58 @@ public function generateToken()
 
 
 
+    public function verifyToken(){
+
+    $token = env('DPO_COMPANY_TOKEN');
+
+    $xml = $this->createVerifyXmlObject();
+
+    dd($xml);
+
+    $url = "https://secure.3gdirectpay.com/API/v6/"; // URL to make some test
+    $ch = curl_init($url);
+
+                    curl_setopt($ch, CURLOPT_POST, true);
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/xml'));
+                    curl_setopt($ch, CURLOPT_POSTFIELDS,  $xml);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+                    $data = curl_exec($ch);
+
+                    if (curl_errno($ch)){
+
+                        print curl_error($ch);
+
+                    }
+                    else{
+
+                         $xml_response = simplexml_load_string($data);
+                         $json_response = json_encode($xml_response);
+                         $array_response = json_decode($json_response,TRUE);
+
+                         curl_close($ch);
+
+
+                         if($array_response['Result'] == '000'){
+
+                                return [
+                                     'data' => $array_response,
+                                     'success' => TRUE
+                                 ];
+                         } else{
+                                return [
+                                     'data' => $array_response,
+                                      'success' => FALSE
+                                 ];
+
+                         }
+
+                    }
+
+    }
+
+
+
 
 
     public function createXmlObject($amount, $service, $serviceId)
@@ -116,6 +168,20 @@ public function generateToken()
         $child_node_ref = $dom->createElement('CompanyRef', $serviceId);
         $transaction_node->appendChild($child_node_ref);
 
+        $child_node_email = $dom->createElement('customerEmail', 'mkkamau@gmail.com');
+        $transaction_node->appendChild($child_node_email);
+
+        $child_node_firstname = $dom->createElement('customerFirstName', 'Michael');
+        $transaction_node->appendChild($child_node_firstname);
+
+        $child_node_lastname = $dom->createElement('customerLastName', 'Kamau');
+        $transaction_node->appendChild($child_node_lastname);
+
+        $child_node_phone = $dom->createElement('customerPhone', '0727242802');
+        $transaction_node->appendChild($child_node_phone);
+
+
+
 //        $child_node_redirectUrl = $dom->createElement('RedirectURL', 'https://youtube.com');
 //        $transaction_node->appendChild($child_node_redirectUrl);
 //
@@ -146,6 +212,44 @@ public function generateToken()
 //         dd($dom->saveXML());
 
         return  $dom->saveXML();
+
+    }
+
+
+
+
+    public function createVerifyXmlObject(){
+
+
+
+                       $dom = new DOMDocument();
+
+                              $dom->encoding = 'utf-8';
+
+                              $dom->xmlVersion = '1.0';
+
+                              $dom->formatOutput = true;
+
+                              $root = $dom->createElement('API3G');
+
+                              //API3G LEVEL
+                              $token_node = $dom->createElement('CompanyToken', env('DPO_COMPANY_TOKEN'));
+                              $request_node = $dom->createElement('Request', 'verifyToken');
+                              $transaction_node = $dom->createElement('TransactionToken', 'weqweqwe');
+
+
+                              $root->appendChild($token_node);
+                              $root->appendChild($request_node);
+                              $root->appendChild($transaction_node);
+
+                              $dom->appendChild($root);
+
+                      //         dd($dom->saveXML());
+
+                              return  $dom->saveXML();
+
+
+
 
     }
 

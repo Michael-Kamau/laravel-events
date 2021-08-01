@@ -67,7 +67,9 @@ class EventBookingController extends Controller
         ]);
 
         //Trait from DPOPayment
-        $paymentResponse = $this->verifyToken($totalAmount, 'Event', $event->id);
+        $paymentResponse = $this->generateToken2($totalAmount, 'Event', $event->id);
+
+
 
 
 

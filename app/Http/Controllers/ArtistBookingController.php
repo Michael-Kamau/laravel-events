@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Artists\ArtistDetailsMail;
 use App\Models\Artists\Artist;
 use App\Models\Artists\ArtistBooking;
+use App\Models\Status;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ArtistBookingController extends Controller
 {
@@ -45,6 +49,7 @@ class ArtistBookingController extends Controller
             'amount' => $amount,
             'status_id' => 4,
             'description' => $description,
+            'code' => rand(99999, 10000000),
             'book_date' => $book_date,
         ]);
 
@@ -54,4 +59,93 @@ class ArtistBookingController extends Controller
 
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function bookingActions(Request $request)
+    {
+
+        $bookingId = $request->input('id');
+        $amount = $request->input('amount');
+        $status = $request->input('status');
+
+        if ($status == 'confirmed') {
+
+            $status = Status::where('name', 'confirmed')->first();
+        } else {
+            $status = Status::where('name', 'rejected')->first();
+
+        }
+
+
+        $artistBooking = ArtistBooking::where('id', $bookingId)->first();
+
+        if ($artistBooking->artist->user->id == Auth::id()) {
+
+            $artistBooking->amount = $amount;
+            $artistBooking->status_id = $status->id;
+
+
+            $artistBooking->save();
+
+            Mail::to($artistBooking->email)->send(new ArtistDetailsMail($artistBooking));
+
+            return response()->json([
+                'created' => true
+            ]);
+
+        } else {
+            return response()->json([
+                'error' => 'unauthenticated'
+            ]);
+        }
+
+    }
+
+
+    /**
+     * Booking information
+     *
+     * @param $id
+     * @param $code
+     * @return void
+     */
+    public function bookingInformation($code, $id)
+    {
+        $booking = ArtistBooking::where([
+            ['id','=' ,$id],
+            ['code', '=', $code]
+        ])->first();
+        if ($booking) {
+            $bookingDetails = [
+                'id' => $booking->id,
+                'name' => $booking->firstname . ' ' . $booking->lastname,
+                'artist' => [
+                    'name' => $booking->artist->name,
+                    'image' => $booking->artist->image,
+                ],
+                'description' => $booking->artist->description,
+                'amount' => $booking->amount,
+                'date' => $booking->book_date,
+                'status' => $booking->status->name,
+            ];
+
+            return response()->json([
+                'booking' => $bookingDetails,
+                'status' => 201
+            ]);
+
+        } else {
+            return response()->json([
+                'error' => 'ivalid'
+            ]);
+        }
+
+    }
+
+
 }
+

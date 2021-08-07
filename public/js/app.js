@@ -2205,6 +2205,125 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/artists/ArtistPayment.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/artists/ArtistPayment.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ArtistPayment",
+  mounted: function mounted() {
+    this.fetchBookingDetails();
+  },
+  data: function data() {
+    return {
+      bookingId: this.$route.params.id.split('-')[1],
+      bookingCode: this.$route.params.id.split('-')[0],
+      booking: null
+    };
+  },
+  methods: {
+    fetchBookingDetails: function fetchBookingDetails() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/artists/booking-information/' + this.bookingCode + '/' + this.bookingId).then(function (response) {
+        console.log('response', response);
+
+        if (response.data.status === 201) {
+          _this.booking = response.data.booking;
+        }
+      })["catch"](function (e) {
+        console.log(e);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/artists/ArtistTemplate.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/artists/ArtistTemplate.vue?vue&type=script&lang=js& ***!
@@ -3108,6 +3227,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _modals_BookingActions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modals/BookingActions */ "./resources/js/pages/auth/artists_auth/modals/BookingActions.vue");
 //
 //
 //
@@ -3232,10 +3354,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ArtistBookings",
+  components: {
+    BookingActions: _modals_BookingActions__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
   mounted: function mounted() {
     this.artistProfile();
+  },
+  data: function data() {
+    return {
+      modalBooking: {}
+    };
   },
   computed: {
     artist: function artist() {
@@ -3243,6 +3384,15 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    showModal: function showModal(modal, id) {
+      this.modalBooking = this.artist.bookings.filter(function (booking) {
+        return booking.id === id;
+      })[0];
+      this.$modal.show(modal);
+    },
+    hideModal: function hideModal(modal) {
+      this.$modal.hide(modal);
+    },
     artistProfile: function artistProfile() {
       this.$store.dispatch('getUserArtist');
     }
@@ -3605,6 +3755,103 @@ __webpack_require__.r(__webpack_exports__);
         _this3.$store.dispatch('getUserArtist');
 
         _this3.closeModal();
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/auth/artists_auth/modals/BookingActions.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/auth/artists_auth/modals/BookingActions.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "BookingActions",
+  props: ['booking'],
+  data: function data() {
+    return {
+      form: {
+        id: this.booking.id,
+        venue_id: this.$route.params.id,
+        amount: 0
+      }
+    };
+  },
+  methods: {
+    closeModal: function closeModal() {
+      this.$emit('reload-bookings');
+      this.$emit('close-modal');
+    },
+    bookingAction: function bookingAction(action) {
+      var _this = this;
+
+      this.form.status = action;
+      console.log(this.form);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/artists/bookingActions", this.form).then(function (response) {
+        console.log(response.data);
+
+        _this.closeModal();
+
+        resolve(response);
+      })["catch"](function (e) {
+        reject(e);
+        console.log(e);
       });
     }
   }
@@ -42743,6 +42990,180 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/artists/ArtistPayment.vue?vue&type=template&id=973ddb7a&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/artists/ArtistPayment.vue?vue&type=template&id=973ddb7a&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.booking
+      ? _c(
+          "div",
+          {
+            staticClass:
+              "sm:flex border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white"
+          },
+          [
+            _c("div", { staticClass: "md:w-2/5 px-2" }, [
+              _c("img", {
+                staticClass: "max-w-full max-h-full m-auto",
+                attrs: {
+                  src: "/images/artistImages/" + _vm.booking.artist.image,
+                  alt: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  " md:w-3/5  rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+              },
+              [
+                _c(
+                  "form",
+                  {
+                    staticClass:
+                      "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+                  },
+                  [
+                    _c("div", { staticClass: "mb-8" }, [
+                      _c(
+                        "div",
+                        { staticClass: "text-gray-900 font-bold text-xl mb-2" },
+                        [_vm._v(_vm._s(_vm.booking.name))]
+                      ),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-gray-700 text-base" }, [
+                        _vm._v(_vm._s(_vm.booking.artist.location))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: " mb-6 mt-6 md:mb-1" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "block  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        },
+                        [
+                          _vm._v(
+                            "\n                                Payment Description\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "relative" }, [
+                        _c("p", [
+                          _vm._v("You can proceed to make payment of "),
+                          _c("b", [
+                            _vm._v("ksh " + _vm._s(_vm.booking.amount))
+                          ]),
+                          _vm._v(" to secure your booking of "),
+                          _c("b", [_vm._v(_vm._s(_vm.booking.artist.name))]),
+                          _vm._v(" on the "),
+                          _c("b", [_vm._v(_vm._s(_vm.booking.date))])
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "flex items-center justify-between" },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.showModal("book-modal")
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Make Payment\n                            "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      : _c(
+          "div",
+          {
+            staticClass:
+              "bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md",
+            attrs: { role: "alert" }
+          },
+          [
+            _c("div", { staticClass: "flex" }, [
+              _c("div", { staticClass: "py-1" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "fill-current h-6 w-6 text-teal-500 mr-4",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 20 20"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"
+                      }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
+            ])
+          ]
+        )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", { staticClass: "font-bold" }, [_vm._v("Notification")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "text-sm" }, [
+        _vm._v("Invalid Booking information")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/artists/ArtistTemplate.vue?vue&type=template&id=8457b3e6&scoped=true&":
 /*!********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/artists/ArtistTemplate.vue?vue&type=template&id=8457b3e6&scoped=true& ***!
@@ -44330,142 +44751,207 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "container mx-auto px-4 sm:px-8" }, [
-      _c("div", { staticClass: "py-8" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "my-2 flex sm:flex-row flex-col" }),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto" },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "inline-block min-w-full shadow rounded-lg overflow-hidden"
-              },
-              [
-                _c("table", { staticClass: "min-w-full leading-normal" }, [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c(
-                    "tbody",
-                    _vm._l(_vm.artist.bookings, function(booking) {
-                      return _c("tr", [
-                        _c(
-                          "td",
-                          {
-                            staticClass:
-                              "px-2 py-2 border-b border-gray-200 bg-white text-sm"
-                          },
-                          [
-                            _c("div", { staticClass: "flex items-center" }, [
-                              _vm._m(2, true),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "ml-2" }, [
-                                _c(
-                                  "p",
-                                  {
-                                    staticClass:
-                                      "text-gray-900 whitespace-no-wrap"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                " +
-                                        _vm._s(booking.name) +
-                                        "\n                                            "
-                                    )
-                                  ]
-                                )
-                              ])
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          {
-                            staticClass:
-                              "px-2 py-2 border-b border-gray-200 bg-white text-sm"
-                          },
-                          [
-                            _c(
-                              "p",
-                              {
-                                staticClass: "text-gray-900 whitespace-no-wrap"
-                              },
-                              [_vm._v(_vm._s(booking.amount))]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          {
-                            staticClass:
-                              "px-2 py-2 border-b border-gray-200 bg-white text-sm"
-                          },
-                          [
-                            _c(
-                              "p",
-                              {
-                                staticClass: "text-gray-900 whitespace-no-wrap"
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                        " +
-                                    _vm._s(booking.date) +
-                                    "\n                                    "
-                                )
-                              ]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          {
-                            staticClass:
-                              "px-2 py-2 border-b border-gray-200 bg-white text-sm"
-                          },
-                          [
-                            _c(
-                              "span",
-                              {
-                                staticClass:
-                                  "relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
-                              },
-                              [
-                                _c("span", {
-                                  staticClass:
-                                    "absolute inset-0 bg-green-200 opacity-50 rounded-full",
-                                  attrs: { "aria-hidden": "" }
-                                }),
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "container mx-auto px-4 sm:px-8" }, [
+        _c("div", { staticClass: "py-8" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "my-2 flex sm:flex-row flex-col" }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto" },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "inline-block min-w-full shadow rounded-lg overflow-hidden"
+                },
+                [
+                  _c("table", { staticClass: "min-w-full leading-normal" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.artist.bookings, function(booking) {
+                        return _c("tr", [
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "px-2 py-2 border-b border-gray-200 bg-white text-sm"
+                            },
+                            [
+                              _c("div", { staticClass: "flex items-center" }, [
+                                _vm._m(2, true),
                                 _vm._v(" "),
-                                _c("span", { staticClass: "relative" }, [
-                                  _vm._v(_vm._s(booking.status))
+                                _c("div", { staticClass: "ml-2" }, [
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass:
+                                        "text-gray-900 whitespace-no-wrap"
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                            " +
+                                          _vm._s(booking.name) +
+                                          "\n                                        "
+                                      )
+                                    ]
+                                  )
                                 ])
-                              ]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm._m(3, true)
-                      ])
-                    }),
-                    0
-                  )
-                ])
-              ]
-            )
-          ]
-        )
-      ])
-    ])
-  ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "px-2 py-2 border-b border-gray-200 bg-white text-sm"
+                            },
+                            [
+                              _c(
+                                "p",
+                                {
+                                  staticClass:
+                                    "text-gray-900 whitespace-no-wrap"
+                                },
+                                [_vm._v(_vm._s(booking.amount))]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "px-2 py-2 border-b border-gray-200 bg-white text-sm"
+                            },
+                            [
+                              _c(
+                                "p",
+                                {
+                                  staticClass:
+                                    "text-gray-900 whitespace-no-wrap"
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(booking.date) +
+                                      "\n                                "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "px-2 py-2 border-b border-gray-200 bg-white text-sm"
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
+                                },
+                                [
+                                  _c("span", {
+                                    staticClass:
+                                      "absolute inset-0 bg-green-200 opacity-50 rounded-full",
+                                    attrs: { "aria-hidden": "" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "relative" }, [
+                                    _vm._v(_vm._s(booking.status))
+                                  ])
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "px-2 py-2 border-b border-gray-200 bg-white text-sm"
+                            },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.showModal(
+                                        "actions-modal",
+                                        booking.id
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    Details\n                                "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ])
+                      }),
+                      0
+                    )
+                  ])
+                ]
+              )
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "modal",
+        {
+          attrs: {
+            name: "actions-modal",
+            height: "auto",
+            adaptive: true,
+            scrollable: true
+          }
+        },
+        [
+          _c(
+            "div",
+            [
+              _c("BookingActions", {
+                attrs: { booking: _vm.modalBooking },
+                on: {
+                  "close-modal": function($event) {
+                    return _vm.hideModal("actions-modal")
+                  },
+                  "reload-bookings": function($event) {
+                    return _vm.artistProfile()
+                  }
+                }
+              })
+            ],
+            1
+          )
+        ]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -44492,7 +44978,7 @@ var staticRenderFns = [
           },
           [
             _vm._v(
-              "\n                                    User\n                                "
+              "\n                                User\n                            "
             )
           ]
         ),
@@ -44505,7 +44991,7 @@ var staticRenderFns = [
           },
           [
             _vm._v(
-              "\n                                    Amount\n                                "
+              "\n                                Amount\n                            "
             )
           ]
         ),
@@ -44518,7 +45004,7 @@ var staticRenderFns = [
           },
           [
             _vm._v(
-              "\n                                    Booking date\n                                "
+              "\n                                Booking date\n                            "
             )
           ]
         ),
@@ -44531,7 +45017,7 @@ var staticRenderFns = [
           },
           [
             _vm._v(
-              "\n                                    Status\n                                "
+              "\n                                Status\n                            "
             )
           ]
         ),
@@ -44544,7 +45030,7 @@ var staticRenderFns = [
           },
           [
             _vm._v(
-              "\n                                    Details\n                                "
+              "\n                                Details\n                            "
             )
           ]
         )
@@ -44564,29 +45050,6 @@ var staticRenderFns = [
         [_vm._v("U")]
       )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "td",
-      { staticClass: "px-2 py-2 border-b border-gray-200 bg-white text-sm" },
-      [
-        _c(
-          "button",
-          {
-            staticClass:
-              "bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-          },
-          [
-            _vm._v(
-              "\n                                        Details\n                                    "
-            )
-          ]
-        )
-      ]
-    )
   }
 ]
 render._withStripped = true
@@ -45083,6 +45546,152 @@ var render = function() {
           on: { click: _vm.addImage }
         },
         [_vm._v("\n            Save\n        ")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/auth/artists_auth/modals/BookingActions.vue?vue&type=template&id=1034cfa7&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/auth/artists_auth/modals/BookingActions.vue?vue&type=template&id=1034cfa7&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "p-4" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-4"
+      },
+      [
+        _c("div", { staticClass: "md:flex flex-col" }, [
+          _c("div", { staticClass: "p-8" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "uppercase tracking-wide text-sm text-indigo-500 font-semibold"
+              },
+              [_vm._v(_vm._s(_vm.booking.name))]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass:
+                  "block mt-1 text-lg leading-tight font-medium text-black hover:underline",
+                attrs: { href: "#" }
+              },
+              [_vm._v(_vm._s(_vm.booking.location))]
+            ),
+            _vm._v(" "),
+            _c("p", { staticClass: "mt-2 text-gray-500" }, [
+              _vm._v(_vm._s(_vm.booking.description) + ".")
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _vm.booking.status === "submitted"
+      ? _c("div", { staticClass: "w-full md:w-2/2 px-3 mb-6 md:mb-0" }, [
+          _c(
+            "label",
+            {
+              staticClass:
+                "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+              attrs: { for: "grid-charges" }
+            },
+            [_vm._v("\n            Venue Charges\n        ")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.amount,
+                expression: "form.amount"
+              }
+            ],
+            staticClass:
+              "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
+            attrs: { id: "grid-charges", type: "text", placeholder: "" },
+            domProps: { value: _vm.form.amount },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "amount", $event.target.value)
+              }
+            }
+          })
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div"),
+    _vm._v(" "),
+    _c("div", { staticClass: "flex items-center justify-between" }, [
+      _vm.booking.status === "submitted"
+        ? _c(
+            "button",
+            {
+              staticClass:
+                "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.bookingAction("confirmed")
+                }
+              }
+            },
+            [_vm._v("\n            Confirm\n        ")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.booking.status === "submitted"
+        ? _c(
+            "button",
+            {
+              staticClass:
+                "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.bookingAction("rejected")
+                }
+              }
+            },
+            [_vm._v("\n            Reject\n        ")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass:
+            "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline",
+          attrs: { type: "button" },
+          on: { click: _vm.closeModal }
+        },
+        [_vm._v("\n            Cancel\n        ")]
       )
     ])
   ])
@@ -66155,6 +66764,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/artists/ArtistPayment.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/pages/artists/ArtistPayment.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ArtistPayment_vue_vue_type_template_id_973ddb7a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ArtistPayment.vue?vue&type=template&id=973ddb7a&scoped=true& */ "./resources/js/pages/artists/ArtistPayment.vue?vue&type=template&id=973ddb7a&scoped=true&");
+/* harmony import */ var _ArtistPayment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ArtistPayment.vue?vue&type=script&lang=js& */ "./resources/js/pages/artists/ArtistPayment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ArtistPayment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ArtistPayment_vue_vue_type_template_id_973ddb7a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ArtistPayment_vue_vue_type_template_id_973ddb7a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "973ddb7a",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/artists/ArtistPayment.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/artists/ArtistPayment.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/pages/artists/ArtistPayment.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ArtistPayment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ArtistPayment.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/artists/ArtistPayment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ArtistPayment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/artists/ArtistPayment.vue?vue&type=template&id=973ddb7a&scoped=true&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/pages/artists/ArtistPayment.vue?vue&type=template&id=973ddb7a&scoped=true& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ArtistPayment_vue_vue_type_template_id_973ddb7a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ArtistPayment.vue?vue&type=template&id=973ddb7a&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/artists/ArtistPayment.vue?vue&type=template&id=973ddb7a&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ArtistPayment_vue_vue_type_template_id_973ddb7a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ArtistPayment_vue_vue_type_template_id_973ddb7a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/artists/ArtistTemplate.vue":
 /*!*******************************************************!*\
   !*** ./resources/js/pages/artists/ArtistTemplate.vue ***!
@@ -67083,6 +67761,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ArtistVideos_vue_vue_type_template_id_de0e07fc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ArtistVideos_vue_vue_type_template_id_de0e07fc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/pages/auth/artists_auth/modals/BookingActions.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/pages/auth/artists_auth/modals/BookingActions.vue ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _BookingActions_vue_vue_type_template_id_1034cfa7_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookingActions.vue?vue&type=template&id=1034cfa7&scoped=true& */ "./resources/js/pages/auth/artists_auth/modals/BookingActions.vue?vue&type=template&id=1034cfa7&scoped=true&");
+/* harmony import */ var _BookingActions_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookingActions.vue?vue&type=script&lang=js& */ "./resources/js/pages/auth/artists_auth/modals/BookingActions.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _BookingActions_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _BookingActions_vue_vue_type_template_id_1034cfa7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _BookingActions_vue_vue_type_template_id_1034cfa7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "1034cfa7",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/auth/artists_auth/modals/BookingActions.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/auth/artists_auth/modals/BookingActions.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/pages/auth/artists_auth/modals/BookingActions.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingActions_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./BookingActions.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/auth/artists_auth/modals/BookingActions.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingActions_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/auth/artists_auth/modals/BookingActions.vue?vue&type=template&id=1034cfa7&scoped=true&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/pages/auth/artists_auth/modals/BookingActions.vue?vue&type=template&id=1034cfa7&scoped=true& ***!
+  \*******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingActions_vue_vue_type_template_id_1034cfa7_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./BookingActions.vue?vue&type=template&id=1034cfa7&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/auth/artists_auth/modals/BookingActions.vue?vue&type=template&id=1034cfa7&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingActions_vue_vue_type_template_id_1034cfa7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingActions_vue_vue_type_template_id_1034cfa7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -68311,20 +69058,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_venues_VenuePayment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../pages/venues/VenuePayment */ "./resources/js/pages/venues/VenuePayment.vue");
 /* harmony import */ var _pages_artists_ArtistsHome_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../pages/artists/ArtistsHome.vue */ "./resources/js/pages/artists/ArtistsHome.vue");
 /* harmony import */ var _pages_artists_ArtistBook__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../pages/artists/ArtistBook */ "./resources/js/pages/artists/ArtistBook.vue");
-/* harmony import */ var _pages_terms_TermsAndConditions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../pages/terms/TermsAndConditions */ "./resources/js/pages/terms/TermsAndConditions.vue");
-/* harmony import */ var _pages_auth_events_auth_MyEvents_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../pages/auth/events_auth/MyEvents.vue */ "./resources/js/pages/auth/events_auth/MyEvents.vue");
-/* harmony import */ var _pages_auth_events_auth_AddEvent_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../pages/auth/events_auth/AddEvent.vue */ "./resources/js/pages/auth/events_auth/AddEvent.vue");
-/* harmony import */ var _pages_auth_venues_auth_MyVenues__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../pages/auth/venues_auth/MyVenues */ "./resources/js/pages/auth/venues_auth/MyVenues.vue");
-/* harmony import */ var _pages_auth_venues_auth_AddVenue__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../pages/auth/venues_auth/AddVenue */ "./resources/js/pages/auth/venues_auth/AddVenue.vue");
-/* harmony import */ var _pages_auth_venues_auth_ViewVenue__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../pages/auth/venues_auth/ViewVenue */ "./resources/js/pages/auth/venues_auth/ViewVenue.vue");
-/* harmony import */ var _pages_auth_artists_auth_ViewArtist__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../pages/auth/artists_auth/ViewArtist */ "./resources/js/pages/auth/artists_auth/ViewArtist.vue");
-/* harmony import */ var _pages_auth_artists_auth_ArtistBookings__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../pages/auth/artists_auth/ArtistBookings */ "./resources/js/pages/auth/artists_auth/ArtistBookings.vue");
-/* harmony import */ var _pages_auth_admin_auth_events_EventManagers_vue__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../pages/auth/admin_auth/events/EventManagers.vue */ "./resources/js/pages/auth/admin_auth/events/EventManagers.vue");
-/* harmony import */ var _pages_auth_admin_auth_artists_ArtistManagers_vue__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../pages/auth/admin_auth/artists/ArtistManagers.vue */ "./resources/js/pages/auth/admin_auth/artists/ArtistManagers.vue");
-/* harmony import */ var _pages_auth_admin_auth_artists_ArtistMenu__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../pages/auth/admin_auth/artists/ArtistMenu */ "./resources/js/pages/auth/admin_auth/artists/ArtistMenu.vue");
-/* harmony import */ var _pages_auth_admin_auth_venues_VenueManagers_vue__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../pages/auth/admin_auth/venues/VenueManagers.vue */ "./resources/js/pages/auth/admin_auth/venues/VenueManagers.vue");
-/* harmony import */ var _pages_auth_Dashboard_vue__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../pages/auth/Dashboard.vue */ "./resources/js/pages/auth/Dashboard.vue");
-/* harmony import */ var _pages_ErrorPage_vue__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../pages/ErrorPage.vue */ "./resources/js/pages/ErrorPage.vue");
+/* harmony import */ var _pages_artists_ArtistPayment__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../pages/artists/ArtistPayment */ "./resources/js/pages/artists/ArtistPayment.vue");
+/* harmony import */ var _pages_terms_TermsAndConditions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../pages/terms/TermsAndConditions */ "./resources/js/pages/terms/TermsAndConditions.vue");
+/* harmony import */ var _pages_auth_events_auth_MyEvents_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../pages/auth/events_auth/MyEvents.vue */ "./resources/js/pages/auth/events_auth/MyEvents.vue");
+/* harmony import */ var _pages_auth_events_auth_AddEvent_vue__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../pages/auth/events_auth/AddEvent.vue */ "./resources/js/pages/auth/events_auth/AddEvent.vue");
+/* harmony import */ var _pages_auth_venues_auth_MyVenues__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../pages/auth/venues_auth/MyVenues */ "./resources/js/pages/auth/venues_auth/MyVenues.vue");
+/* harmony import */ var _pages_auth_venues_auth_AddVenue__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../pages/auth/venues_auth/AddVenue */ "./resources/js/pages/auth/venues_auth/AddVenue.vue");
+/* harmony import */ var _pages_auth_venues_auth_ViewVenue__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../pages/auth/venues_auth/ViewVenue */ "./resources/js/pages/auth/venues_auth/ViewVenue.vue");
+/* harmony import */ var _pages_auth_artists_auth_ViewArtist__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../pages/auth/artists_auth/ViewArtist */ "./resources/js/pages/auth/artists_auth/ViewArtist.vue");
+/* harmony import */ var _pages_auth_artists_auth_ArtistBookings__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../pages/auth/artists_auth/ArtistBookings */ "./resources/js/pages/auth/artists_auth/ArtistBookings.vue");
+/* harmony import */ var _pages_auth_admin_auth_events_EventManagers_vue__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../pages/auth/admin_auth/events/EventManagers.vue */ "./resources/js/pages/auth/admin_auth/events/EventManagers.vue");
+/* harmony import */ var _pages_auth_admin_auth_artists_ArtistManagers_vue__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../pages/auth/admin_auth/artists/ArtistManagers.vue */ "./resources/js/pages/auth/admin_auth/artists/ArtistManagers.vue");
+/* harmony import */ var _pages_auth_admin_auth_artists_ArtistMenu__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../pages/auth/admin_auth/artists/ArtistMenu */ "./resources/js/pages/auth/admin_auth/artists/ArtistMenu.vue");
+/* harmony import */ var _pages_auth_admin_auth_venues_VenueManagers_vue__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../pages/auth/admin_auth/venues/VenueManagers.vue */ "./resources/js/pages/auth/admin_auth/venues/VenueManagers.vue");
+/* harmony import */ var _pages_auth_Dashboard_vue__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../pages/auth/Dashboard.vue */ "./resources/js/pages/auth/Dashboard.vue");
+/* harmony import */ var _pages_ErrorPage_vue__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../pages/ErrorPage.vue */ "./resources/js/pages/ErrorPage.vue");
+
 
 
 
@@ -68369,7 +69118,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     children: [{
       path: '*',
       name: 'errorEvents',
-      component: _pages_ErrorPage_vue__WEBPACK_IMPORTED_MODULE_23__["default"]
+      component: _pages_ErrorPage_vue__WEBPACK_IMPORTED_MODULE_24__["default"]
     }]
   }, {
     path: '/event/:id',
@@ -68396,62 +69145,66 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     name: 'artistPage',
     component: _pages_artists_ArtistBook__WEBPACK_IMPORTED_MODULE_9__["default"]
   }, {
+    path: '/artists/artistPayment/:id',
+    name: 'venuePayment',
+    component: _pages_artists_ArtistPayment__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }, {
     path: '/dashboard',
     name: 'dashboard',
-    component: _pages_auth_Dashboard_vue__WEBPACK_IMPORTED_MODULE_22__["default"],
+    component: _pages_auth_Dashboard_vue__WEBPACK_IMPORTED_MODULE_23__["default"],
     children: [{
       name: 'myEvents',
       path: '/dashboard/myEvents',
-      component: _pages_auth_events_auth_MyEvents_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
+      component: _pages_auth_events_auth_MyEvents_vue__WEBPACK_IMPORTED_MODULE_12__["default"]
     }, {
       name: 'addEvent',
       path: '/dashboard/addEvent',
-      component: _pages_auth_events_auth_AddEvent_vue__WEBPACK_IMPORTED_MODULE_12__["default"]
+      component: _pages_auth_events_auth_AddEvent_vue__WEBPACK_IMPORTED_MODULE_13__["default"]
     }, {
       name: 'eventManagers',
       path: '/dashboard/event-managers',
-      component: _pages_auth_admin_auth_events_EventManagers_vue__WEBPACK_IMPORTED_MODULE_18__["default"]
+      component: _pages_auth_admin_auth_events_EventManagers_vue__WEBPACK_IMPORTED_MODULE_19__["default"]
     }, {
       name: 'venueManagers',
       path: '/dashboard/venue-managers',
-      component: _pages_auth_admin_auth_venues_VenueManagers_vue__WEBPACK_IMPORTED_MODULE_21__["default"]
+      component: _pages_auth_admin_auth_venues_VenueManagers_vue__WEBPACK_IMPORTED_MODULE_22__["default"]
     }, {
       name: 'myVenues',
       path: '/dashboard/myVenues',
-      component: _pages_auth_venues_auth_MyVenues__WEBPACK_IMPORTED_MODULE_13__["default"]
+      component: _pages_auth_venues_auth_MyVenues__WEBPACK_IMPORTED_MODULE_14__["default"]
     }, {
       name: 'addVenue',
       path: '/dashboard/addVenue',
-      component: _pages_auth_venues_auth_AddVenue__WEBPACK_IMPORTED_MODULE_14__["default"]
+      component: _pages_auth_venues_auth_AddVenue__WEBPACK_IMPORTED_MODULE_15__["default"]
     }, {
       name: 'viewVenue',
       path: '/dashboard/viewVenue/:id',
-      component: _pages_auth_venues_auth_ViewVenue__WEBPACK_IMPORTED_MODULE_15__["default"]
+      component: _pages_auth_venues_auth_ViewVenue__WEBPACK_IMPORTED_MODULE_16__["default"]
     }, {
       name: 'artistManagers',
       path: '/dashboard/artists',
-      component: _pages_auth_admin_auth_artists_ArtistManagers_vue__WEBPACK_IMPORTED_MODULE_19__["default"]
+      component: _pages_auth_admin_auth_artists_ArtistManagers_vue__WEBPACK_IMPORTED_MODULE_20__["default"]
     }, {
       name: 'artistMenu',
       path: '/dashboard/artistsMenu',
-      component: _pages_auth_admin_auth_artists_ArtistMenu__WEBPACK_IMPORTED_MODULE_20__["default"]
+      component: _pages_auth_admin_auth_artists_ArtistMenu__WEBPACK_IMPORTED_MODULE_21__["default"]
     }, {
       name: 'viewArtist',
       path: '/dashboard/artistProfile',
-      component: _pages_auth_artists_auth_ViewArtist__WEBPACK_IMPORTED_MODULE_16__["default"]
+      component: _pages_auth_artists_auth_ViewArtist__WEBPACK_IMPORTED_MODULE_17__["default"]
     }, {
       name: 'artistBookings',
       path: '/dashboard/artistBookings',
-      component: _pages_auth_artists_auth_ArtistBookings__WEBPACK_IMPORTED_MODULE_17__["default"]
+      component: _pages_auth_artists_auth_ArtistBookings__WEBPACK_IMPORTED_MODULE_18__["default"]
     }]
   }, {
     path: '/terms',
     name: 'termsPage',
-    component: _pages_terms_TermsAndConditions__WEBPACK_IMPORTED_MODULE_10__["default"]
+    component: _pages_terms_TermsAndConditions__WEBPACK_IMPORTED_MODULE_11__["default"]
   }, {
     path: '*',
     name: 'error',
-    component: _pages_ErrorPage_vue__WEBPACK_IMPORTED_MODULE_23__["default"]
+    component: _pages_ErrorPage_vue__WEBPACK_IMPORTED_MODULE_24__["default"]
   }]
 }));
 

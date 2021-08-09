@@ -2093,6 +2093,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomeComponent.vue"
 });
@@ -42604,190 +42610,208 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "flex mb-4 flex-wrap mx-auto items-center justify-center"
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "w-2/7 m-2 " },
+          [
+            _c("router-link", { attrs: { to: "/events" } }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "max-w-sm rounded overflow-hidden shadow-lg border text-gray-900"
+                },
+                [
+                  _c("img", { attrs: { src: "/homepage.jpg", alt: "" } }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "p-8" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uppercase tracking-wide text-sm text-indigo-500 font-semibold"
+                      },
+                      [_vm._v("Events")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      {
+                        staticClass:
+                          "block mt-1 text-md leading-tight font-medium text-gray-600",
+                        attrs: { href: "#" }
+                      },
+                      [_vm._v("Add and view upcoming events.")]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "w-2/7 m-2 " },
+          [
+            _c("router-link", { attrs: { to: "/venues" } }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "max-w-sm rounded overflow-hidden shadow-lg border text-gray-900"
+                },
+                [
+                  _c("img", { attrs: { src: "/venues.jpg", alt: "" } }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "p-8" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uppercase tracking-wide text-sm text-indigo-500 font-semibold"
+                      },
+                      [_vm._v("Venues")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      {
+                        staticClass:
+                          "block mt-1 text-md leading-tight font-medium text-gray-600",
+                        attrs: { href: "#" }
+                      },
+                      [_vm._v("Upload & View outdoor and indoor venues.")]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "w-2/7 m-2 " },
+          [
+            _c("router-link", { attrs: { to: "/artists" } }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "max-w-sm rounded overflow-hidden shadow-lg border text-gray-900"
+                },
+                [
+                  _c("img", { attrs: { src: "/artist.jpg", alt: "" } }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "p-8" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uppercase tracking-wide text-sm text-indigo-500 font-semibold"
+                      },
+                      [_vm._v("Artists")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      {
+                        staticClass:
+                          "block mt-1 text-md leading-tight font-medium text-gray-600",
+                        attrs: { href: "#" }
+                      },
+                      [_vm._v("Book Performing artists for your event.")]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ],
+          1
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "div",
-        {
-          staticClass: "bg-auto bg-cover h-75",
-          staticStyle: {
-            "background-image": "url(/images/homepage/events2.jpg)"
-          }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                " w-full h-full text-center text-white pt-12 items-center justify-center p-6",
-              staticStyle: { background: "rgba(0,0,0,0.6)" }
-            },
-            [
-              _c(
-                "h1",
-                {
-                  staticClass:
-                    "'text-white text-5xl m-12 text-uppercase italic "
-                },
-                [_vm._v("All Events Finder")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "hide grid gap-4 md:grid-cols-3 md:grid-cols-1 p-4 pb-8"
-                },
-                [
-                  _c("img", {
-                    staticClass: "transform md:rotate-45 rounded-md",
-                    attrs: { src: "/images/homepage/events.jpg" }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    staticClass: "transform md:-rotate-12 rounded-md",
-                    attrs: { src: "/images/homepage/venues.jpg" }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    staticClass: "transform md:rotate-45 rounded-md",
-                    attrs: { src: "/images/homepage/artists.jpg" }
-                  })
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "rounded p-4 bg-black mt-8 bg-opacity-50" },
-                [
-                  _c("h1", { staticClass: "text-gray text-2xl" }, [
-                    _vm._v(
-                      "As an events company we are a very curative in bringing you the right\n                        crowd or persons to your event whether social event or cooperate event ."
-                    )
-                  ])
-                ]
-              )
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "flex mb-4 flex-wrap mx-auto items-center justify-center"
-        },
-        [
-          _c("div", { staticClass: "w-2/7 m-2 " }, [
+    return _c(
+      "div",
+      {
+        staticClass: "bg-auto bg-cover h-75",
+        staticStyle: { "background-image": "url(/images/homepage/events2.jpg)" }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              " w-full h-full text-center text-white pt-12 items-center justify-center p-6",
+            staticStyle: { background: "rgba(0,0,0,0.6)" }
+          },
+          [
+            _c(
+              "h1",
+              {
+                staticClass: "'text-white text-5xl m-12 text-uppercase italic "
+              },
+              [_vm._v("All Events Finder")]
+            ),
+            _vm._v(" "),
             _c(
               "div",
               {
                 staticClass:
-                  "max-w-sm rounded overflow-hidden shadow-lg border text-gray-900"
+                  "hide grid gap-4 md:grid-cols-3 md:grid-cols-1 p-4 pb-8"
               },
               [
-                _c("img", { attrs: { src: "/homepage.jpg", alt: "" } }),
+                _c("img", {
+                  staticClass: "transform md:rotate-45 rounded-md",
+                  attrs: { src: "/images/homepage/events.jpg" }
+                }),
                 _vm._v(" "),
-                _c("div", { staticClass: "p-8" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "uppercase tracking-wide text-sm text-indigo-500 font-semibold"
-                    },
-                    [_vm._v("Events")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    {
-                      staticClass:
-                        "block mt-1 text-md leading-tight font-medium text-gray-600",
-                      attrs: { href: "#" }
-                    },
-                    [_vm._v("Add and view upcoming events.")]
-                  )
-                ])
+                _c("img", {
+                  staticClass: "transform md:-rotate-12 rounded-md",
+                  attrs: { src: "/images/homepage/venues.jpg" }
+                }),
+                _vm._v(" "),
+                _c("img", {
+                  staticClass: "transform md:rotate-45 rounded-md",
+                  attrs: { src: "/images/homepage/artists.jpg" }
+                })
               ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/7 m-2 " }, [
+            ),
+            _vm._v(" "),
             _c(
               "div",
-              {
-                staticClass:
-                  "max-w-sm rounded overflow-hidden shadow-lg border text-gray-900"
-              },
+              { staticClass: "rounded p-4 bg-black mt-8 bg-opacity-50" },
               [
-                _c("img", { attrs: { src: "/venues.jpg", alt: "" } }),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-8" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "uppercase tracking-wide text-sm text-indigo-500 font-semibold"
-                    },
-                    [_vm._v("Venues")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    {
-                      staticClass:
-                        "block mt-1 text-md leading-tight font-medium text-gray-600",
-                      attrs: { href: "#" }
-                    },
-                    [_vm._v("Upload & View outdoor and indoor venues.")]
+                _c("h1", { staticClass: "text-gray text-2xl" }, [
+                  _vm._v(
+                    "As an events company we are a very curative in bringing you the right\n                        crowd or persons to your event whether social event or cooperate event ."
                   )
                 ])
               ]
             )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/7 m-2 " }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "max-w-sm rounded overflow-hidden shadow-lg border text-gray-900"
-              },
-              [
-                _c("img", { attrs: { src: "/artist.jpg", alt: "" } }),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-8" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "uppercase tracking-wide text-sm text-indigo-500 font-semibold"
-                    },
-                    [_vm._v("Artists")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    {
-                      staticClass:
-                        "block mt-1 text-md leading-tight font-medium text-gray-600",
-                      attrs: { href: "#" }
-                    },
-                    [_vm._v("Book Performing artists for your event.")]
-                  )
-                ])
-              ]
-            )
-          ])
-        ]
-      )
-    ])
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true

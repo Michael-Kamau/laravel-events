@@ -26,44 +26,39 @@
         <div class="flex mb-4 flex-wrap mx-auto items-center justify-center">
 
 
-            <div class="w-2/7 m-2 ">
-                <router-link to="/events">
-                    <div class="max-w-sm rounded overflow-hidden shadow-lg border text-gray-900">
-                        <img class="" src="/homepage.jpg" alt="">
-                        <div class="p-8">
-                            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Events</div>
-                            <p href="#" class="block mt-1 text-md leading-tight font-medium text-gray-600">Add and view upcoming events.</p>
-                        </div>
+            <router-link to="/events" class="w-2/7 m-2 ">
+                <div class="max-w-sm rounded overflow-hidden shadow-lg border text-gray-900">
+                    <img class="" src="/homepage.jpg" alt="">
+                    <div class="p-8">
+                        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Events</div>
+                        <p href="#" class="block mt-1 text-md leading-tight font-medium text-gray-600">Add and view upcoming events.</p>
                     </div>
-                </router-link>
+                </div>
 
-            </div>
+            </router-link>
 
-            <div class="w-2/7 m-2 ">
-                <router-link to="/venues">
-                    <div class="max-w-sm rounded overflow-hidden shadow-lg border text-gray-900">
-                        <img class="" src="/venues.jpg" alt="">
-                        <div class="p-8">
-                            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Venues</div>
-                            <p href="#" class="block mt-1 text-md leading-tight font-medium text-gray-600">Upload &amp; View outdoor and indoor venues.</p>
-                        </div>
+            <router-link to="/venues" class="w-2/7 m-2 ">
+                <div class="max-w-sm rounded overflow-hidden shadow-lg border text-gray-900">
+                    <img class="" src="/venues.jpg" alt="">
+                    <div class="p-8">
+                        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Venues</div>
+                        <p href="#" class="block mt-1 text-md leading-tight font-medium text-gray-600">Upload &amp; View outdoor and indoor venues.</p>
                     </div>
-                </router-link>
-            </div>
+                </div>
 
-            <div class="w-2/7 m-2 ">
-                <router-link to="/artists">
-                    <div class="max-w-sm rounded overflow-hidden shadow-lg border text-gray-900">
-                        <img class="" src="/artist.jpg" alt="">
-                        <div class="p-8">
-                            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Artists</div>
-                            <p href="#" class="block mt-1 text-md leading-tight font-medium text-gray-600">Book Performing artists for your event.</p>
-                        </div>
+            </router-link>
+
+            <router-link to="/artists" class="w-2/7 m-2 ">
+                <div class="max-w-sm rounded overflow-hidden shadow-lg border text-gray-900">
+                    <img class="" src="/artist.jpg" alt="">
+                    <div class="p-8">
+                        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Artists</div>
+                        <p href="#" class="block mt-1 text-md leading-tight font-medium text-gray-600">Book Performing artists for your event.</p>
                     </div>
-                </router-link>
+                </div>
 
 
-            </div>
+            </router-link>
 
 
 

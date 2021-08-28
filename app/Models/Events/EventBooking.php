@@ -2,6 +2,7 @@
 
 namespace App\Models\Events;
 
+use App\Models\Payments\Payment;
 use Illuminate\Database\Eloquent\Model;
 
 class EventBooking extends Model
@@ -13,6 +14,10 @@ class EventBooking extends Model
     public function event()
     {
         return $this->belongsTo(Event::class, 'event_id');
+    }
+
+    public function payment(){
+        return $this->morphOne(Payment::class, 'paymentable');
     }
 
 

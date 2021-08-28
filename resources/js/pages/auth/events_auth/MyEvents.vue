@@ -195,11 +195,18 @@
                     class="sm:flex border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white p-6"
                     v-if="modalEvent">
                     <div v-if="this.modalEvent[0].bookings.length">
-                        <button
-                            class="shadow bg-red-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded"
-                            type="button" @click="">
-                            Download PDF
-                        </button>
+                        <div>
+                            <button
+                                class="shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded"
+                                type="button" @click="">
+                                Download PDF
+                            </button>
+                            <button
+                                class="shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded"
+                                type="button" @click="">
+                                Process Payments
+                            </button>
+                        </div>
                         <table class="table-auto">
                             <thead>
                             <tr>

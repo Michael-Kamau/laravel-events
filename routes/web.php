@@ -54,8 +54,13 @@ Route::get('api/artists/profile','ArtistController@artistProfile');
 Route::post('api/artists/genres','ArtistGenreController@store');
 Route::post('api/artists/edit','ArtistController@edit');
 Route::post('api/artists/saveImage','ArtistController@editImage');
+Route::post('api/artists/bookingActions','ArtistBookingController@bookingActions');
+
 
 Route::post('api/artists/bookArtist','ArtistBookingController@bookArtist');
+Route::get('api/artists/booking-information/{code}/{id}','ArtistBookingController@bookingInformation');
+
+
 
 
 
@@ -63,6 +68,11 @@ Route::post('api/artists/bookArtist','ArtistBookingController@bookArtist');
 Route::post('/video/save', 'VideoController@store');
 
 Route::get('/video/delete/{id}','VideoController@delete');
+
+
+//Payment Routes
+
+Route::get('payment/test','PaymentController@generateToken2');
 
 
 //Route::get('/{any?}', 'HomeController@index');

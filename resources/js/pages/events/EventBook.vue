@@ -256,7 +256,12 @@
                 this.form.id = this.$route.params.id;
                 axios.post(`/api/events/bookEvent`, this.form)
                     .then(response => {
-                        console.log(response)
+                        console.log('And this is the data',response.data.data.TransToken)
+
+                        if(response.data.success){
+                            window.location.href = `https://secure.3gdirectpay.com/payv2.php?ID=${response.data.data.TransToken}`;
+
+                        }
                         resolve(response)
                         this.$modal.hideAll()
                     }).catch(e => {

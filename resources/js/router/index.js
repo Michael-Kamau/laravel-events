@@ -13,6 +13,7 @@ import VenuePayment from "../pages/venues/VenuePayment";
 
 import ArtistsHome from "../pages/artists/ArtistsHome.vue";
 import ArtistBook from "../pages/artists/ArtistBook";
+import ArtistPayment from "../pages/artists/ArtistPayment";
 
 import TermsAndConditions from "../pages/terms/TermsAndConditions";
 
@@ -102,6 +103,11 @@ export default new Router({
             path: '/artists/:id',
             name: 'artistPage',
             component: ArtistBook
+        },
+        {
+            path: '/artists/artistPayment/:id',
+            name: 'venuePayment',
+            component: ArtistPayment
         },
 
         {

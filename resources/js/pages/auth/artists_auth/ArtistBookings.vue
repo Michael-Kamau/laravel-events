@@ -6,47 +6,47 @@
                     <h2 class="text-2xl font-semibold leading-tight">Artist Bookings</h2>
                 </div>
                 <div class="my-2 flex sm:flex-row flex-col">
-<!--                    <div class="flex flex-row mb-1 sm:mb-0">-->
-<!--                        <div class="relative">-->
-<!--                            <select-->
-<!--                                class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">-->
-<!--                                <option>5</option>-->
-<!--                                <option>10</option>-->
-<!--                                <option>20</option>-->
-<!--                            </select>-->
-<!--                            <div-->
-<!--                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">-->
-<!--                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">-->
-<!--                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />-->
-<!--                                </svg>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="relative">-->
-<!--                            <select-->
-<!--                                class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">-->
-<!--                                <option>All</option>-->
-<!--                                <option>Active</option>-->
-<!--                                <option>Inactive</option>-->
-<!--                            </select>-->
-<!--                            <div-->
-<!--                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">-->
-<!--                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">-->
-<!--                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />-->
-<!--                                </svg>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="block relative">-->
-<!--                    <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">-->
-<!--                        <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">-->
-<!--                            <path-->
-<!--                                d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z">-->
-<!--                            </path>-->
-<!--                        </svg>-->
-<!--                    </span>-->
-<!--                        <input placeholder="Search"-->
-<!--                               class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />-->
-<!--                    </div>-->
+                    <!--                    <div class="flex flex-row mb-1 sm:mb-0">-->
+                    <!--                        <div class="relative">-->
+                    <!--                            <select-->
+                    <!--                                class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">-->
+                    <!--                                <option>5</option>-->
+                    <!--                                <option>10</option>-->
+                    <!--                                <option>20</option>-->
+                    <!--                            </select>-->
+                    <!--                            <div-->
+                    <!--                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">-->
+                    <!--                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">-->
+                    <!--                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />-->
+                    <!--                                </svg>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="relative">-->
+                    <!--                            <select-->
+                    <!--                                class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">-->
+                    <!--                                <option>All</option>-->
+                    <!--                                <option>Active</option>-->
+                    <!--                                <option>Inactive</option>-->
+                    <!--                            </select>-->
+                    <!--                            <div-->
+                    <!--                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">-->
+                    <!--                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">-->
+                    <!--                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />-->
+                    <!--                                </svg>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="block relative">-->
+                    <!--                    <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">-->
+                    <!--                        <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">-->
+                    <!--                            <path-->
+                    <!--                                d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z">-->
+                    <!--                            </path>-->
+                    <!--                        </svg>-->
+                    <!--                    </span>-->
+                    <!--                        <input placeholder="Search"-->
+                    <!--                               class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />-->
+                    <!--                    </div>-->
                 </div>
                 <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                     <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -85,18 +85,18 @@
                                         </div>
                                         <div class="ml-2">
                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                {{booking.name}}
+                                                {{ booking.name }}
                                             </p>
                                         </div>
                                     </div>
                                 </td>
 
                                 <td class="px-2 py-2 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">{{booking.amount}}</p>
+                                    <p class="text-gray-900 whitespace-no-wrap">{{ booking.amount }}</p>
                                 </td>
                                 <td class="px-2 py-2 border-b border-gray-200 bg-white text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap">
-                                        {{booking.date}}
+                                        {{ booking.date }}
                                     </p>
                                 </td>
                                 <td class="px-2 py-2 border-b border-gray-200 bg-white text-sm">
@@ -104,11 +104,14 @@
                                         class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                         <span aria-hidden
                                               class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                        <span class="relative">{{booking.status}}</span>
+                                        <span class="relative">{{ booking.status }}</span>
                                     </span>
                                 </td>
                                 <td class="px-2 py-2 border-b border-gray-200 bg-white text-sm">
-                                    <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                                    <button
+                                        class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                                        @click="showModal('actions-modal',booking.id)"
+                                    >
                                         Details
                                     </button>
                                 </td>
@@ -119,29 +122,54 @@
                 </div>
             </div>
         </div>
+        <modal name="actions-modal" height="auto" :adaptive="true" :scrollable="true">
+            <div>
+                <BookingActions v-bind:booking="modalBooking" @close-modal="hideModal('actions-modal')"
+                                @reload-bookings="artistProfile()"/>
+            </div>
+        </modal>
     </div>
 </template>
 
 <script>
-    export default {
-        name: "ArtistBookings",
+import axios from "axios";
 
-        mounted(){
-            this.artistProfile()
-        },
+import BookingActions from "./modals/BookingActions";
 
-        computed:{
-            artist() {
-                return this.$store.getters.getUserArtists
-            }
-        },
+export default {
+    name: "ArtistBookings",
 
-        methods:{
-            artistProfile() {
-                this.$store.dispatch('getUserArtist')
-            },
+    components: {BookingActions},
+
+    mounted() {
+        this.artistProfile()
+    },
+    data() {
+        return {
+            modalBooking: {},
         }
+    },
+
+    computed: {
+        artist() {
+            return this.$store.getters.getUserArtists
+        }
+    },
+
+    methods: {
+        showModal(modal, id) {
+            this.modalBooking = this.artist.bookings.filter(booking => booking.id === id)[0]
+            this.$modal.show(modal);
+        },
+
+        hideModal(modal) {
+            this.$modal.hide(modal);
+        },
+        artistProfile() {
+            this.$store.dispatch('getUserArtist')
+        },
     }
+}
 </script>
 
 <style scoped lang="scss">

@@ -14,9 +14,7 @@ use \App\Traits\Payments\DPOPayment;
 class EventBookingController extends Controller
 {
 
-
     use DPOPayment;
-
 
     /**
      * Show the form for editing the specified resource.
@@ -68,10 +66,6 @@ class EventBookingController extends Controller
 
         //Trait from DPOPayment
         $paymentResponse = $this->generateToken2($totalAmount, 'Event', $event->id);
-
-
-
-
 
         return $paymentResponse;
 

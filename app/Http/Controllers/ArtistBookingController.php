@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\Artists\ArtistDetailsMail;
+use App\Mail\Artists\ArtistEnquiryMail;
 use App\Models\Artists\Artist;
 use App\Models\Artists\ArtistBooking;
 use App\Models\Status;
@@ -54,7 +55,11 @@ class ArtistBookingController extends Controller
         ]);
 
 
-//        Mail::to($artist->user->email)->send(new ArtistEnquiryMail($artist->user, $booking));
+        Mail::to($artist->user->email)->send(new ArtistEnquiryMail($artist->user, $booking));
+
+        return response()->json([
+            'success' => true
+        ]);
 
 
     }

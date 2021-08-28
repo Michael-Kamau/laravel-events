@@ -35,10 +35,10 @@ public function generateToken()
     }
 
 
-    public function generateToken2($amount, $service, $serviceId)
+    public function generateToken2($amount, $service, $serviceId, $bookingDetails)
     {
 
-        $xml= $this->createXmlObject($amount, $service, $serviceId);
+        $xml= $this->createXmlObject($amount, $service, $serviceId, $bookingDetails);
 //        dd($xml);
 
         $url = "https://secure.3gdirectpay.com/API/v6/"; // URL to make some test
@@ -138,7 +138,7 @@ public function generateToken()
 
 
 
-    public function createXmlObject($amount, $service, $serviceId)
+    public function createXmlObject($amount, $service, $serviceId, $bookingDetails)
     {
 
         $dom = new DOMDocument();
@@ -168,16 +168,16 @@ public function generateToken()
         $child_node_ref = $dom->createElement('CompanyRef', $serviceId);
         $transaction_node->appendChild($child_node_ref);
 
-        $child_node_email = $dom->createElement('customerEmail', 'mkkamau@gmail.com');
+        $child_node_email = $dom->createElement('customerEmail', $bookingDetails->email);
         $transaction_node->appendChild($child_node_email);
 
-        $child_node_firstname = $dom->createElement('customerFirstName', 'Michael');
+        $child_node_firstname = $dom->createElement('customerFirstName', $bookingDetails->firstname);
         $transaction_node->appendChild($child_node_firstname);
 
-        $child_node_lastname = $dom->createElement('customerLastName', 'Kamau');
+        $child_node_lastname = $dom->createElement('customerLastName', $bookingDetails->lastname);
         $transaction_node->appendChild($child_node_lastname);
 
-        $child_node_phone = $dom->createElement('customerPhone', '0727242802');
+        $child_node_phone = $dom->createElement('customerPhone', $bookingDetails->contact);
         $transaction_node->appendChild($child_node_phone);
 
 

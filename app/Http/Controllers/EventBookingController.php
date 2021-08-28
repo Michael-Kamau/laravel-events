@@ -52,7 +52,7 @@ class EventBookingController extends Controller
         $totalAmount = (float)$ticketPrice * (float)$ticketNumber;
 
 
-        EventBooking::create([
+        $eventBooking = EventBooking::create([
             'event_id' => $event->id,
             'payment_id' => 12,
             'firstname' => $firstname,
@@ -65,10 +65,19 @@ class EventBookingController extends Controller
         ]);
 
         //Trait from DPOPayment
-        $paymentResponse = $this->generateToken2($totalAmount, 'Event', $event->id);
+        $paymentResponse = $this->generateToken2($totalAmount, 'Event', $event->id, $eventBooking);
+
+
+        $eventBooking->payment()->create([
+        'token' => $paymentResponse['data']['TransToken'],
+        'reference' => $paymentResponse['data']['TransRef'],
+        'result' => $paymentResponse['data']['Result'],
+        'result_explanation' => $paymentResponse['data']['ResultExplanation'],
+        'amount' => $totalAmount,
+        'status' => 4
+    ]);
 
         return $paymentResponse;
-
 
     }
 

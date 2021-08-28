@@ -54,9 +54,7 @@ class VenueBookingController extends Controller
             'code' => rand(99999, 10000000),
         ]);
 
-
         Mail::to($venue->user->email)->send(new VenueEnquiryMail($venue->user, $booking));
-
 
     }
 

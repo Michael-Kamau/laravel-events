@@ -60,6 +60,7 @@ Route::post('api/artists/bookingActions','ArtistBookingController@bookingActions
 
 Route::post('api/artists/bookArtist','ArtistBookingController@bookArtist');
 Route::get('api/artists/booking-information/{code}/{id}','ArtistBookingController@bookingInformation');
+Route::get('api/artists/booking-payment/{code}/{id}','ArtistBookingController@bookingPayment');
 
 
 

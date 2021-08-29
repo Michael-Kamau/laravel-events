@@ -10,45 +10,29 @@
                 <div
                     class=" md:w-3/5  rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                        <div class="mb-8">
-                            <!--                            <p class="text-sm text-gray-600 flex items-center">-->
-                            <!--                                <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg"-->
-                            <!--                                     viewBox="0 0 20 20">-->
-                            <!--                                    <path-->
-                            <!--                                        d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z"/>-->
-                            <!--                                </svg>-->
-                            <!--                                Venue Details-->
-                            <!--                            </p>-->
-                            <div class="text-gray-900 font-bold text-xl mb-2">{{booking.name}}</div>
-                            <p class="text-gray-700 text-base">{{booking.artist.location}}</p>
-                            <!--                        <p class="text-gray-700 text-base">{{artist[0].charges}}</p>-->
+                        <div class="mb-4">
+                            <div class="text-gray-900 font-bold text-xl mb-2">Dear {{ booking.name }},</div>
+                            <p>To secure your booking, you need to make payment.</p>
                         </div>
-                        <div class=" mb-6 mt-6 md:mb-1">
+                        <div class=" mb-6 mt-2 md:mb-1">
                             <label class="block  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                Payment Description
+                                Booking Details
                             </label>
-                            <div class="relative">
-                                <p>You can proceed to make payment of <b>ksh {{booking.amount}}</b> to secure your booking of <b>{{booking.artist.name}}</b> on the <b>{{booking.date}}</b></p>
+                            <div class="">
+                                <p><b>Artist Name:</b> {{ booking.artist.name }}</p>
+                                <p><b>Artist Description:</b> {{ booking.artist.description}}</p>
+                                <p><b>Artist Booking Date:</b> {{ booking.date }}</p>
+                                <p><b>Artist Booking Amount:</b> {{ booking.amount }}</p>
                             </div>
                         </div>
 
                         <div class="flex items-center justify-between">
                             <button
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                type="button" @click="showModal('book-modal')">
+                                type="button" @click="bookArtist()">
                                 Make Payment
                             </button>
                         </div>
-
-<!--                        <div class="flex items-center pt-2">-->
-<!--                            <div class="text-sm mr-4">-->
-<!--                                <p class="text-gray-900 leading-none">Share</p>-->
-<!--                                <p class="text-gray-600">Artist</p>-->
-<!--                            </div>-->
-<!--                            <i class="fab fa-whatsapp w-30 h-30 rounded-full mr-4"></i>-->
-<!--                            <i class="fab fa-twitter w-30 h-30 rounded-full mr-4"></i>-->
-<!--                            <i class="fab fa-facebook-f w-30 h-30 rounded-full mr-4"></i>-->
-<!--                        </div>-->
 
                     </form>
 
@@ -101,7 +85,24 @@
                     }).catch(e => {
                     console.log(e)
                 })
-            }
+            },
+
+            bookArtist() {
+                console.log('and here we are')
+                axios.get(`/api/artists/booking-payment/${this.bookingCode}/${this.bookingId}`)
+                    .then(response => {
+                        console.log('And this is the data', response.data.data.TransToken)
+
+                        if (response.data.success) {
+                            window.location.href = `https://secure.3gdirectpay.com/payv2.php?ID=${response.data.data.TransToken}`;
+
+                        }
+                        resolve(response)
+                    }).catch(e => {
+                    reject(e)
+                    console.log(e)
+                })
+            },
         }
     }
 </script>

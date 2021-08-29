@@ -47,6 +47,7 @@ Route::post('api/venues/bookingActions','VenueBookingController@bookingActions')
 
 Route::post('api/venues/bookVenue','VenueBookingController@bookVenue');
 Route::get('api/venues/booking-information/{code}/{id}','VenueBookingController@bookingInformation');
+Route::get('api/venues/booking-payment/{code}/{id}','VenueBookingController@bookingPayment');
 
 
 //Artists

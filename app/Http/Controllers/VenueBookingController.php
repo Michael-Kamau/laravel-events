@@ -10,9 +10,13 @@ use App\Models\Venues\VenueBooking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use \App\Traits\Payments\DPOPayment;
 
 class VenueBookingController extends Controller
 {
+
+    use DPOPayment;
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -160,11 +164,12 @@ class VenueBookingController extends Controller
             $bookingDetails = [
                 'id' => $booking->id,
                 'name' => $booking->firstname . ' ' . $booking->lastname,
+                'amount' => $booking->amount,
                 'venue' => [
                     'name' => $booking->venue->name,
                     'image' => $booking->venue->image,
+                    'description' => $booking->venue->description,
                 ],
-                'description' => $booking->venue->description,
                 'date' => $booking->book_date,
                 'status' => $booking->status->name,
             ];
@@ -181,6 +186,40 @@ class VenueBookingController extends Controller
         }
 
     }
+
+    /**
+     * Booking information
+     *
+     * @param $id
+     * @param $code
+     * @return void
+     */
+    public function bookingPayment($code, $id)
+    {
+        $booking = VenueBooking::where([
+            ['id','=' ,$id],
+            ['code', '=', $code]
+        ])->first();
+
+
+        //Trait from DPOPayment
+        $paymentResponse = $this->generateToken2($booking->amount, 'Venue Booking', $booking->venue_id, $booking);
+
+
+        $booking->payment()->create([
+            'token' => $paymentResponse['data']['TransToken'],
+            'reference' => $paymentResponse['data']['TransRef'],
+            'result' => $paymentResponse['data']['Result'],
+            'result_explanation' => $paymentResponse['data']['ResultExplanation'],
+            'amount' => $booking->amount,
+            'status' => 4
+        ]);
+
+        return $paymentResponse;
+
+
+    }
+
 
 
     public function mailVenueBookingPdf($venueId)

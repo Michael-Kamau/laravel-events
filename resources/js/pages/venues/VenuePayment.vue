@@ -10,7 +10,7 @@
             <div
                 class=" md:w-3/5  rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                 <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    <div class="mb-8">
+                    <div class="mb-4">
                         <div class="text-gray-900 font-bold text-xl mb-2">Dear {{ booking.name }},</div>
                         <p>To secure your booking, you need to make payment.</p>
                     </div>

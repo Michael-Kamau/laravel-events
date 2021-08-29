@@ -10,9 +10,14 @@ use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use \App\Traits\Payments\DPOPayment;
 
 class ArtistBookingController extends Controller
 {
+
+
+    use DPOPayment;
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -131,8 +136,8 @@ class ArtistBookingController extends Controller
                 'artist' => [
                     'name' => $booking->artist->name,
                     'image' => $booking->artist->image,
+                    'description' => $booking->artist->description,
                 ],
-                'description' => $booking->artist->description,
                 'amount' => $booking->amount,
                 'date' => $booking->book_date,
                 'status' => $booking->status->name,
@@ -152,5 +157,42 @@ class ArtistBookingController extends Controller
     }
 
 
+
+
+    /**
+     * Booking information
+     *
+     * @param $id
+     * @param $code
+     * @return void
+     */
+    public function bookingPayment($code, $id)
+    {
+        $booking = ArtistBooking::where([
+            ['id','=' ,$id],
+            ['code', '=', $code]
+        ])->first();
+
+        //Trait from DPOPayment
+        $paymentResponse = $this->generateToken2($booking->amount, 'Artist Booking', $booking->artist_id, $booking);
+
+
+        $booking->payment()->create([
+            'token' => $paymentResponse['data']['TransToken'],
+            'reference' => $paymentResponse['data']['TransRef'],
+            'result' => $paymentResponse['data']['Result'],
+            'result_explanation' => $paymentResponse['data']['ResultExplanation'],
+            'amount' => $booking->amount,
+            'status' => 4
+        ]);
+
+        return $paymentResponse;
+
+    }
+
+
 }
+
+
+
 

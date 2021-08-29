@@ -46,6 +46,7 @@ class EventController extends Controller
                     'regular' => $event->regular,
                     'location' => $event->location,
                     'image' => $event->image,
+                    'streamlink' => $event->streamlink,
                     'start_date' => $event->start_date,
                     'end_date' => $event->end_date,
                     'bookings' => EventBooking::userEventBookings($event->id)
@@ -149,6 +150,7 @@ class EventController extends Controller
         $name = $request->input('name');
         $location = $request->input('location');
         $startDate = $request->input('start_date');
+        $streamlink= $request->input('streamlink');
         $endDate = $request->input('end_date');
         $vvip = $request->input('vvip');
         $vip = $request->input('vip');
@@ -159,6 +161,7 @@ class EventController extends Controller
         if ($event->user_id == Auth::id()) {
             $event->name = $name;
             $event->location = $location;
+            $event->streamlink = $streamlink;
             $event->start_date = $startDate;
             $event->end_date = $endDate;
             $event->vvip = $vvip;

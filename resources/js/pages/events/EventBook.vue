@@ -25,6 +25,14 @@
                         <p class="text-gray-700 text-base">Vvip: Ksh. {{event[0].vvip}}</p>
                         <p class="text-gray-700 text-base">Vip: Ksh. {{event[0].vip}}</p>
                         <p class="text-gray-700 text-base">Regular: Ksh. {{event[0].regular}}</p>
+                        <div v-if="event[0].streamlink.length>4">
+                            <button
+                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                type="button">
+                                <a :href="event[0].streamlink">Stream Event</a>
+                            </button>
+
+                        </div>
                     </div>
                     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                         <div class=" mb-6 mt-6 md:mb-1">
@@ -83,7 +91,7 @@
                                 id="total-amount" type="text" disabled placeholder="Amount" v-model="amount">
                         </div>
                         <div>
-                            <p>By booking ticket, you agree to our <a href="/terms" class="text-blue-600">Terms and conditions</a> </p>
+                            <p>By booking ticket, you agree to our <a href="/terms" class="text-green-600">Terms and conditions</a> </p>
 
                         </div>
                         <div class="flex items-center justify-between">

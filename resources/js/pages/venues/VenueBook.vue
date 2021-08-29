@@ -92,7 +92,7 @@
                             </p>
                             <div class="text-gray-900 font-bold text-xl mb-2">Venue Name : {{venue.name}}</div>
                             <p>After making an inquiry, the venue manager will be notified and will send you details of
-                                the event booking to your email address</p>
+                                the venue booking(including the charges) to your email address</p>
 
                         </div>
                         <form class="bg-white shadow-md rounded sm:px-8 md:px-8 pt-6 pb-8 mb-4">

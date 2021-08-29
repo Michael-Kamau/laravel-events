@@ -67,7 +67,6 @@
         },
 
         computed: {
-
             artist(){
               return this.$store.getters.getAnArtist(this.$route.params.id)[0]
             },

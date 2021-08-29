@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="71cae4b9-0f07-41ba-8e79-9a4f9af19b96" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/auth/events_auth/MyEvents.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/auth/events_auth/MyEvents.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/events/EventBook.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/events/EventBook.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/artists/ArtistBook.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/artists/ArtistBook.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/venues/VenueBook.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/venues/VenueBook.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,7 +305,7 @@
       <workItem from="1628507833394" duration="2169000" />
       <workItem from="1629882541667" duration="1322000" />
       <workItem from="1630157045573" duration="6154000" />
-      <workItem from="1630263320843" duration="294000" />
+      <workItem from="1630263320843" duration="1120000" />
     </task>
     <servers />
   </component>

@@ -27,6 +27,7 @@
         "css": "^2.2.4",
         "moment": "^2.29.1",
         "serialize-javascript": ">=3.1.0",
+        "sweetalert2": "^11.1.4",
         "tailwind": "^4.0.0",
         "tailwindcss": "^1.2.0",
         "vue-js-modal": "^2.0.0-rc.3",

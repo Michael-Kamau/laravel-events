@@ -93,6 +93,7 @@
 
 <script>
     import axios from "axios";
+    import {bus} from "../../../app";
 
     export default {
         name: "BookArtistModal",
@@ -115,6 +116,7 @@
                 axios.post(`/api/artists/bookArtist`, this.form)
                     .then(response => {
                         console.log(response)
+                        bus.$emit('successAction',{message:'Enquiry sent successfully. Once the artist responds you will receive an email with the details.'})
                         this.closeModal()
                         resolve(response)
                     }).catch(e => {

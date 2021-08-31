@@ -106,7 +106,7 @@ export default new Router({
         },
         {
             path: '/artists/artistPayment/:id',
-            name: 'venuePayment',
+            name: 'artistPayment',
             component: ArtistPayment
         },
 

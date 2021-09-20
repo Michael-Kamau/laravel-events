@@ -2,7 +2,7 @@
     <div class="m-2 p-4 rounded-lg shadow">
         <h1 class="text-3xl font-bold pt-8 lg:pt-0 text-gray-700">Artist Profile</h1>
 
-        <div class="md:flex">
+        <div class="md:flex" v-if="artist">
             <div class="w-full md:w-2/5 h-auto ">
                 <img class="max-w-full h-auto rounded" :src="'/images/artistImages/' +artist.image" alt="">
             </div>
@@ -20,7 +20,6 @@
                 </div>
                 <div class="shadow p-1 rounded flex flex-wrap space-x-2 py-3 m-2" >
                     <p class="rounded-full bg-gray-400 p-1 w-auto " v-for="genre in artist.genres" :key="genre.id"> {{genre.name}} </p>
-
 
                 </div>
                 <div class=" flex justify-between my-5">
@@ -62,8 +61,17 @@
     export default {
         name: "ArtistBook",
         components: {BookArtistModal, ArtistVideos},
-        mounted() {
-            this.getAllArtists();
+
+        data(){
+            return {
+                artistId:this.$route.params.id,
+            }
+
+        },
+        beforeCreate() {
+            // this.getAllArtists();
+            this.$store.dispatch('getAllArtists');
+
         },
 
         computed: {

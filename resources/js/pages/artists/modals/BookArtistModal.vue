@@ -113,10 +113,13 @@
 
             bookArtist(){
                 this.form.id = this.$route.params.id;
+
+                bus.$emit('loadingAction',{status:true})
                 axios.post(`/api/artists/bookArtist`, this.form)
                     .then(response => {
                         console.log(response)
                         bus.$emit('successAction',{message:'Enquiry sent successfully. Once the artist responds you will receive an email with the details.'})
+                        bus.$emit('loadingAction',{status:false})
                         this.closeModal()
                         resolve(response)
                     }).catch(e => {

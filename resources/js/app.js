@@ -30,8 +30,14 @@ require('./pages/registerComponents')
 import store from "./store"
 import router from "./router"
 import VModal from 'vue-js-modal'
+import * as VueSpinnersCss from "vue-spinners-css";
+
 
 Vue.use(VModal);
+
+Vue.use(VueSpinnersCss)
+
+export const bus = new Vue();
 
 const app = new Vue({
     el: '#app',

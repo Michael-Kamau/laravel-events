@@ -1,8 +1,20 @@
 <template>
     <div>
-        <div class="grid gap-4 md:grid-cols-3 md:grid-cols-1 p-4" v-if="this.$store.getters.getAllArtists.length">
+        <div class="p-3 mb-2 ">
+            <p class=" text-l text-gray-600">Click on a category to filter the items displayed by category</p>
+            <span
+                class="inline-flex items-center justify-center px-3 py-2 text-l font-bold leading-none text-gray-100 bg-gray-500 rounded ml-1"
+                @click="setActiveGenre('')">All</span>
+            <span
+                class="inline-flex items-center justify-center px-3 py-2 text-l font-bold leading-none text-gray-100 bg-gray-500 rounded ml-1 mt-1"
+                v-for="genre in this.genres" :key="genre.id"
+                @click="setActiveGenre(genre.name)">{{ genre.name }}</span>
+
+        </div>
+        <div class="grid gap-4 md:grid-cols-3 md:grid-cols-1 px-4 pb-4" v-if="this.artists.length">
             <!--            <div class="w-2/7 m-2  "  >-->
-            <ArtistTemplate v-bind:artist=artist v-for="artist in this.$store.getters.getAllArtists" :key="artist.id"></ArtistTemplate>
+            <ArtistTemplate v-bind:artist=artist v-for="artist in this.artists"
+                            :key="artist.id"></ArtistTemplate>
             <!--            </div>-->
         </div>
         <div v-else class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
@@ -25,15 +37,51 @@
 </template>
 
 <script>
-    import ArtistTemplate from "./ArtistTemplate";
-    export default {
-        name: "ArtistsHome.vue",
-        components: {ArtistTemplate},
+import ArtistTemplate from "./ArtistTemplate";
+import axios from "axios";
 
-        mounted() {
-            this.$store.dispatch('getAllArtists');
+export default {
+    name: "ArtistsHome.vue",
+    components: {ArtistTemplate},
+
+    mounted() {
+        this.$store.dispatch('getAllArtists');
+        this.fetchGenres()
+    },
+    data() {
+        return {
+            genres: [],
+            activeGenre: ''
+        }
+    },
+    computed: {
+        artists() {
+            if (this.activeGenre?.length > 0) {
+                return this.$store.getters.getAllArtists.filter((artist) => artist.genres.filter(genre => genre.name == this.activeGenre).length > 0)
+            } else {
+                return this.$store.getters.getAllArtists
+            }
+        },
+    },
+
+    methods: {
+        fetchGenres() {
+            axios.get(`/api/artists/genres`)
+                .then(response => {
+                    console.log(response)
+                    this.genres = response.data.data
+                }).catch(e => {
+                console.log(e)
+            })
+        },
+
+        setActiveGenre(genre_name) {
+            console.log('this is the active genre', genre_name)
+            this.activeGenre = genre_name
+
         }
     }
+}
 </script>
 
 <style scoped>

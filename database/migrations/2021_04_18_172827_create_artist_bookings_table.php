@@ -24,6 +24,7 @@ class CreateArtistBookingsTable extends Migration
             $table->date('book_date');
             $table->integer('amount');
             $table->string('description');
+            $table->string('type');
             $table->string('code');
             $table->integer('status_id');
             $table->timestamps();

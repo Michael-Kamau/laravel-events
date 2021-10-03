@@ -18,6 +18,7 @@ class CreatePaymentsTable extends Migration
             $table->bigInteger('paymentable_id');
             $table->string('paymentable_type');
             $table->string('token');
+            $table->string('payment_payload');
             $table->string('reference');
             $table->string('result');
             $table->string('result_explanation');

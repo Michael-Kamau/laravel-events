@@ -19,6 +19,7 @@ class CreateArtistsTable extends Migration
             $table->string('name');
             $table->string('location');
             $table->string('description');
+            $table->string('requirements');
             $table->string('image');
             $table->timestamps();
         });

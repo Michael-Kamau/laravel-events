@@ -24,6 +24,7 @@ class ArtistController extends Controller
             'id' => $artist->id,
             'name' => $artist->name,
             'description' =>$artist->description,
+            'requirements' =>$artist->requirements,
             'image'=>$artist->image,
             'genres' =>  $artist->genres->map(function($genre){
                 return[
@@ -59,6 +60,7 @@ class ArtistController extends Controller
             'id' => $artist->id,
             'name' => $artist->name,
             'description' =>$artist->description,
+            'requirements' =>$artist->requirements,
             'image'=>$artist->image,
             'genres' =>  $artist->genres->map(function($genre){
                 return[
@@ -102,6 +104,7 @@ class ArtistController extends Controller
         $artistId = $request->input('id');
         $name = $request->input('name');
         $description = $request->input('description');
+        $requirements = $request->input('requirements');
         $genres = $request->input('genres');
 
 
@@ -110,6 +113,7 @@ class ArtistController extends Controller
         if ($artist->user->id == Auth::id()) {
             $artist->name = $name;
             $artist->description = $description;
+            $artist->requirements = $requirements;
 
             $artist->genres()->sync($genres);
 

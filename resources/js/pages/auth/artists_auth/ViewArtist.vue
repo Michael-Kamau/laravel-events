@@ -25,6 +25,12 @@
                               v-model="artist.description"></textarea>
                 </label>
 
+                <label class="block">
+                    <span class="text-gray-700">Booking Requirements</span>
+                    <textarea class="form-textarea mt-1 block w-full p-2" rows="3"
+                              v-model="artist.requirements"></textarea>
+                </label>
+
 
                 <div class="md:flex justify-between">
                     <h1 class="text-1xl font-bold pt-8 lg:pt-0 text-gray-700">Categories ( The categories of songs you
@@ -191,11 +197,12 @@
             },
 
             createPayload() {
-                let {id, name, description} = this.artist
+                let {id, name, description, requirements} = this.artist
                 this.form = {
                     id,
                     name,
                     description,
+                    requirements,
                     genres: this.artist.genres.map((genre) => genre.id)
                 }
 

@@ -13,9 +13,12 @@
                 <h1 class="text-1xl font-bold pt-8 lg:pt-0 text-gray-700">Description</h1>
                 <h6 class="p-1 mb-2">{{artist.description}}</h6>
 
+                <h1 class="text-1xl font-bold pt-8 lg:pt-0 text-gray-700">Booking requirements</h1>
+                <h6 class="p-1 mb-2">{{artist.requirements}}</h6>
+
 
                 <div class="md:flex justify-between">
-                    <h1 class="text-1xl font-bold pt-8 lg:pt-0 text-gray-700">Categories</h1>
+                    <h1 class="text-1xl font-bold pt-8 lg:pt-0 text-gray-700">Genres</h1>
 
                 </div>
                 <div class="shadow p-1 rounded flex flex-wrap space-x-2 py-3 m-2" >

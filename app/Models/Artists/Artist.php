@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Artist extends Model
 {
-    protected $fillable =['user_id','name', 'description', 'location', 'image'];
+    protected $fillable =['user_id','name', 'description','requirements', 'location', 'image'];
 
     public function user()
     {

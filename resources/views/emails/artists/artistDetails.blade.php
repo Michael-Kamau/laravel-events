@@ -9,7 +9,6 @@ Make Payment
 @endcomponent
 @endif
 
-
     Thanks,
     {{ config('app.name') }}
 @endcomponent

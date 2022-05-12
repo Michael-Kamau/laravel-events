@@ -27,6 +27,16 @@ class ArtistBookingController extends Controller
     public function bookArtist(Request $request)
     {
 
+        $validated = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'description' => 'required',
+            'type' => 'required',
+            'book_date' => 'required',
+        ]);
+
         $artistId = $request->input('id');
         $amount = 0;
         $firstname = $request->input('firstname');
@@ -34,6 +44,7 @@ class ArtistBookingController extends Controller
         $email = $request->input('email');
         $phone = $request->input('phone');
         $description = $request->input('description');
+        $type = $request->input('type');
         $book_date = $request->input('book_date');
 
 
@@ -55,6 +66,7 @@ class ArtistBookingController extends Controller
             'amount' => $amount,
             'status_id' => 4,
             'description' => $description,
+            'type' => $type,
             'code' => rand(99999, 10000000),
             'book_date' => $book_date,
         ]);
@@ -126,7 +138,7 @@ class ArtistBookingController extends Controller
     public function bookingInformation($code, $id)
     {
         $booking = ArtistBooking::where([
-            ['id','=' ,$id],
+            ['id', '=', $id],
             ['code', '=', $code]
         ])->first();
         if ($booking) {
@@ -157,8 +169,6 @@ class ArtistBookingController extends Controller
     }
 
 
-
-
     /**
      * Booking information
      *
@@ -169,17 +179,17 @@ class ArtistBookingController extends Controller
     public function bookingPayment($code, $id)
     {
         $booking = ArtistBooking::where([
-            ['id','=' ,$id],
+            ['id', '=', $id],
             ['code', '=', $code]
         ])->first();
 
-        //Trait from DPOPayment
-        $paymentResponse = $this->generateToken2($booking->amount, 'Artist Booking', $booking->artist_id, $booking);
 
+        $paymentResponse = $this->generateToken2($booking->amount, 'Artist Booking', $booking->artist_id, $booking);
 
         $booking->payment()->create([
             'token' => $paymentResponse['data']['TransToken'],
             'reference' => $paymentResponse['data']['TransRef'],
+            'payment_payload' => str_replace("'", "\'", json_encode($paymentResponse)),
             'result' => $paymentResponse['data']['Result'],
             'result_explanation' => $paymentResponse['data']['ResultExplanation'],
             'amount' => $booking->amount,

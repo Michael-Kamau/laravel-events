@@ -26,6 +26,17 @@ class VenueBookingController extends Controller
     public function bookVenue(Request $request)
     {
 
+        $validated = $request->validate([
+            'id' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'amount' => 'required',
+            'description' => 'required',
+            'book_date' => 'required',
+        ]);
+
         $venueId = $request->input('id');
         $amount = $request->input('amount');
         $firstname = $request->input('firstname');

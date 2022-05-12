@@ -3,8 +3,7 @@
 @section('content')
 <div class="">
     <div id="#">
-{{--        <index></index>--}}
-        <router-view></router-view>
+        <main-page></main-page>
     </div>
 </div>
 @endsection

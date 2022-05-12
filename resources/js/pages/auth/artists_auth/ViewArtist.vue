@@ -1,5 +1,5 @@
 <template>
-    <div v-if="this.$store.getters.getUserArtists.description" class="m-2 p-4 rounded-lg shadow">
+    <div v-if="this.$store.getters.getUserArtists" class="m-2 p-4 rounded-lg shadow">
         <h1 class="text-3xl font-bold pt-8 lg:pt-0 text-gray-700">Profile</h1>
 
         <div class="md:flex">
@@ -71,31 +71,31 @@
                 </div>
 
 
-                <div class="flex">
+<!--                <div class="flex">-->
 
-                    <div class="pt-12 pb-8 mx-2 justify-center">
-                        <button class="bg-yellow-700 hover:bg-yellow-900 text-white font-bold py-2 px-4 rounded-full">
-                            1
-                        </button>
-                        <p class="text-gray-700 text-center font-bold">Bookings</p>
-                    </div>
+<!--                    <div class="pt-12 pb-8 mx-2 justify-center">-->
+<!--                        <button class="bg-yellow-700 hover:bg-yellow-900 text-white font-bold py-2 px-4 rounded-full">-->
+<!--                            1-->
+<!--                        </button>-->
+<!--                        <p class="text-gray-700 text-center font-bold">Bookings</p>-->
+<!--                    </div>-->
 
-                    <div class="pt-12 pb-8 mx-2 justify-center">
-                        <button class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full">
-                            1
-                        </button>
-                        <p class="text-gray-700 text-center font-bold">confirmed</p>
-                    </div>
+<!--                    <div class="pt-12 pb-8 mx-2 justify-center">-->
+<!--                        <button class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full">-->
+<!--                            1-->
+<!--                        </button>-->
+<!--                        <p class="text-gray-700 text-center font-bold">confirmed</p>-->
+<!--                    </div>-->
 
-                    <div class="pt-12 pb-8 mx-2 justify-center">
-                        <button class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
-                            1
-                        </button>
-                        <p class="text-gray-700 text-center font-bold">Paid</p>
-                    </div>
+<!--                    <div class="pt-12 pb-8 mx-2 justify-center">-->
+<!--                        <button class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">-->
+<!--                            1-->
+<!--                        </button>-->
+<!--                        <p class="text-gray-700 text-center font-bold">Paid</p>-->
+<!--                    </div>-->
 
 
-                </div>
+<!--                </div>-->
 
             </div>
         </div>

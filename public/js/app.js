@@ -2075,6 +2075,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Dashboard",
   mounted: function mounted() {
@@ -3025,6 +3036,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -38982,24 +38995,52 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "flex  w-screen" }, [
     _c("div", { staticClass: " md:w-1/6 bg-gray-400 p-2" }, [
-      _c("h1", [_vm._v("Dashboard")]),
+      _c(
+        "h1",
+        {
+          staticClass:
+            "w-full inline-block bg-gray-700 rounded py-2 py-1 text-sm text-center font-semibold text-white-50 mt-2 mb-1"
+        },
+        [_vm._v("Dashboard")]
+      ),
       _vm._v(" "),
       _vm.roleExists("admin")
         ? _c(
             "div",
             [
               _c("router-link", { attrs: { to: { name: "artistManagers" } } }, [
-                _vm._v(" Artist Managers")
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2"
+                  },
+                  [_vm._v(" Artist Managers")]
+                )
               ]),
               _c("br"),
               _vm._v(" "),
               _c("router-link", { attrs: { to: { name: "eventManagers" } } }, [
-                _vm._v(" Event Managers")
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2"
+                  },
+                  [_vm._v("Event Managers")]
+                )
               ]),
               _c("br"),
               _vm._v(" "),
               _c("router-link", { attrs: { to: { name: "venueManagers" } } }, [
-                _vm._v(" Venue Managers")
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2"
+                  },
+                  [_vm._v(" Venue Managers")]
+                )
               ]),
               _c("br")
             ],
@@ -39014,7 +39055,14 @@ var render = function() {
             "div",
             [
               _c("router-link", { attrs: { to: { name: "artistManagers" } } }, [
-                _vm._v(" Performing Artists")
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2"
+                  },
+                  [_vm._v("Performing Artists")]
+                )
               ]),
               _c("br")
             ],
@@ -39025,40 +39073,40 @@ var render = function() {
       _vm.roleExists("event-manager")
         ? _c(
             "div",
+            { staticClass: " pl-1" },
             [
               _c("router-link", { attrs: { to: { name: "myEvents" } } }, [
-                _vm._v(" My Events")
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2"
+                  },
+                  [_vm._v("My Events")]
+                )
               ]),
               _c("br"),
               _vm._v(" "),
               _c("router-link", { attrs: { to: { name: "addEvent" } } }, [
-                _vm._v(" Add Event")
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "inline-block w-full bg-gray-200 rounded px-3 py-2 text-sm font-semibold text-gray-700 mt-2"
+                  },
+                  [_vm._v("Add Event")]
+                )
               ])
             ],
             1
           )
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass:
-            "shadow bg-blue-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded",
-          attrs: { type: "button" },
-          on: {
-            click: function($event) {
-              return _vm.roleExists("admin")
-            }
-          }
-        },
-        [_vm._v("\n            Add\n        ")]
-      )
+        : _vm._e()
     ]),
     _vm._v(" "),
     _c(
       "div",
       { staticClass: "md:w-5/6 bg-white-900 h-screen p-2" },
-      [_vm._v("\n        Here\n        "), _c("router-view")],
+      [_c("router-view")],
       1
     )
   ])
@@ -41336,68 +41384,66 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _c("div", { staticClass: "max-w-sm rounded overflow-hidden shadow-lg" }, [
-      _c("img", {
-        staticClass: "w-full",
-        attrs: { src: "/" + _vm.event.image, alt: "Sunset in the mountains" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "px-6 py-4" }, [
-        _c("div", { staticClass: "font-bold text-xl mb-2" }, [
-          _vm._v(_vm._s(_vm.event.name))
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "px-6 py-2" }, [
-        _c(
-          "span",
-          {
-            staticClass:
-              "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
-          },
-          [
-            _vm._v("Start Date "),
-            _c("br"),
-            _vm._v(_vm._s(_vm.event.start_date))
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "span",
-          {
-            staticClass:
-              "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
-          },
-          [
-            _vm._v("End Date "),
-            _c("br"),
-            _vm._v(" " + _vm._s(_vm.event.end_date))
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "span",
-          {
-            staticClass:
-              "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
-          },
-          [
-            _c(
-              "router-link",
-              {
+  return _c(
+    "div",
+    {},
+    [
+      _c(
+        "router-link",
+        { attrs: { to: { name: "eventPage", params: { id: _vm.event.id } } } },
+        [
+          _c(
+            "div",
+            { staticClass: "max-w-sm rounded overflow-hidden shadow-lg" },
+            [
+              _c("img", {
+                staticClass: "w-full ",
                 attrs: {
-                  to: { name: "eventPage", params: { id: _vm.event.id } }
+                  src: "/" + _vm.event.image,
+                  alt: "Sunset in the mountains"
                 }
-              },
-              [_vm._v(" Details")]
-            )
-          ],
-          1
-        )
-      ])
-    ])
-  ])
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "px-6 py-4" }, [
+                _c("div", { staticClass: "font-bold text-xl " }, [
+                  _vm._v(_vm._s(_vm.event.name))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "px-3 mb-2 text-center" }, [
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "inline-block w-2/5 bg-gray-200 rounded px-3 py-1 text-sm text-center font-semibold text-gray-700 mr-1"
+                  },
+                  [
+                    _vm._v("Start Date "),
+                    _c("br"),
+                    _vm._v(_vm._s(_vm.event.start_date))
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "inline-block w-2/5 bg-gray-200 rounded px-3 py-1 text-sm text-center font-semibold text-gray-700 "
+                  },
+                  [
+                    _vm._v("End Date "),
+                    _c("br"),
+                    _vm._v(" " + _vm._s(_vm.event.end_date))
+                  ]
+                )
+              ])
+            ]
+          )
+        ]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

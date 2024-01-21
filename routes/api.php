@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Events Routes
 
 Route::get('events','EventController@index');
+
+Route::get('STKPay','MpesaPaymentController@STK_Push');
